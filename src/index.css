@@ -102,19 +102,14 @@ section[id] { scroll-margin-top: calc(var(--topbar-h) + 74px); }
 }
 .btn-onphoto:hover { background: #fff; color: var(--ink); border-color: #fff; }
 
-/* ---------- WORDMARK ---------- */
-.wm { display: inline-flex; flex-direction: column; align-items: center; line-height: 1; }
-.wm__name {
-  font-weight: 600; font-size: clamp(19px, 5vw, 25px);
-  letter-spacing: .32em; text-indent: .32em; text-transform: uppercase;
-}
-.wm__rule { display: block; width: 100%; height: 1px; margin: 6px 0 5px; background: currentColor; opacity: .45; }
-.wm__sub {
-  font-weight: 400; font-size: clamp(7.5px, 1.9vw, 9.5px);
-  letter-spacing: .28em; text-indent: .28em; text-transform: uppercase; opacity: .78;
-}
-.wm--light { color: #fff; }
-.wm--dark { color: var(--ink); }
+/* ---------- LOGO ---------- */
+/* The official lockup as an image. Height drives the size; width follows the
+   artwork's own 2.7:1 proportion via the width/height attributes. */
+.wm { display: block; height: 48px; width: auto; }
+@media (min-width: 1040px) { .wm { height: 58px; } }
+.nav.scrolled .wm { height: 42px; }
+@media (min-width: 1040px) { .nav.scrolled .wm { height: 50px; } }
+.wm { transition: height .35s var(--ease); }
 
 /* ---------- HEADER ---------- */
 .header { position: fixed; inset: 0 0 auto 0; z-index: 60; }
@@ -868,7 +863,7 @@ section[id] { scroll-margin-top: calc(var(--topbar-h) + 74px); }
 /* ---------- FOOTER ---------- */
 .footer { background: var(--ink); color: #fff; }
 .footer__main { max-width: var(--maxw); margin-inline: auto; display: grid; gap: 28px; padding: clamp(40px, 7vw, 66px) var(--pad-x) clamp(26px, 3vw, 36px); }
-.footer__wm { align-items: flex-start; margin-bottom: 16px; }
+.footer__wm { height: 64px; margin-bottom: 18px; }
 .footer__brand p { max-width: 340px; color: rgba(255, 255, 255, .62); font-size: 14.5px; }
 .footer__clinic { display: inline-block; margin-top: 14px; font-size: 13.5px; color: var(--gold-bright); }
 .footer__clinic:hover { text-decoration: underline; }

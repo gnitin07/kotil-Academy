@@ -48,7 +48,7 @@ export default function Header({ onApply }) {
 
       <nav className="nav">
         <a className="nav__logo" href="#top" aria-label={`${ACADEMY.name} home`}>
-          <Wordmark tone="dark" />
+          <Wordmark tone="dark" eager />
         </a>
 
         <div className={`nav__links${menuOpen ? ' is-open' : ''}`} onClick={() => setMenuOpen(false)}>

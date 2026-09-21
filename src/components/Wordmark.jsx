@@ -1,23 +1,37 @@
 /**
- * The KOTIL lockup, set in type rather than shipped as an image.
+ * The official KOTIL · Aesthetic Academy lockup.
  *
- * The academy's printed logo is the word KOTIL in wide caps over a hairline
- * rule, with "Aesthetic Academy" beneath it. Drawing it with the site's own
- * font keeps it crisp at every size, costs no image request, and means the
- * header logo can recolour itself on scroll with a single CSS custom property.
+ * Two pre-built variants from `npm run assets:logo`: the artwork as supplied
+ * (black KOTIL, gold "Aesthetic Academy") for light backgrounds, and one with
+ * the black lettering turned white — gold untouched — for the black footer.
  *
- * Swap in the real artwork later by replacing this component's body with an
- * <img> — every caller passes only `tone` and `className`, so nothing else
- * needs to change.
+ * width/height are the trimmed artwork's own proportions (5607 x 2065), so the
+ * browser reserves the right box before the file arrives; CSS sets the real
+ * height and the width follows.
  *
- * @param {'light'|'dark'} tone  light = cream on dark backgrounds (default)
+ * @param {'light'|'dark'} tone  which background the logo sits on:
+ *                               'dark' = dark lettering, for light surfaces;
+ *                               'light' = white lettering, for dark surfaces
  */
-export default function Wordmark({ tone = 'light', className = '', ...rest }) {
+const BASE = import.meta.env.BASE_URL
+const RATIO_W = 5607
+const RATIO_H = 2065
+
+export default function Wordmark({ tone = 'dark', className = '', eager = false }) {
+  const file = tone === 'light' ? 'logo-light' : 'logo-dark'
+  const src = (w) => `${BASE}media/brand/${file}-${w}.webp`
+
   return (
-    <span className={`wm wm--${tone} ${className}`.trim()} {...rest}>
-      <span className="wm__name">Kotil</span>
-      <span className="wm__rule" aria-hidden="true" />
-      <span className="wm__sub">Aesthetic Academy</span>
-    </span>
+    <img
+      className={`wm wm--${tone} ${className}`.trim()}
+      src={src(480)}
+      srcSet={`${src(480)} 480w, ${src(960)} 960w`}
+      sizes="175px"
+      width={RATIO_W}
+      height={RATIO_H}
+      alt="Kotil Aesthetic Academy"
+      loading={eager ? 'eager' : 'lazy'}
+      decoding="async"
+    />
   )
 }
