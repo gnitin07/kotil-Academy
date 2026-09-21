@@ -1,0 +1,136 @@
+{
+  "hero/campus": [
+    900,
+    1600
+  ],
+  "hero/classroom": [
+    900,
+    1600
+  ],
+  "hero/facial": [
+    900,
+    1600
+  ],
+  "hero/handson": [
+    900,
+    1600
+  ],
+  "academy/batch": [
+    520,
+    653
+  ],
+  "academy/lecture-room": [
+    520,
+    754
+  ],
+  "academy/machine-room": [
+    520,
+    754
+  ],
+  "academy/practical": [
+    520,
+    655
+  ],
+  "academy/session": [
+    520,
+    754
+  ],
+  "academy/signage": [
+    520,
+    754
+  ],
+  "academy/supervised": [
+    520,
+    655
+  ],
+  "academy/trainer-class": [
+    520,
+    655
+  ],
+  "academy/treatment-room": [
+    520,
+    754
+  ],
+  "gallery/batch-cheer": [
+    480,
+    800,
+    1277
+  ],
+  "gallery/batch-lounge": [
+    480,
+    800,
+    1400
+  ],
+  "gallery/reel-poster": [
+    480
+  ],
+  "treatments/carbon-peel": [
+    520,
+    779
+  ],
+  "treatments/devices": [
+    520,
+    900
+  ],
+  "treatments/facial": [
+    520,
+    900
+  ],
+  "treatments/laser-body": [
+    520,
+    900
+  ],
+  "treatments/laser": [
+    520,
+    698
+  ],
+  "treatments/lips": [
+    520,
+    825
+  ],
+  "treatments/microneedling": [
+    520,
+    891
+  ],
+  "team/amy-aliya": [
+    320,
+    321
+  ],
+  "team/reena-verma": [
+    265
+  ],
+  "team/riya-kapoor": [
+    320,
+    321
+  ],
+  "posters/diploma": [
+    560,
+    754
+  ],
+  "posters/shaping": [
+    560,
+    754
+  ],
+  "posters/trusted": [
+    560,
+    754
+  ],
+  "partners/devriz": [
+    384
+  ],
+  "partners/msme": [
+    372
+  ],
+  "partners/nsdc": [
+    432
+  ],
+  "partners/skill-india": [
+    252
+  ],
+  "partners/startup-india": [
+    600
+  ],
+  "partners/strip": [
+    362
+  ]
+}
