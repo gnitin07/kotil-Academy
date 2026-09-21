@@ -11,3 +11,6 @@ dist-ssr
 
 # local editor / Claude preview config
 .claude
+
+# upload bundle for Hostinger (built from dist/)
+*.zip

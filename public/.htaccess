@@ -1,0 +1,63 @@
+# Kotil Aesthetic Academy — caching and security for Hostinger (LiteSpeed/Apache).
+#
+# Hostinger reads .htaccess and nothing else; vercel.json is ignored there.
+# Vite copies public/ to the root of dist/, so this lands next to index.html —
+# which is exactly where Hostinger looks for it in public_html.
+#
+# Keep in step with vercel.json if either changes.
+
+# No directory listings — without this, /media/video/ would list every file.
+Options -Indexes
+
+<IfModule mod_rewrite.c>
+RewriteEngine On
+
+# Force HTTPS. Hostinger's free SSL covers the domain; this makes sure nobody
+# lands on the insecure copy.
+RewriteCond %{HTTPS} off
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+# Real files and folders are served as-is.
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# It is a one-page site, so any unknown path goes home rather than to a 404.
+# A redirect, not a rewrite, so search engines index one URL, not many.
+RewriteRule ^ / [R=301,L]
+</IfModule>
+
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+
+  # /assets/* is Vite output with a content hash in every filename, so a file
+  # at a given name never changes — cache it for a year.
+  <If "%{REQUEST_URI} =~ m#^/assets/#">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </If>
+
+  # /media/* keeps the same filenames when a photo is replaced, so it gets a
+  # month, not a year: long enough to matter, short enough that a swapped
+  # photo reaches visitors.
+  <If "%{REQUEST_URI} =~ m#^/media/#">
+    Header set Cache-Control "public, max-age=2592000"
+  </If>
+
+  # The HTML shell must always be rechecked, or an upload never reaches
+  # returning visitors.
+  <FilesMatch "\.html$">
+    Header set Cache-Control "public, max-age=0, must-revalidate"
+  </FilesMatch>
+</IfModule>
+
+# Compress text files on the way out (photos and video are already compressed).
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript application/json image/svg+xml text/plain application/xml
+</IfModule>
+
+# Make sure the server labels modern formats correctly.
+AddType image/webp .webp
+AddType video/mp4 .mp4
