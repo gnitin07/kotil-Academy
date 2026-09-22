@@ -1,23 +1,27 @@
 {
   "hero/campus": [
+    600,
     900,
-    1600
+    1600,
+    2400
   ],
   "hero/classroom": [
+    600,
     900,
-    1600
-  ],
-  "hero/facial": [
-    900,
-    1600
+    1600,
+    2400
   ],
   "hero/handson": [
+    600,
     900,
-    1600
+    1600,
+    1672
   ],
-  "academy/batch": [
-    520,
-    653
+  "hero/students": [
+    600,
+    900,
+    1600,
+    2400
   ],
   "academy/lecture-room": [
     520,
@@ -29,7 +33,7 @@
   ],
   "academy/practical": [
     520,
-    655
+    900
   ],
   "academy/session": [
     520,
@@ -37,7 +41,7 @@
   ],
   "academy/signage": [
     520,
-    754
+    900
   ],
   "academy/supervised": [
     520,
@@ -63,6 +67,11 @@
   ],
   "gallery/reel-poster": [
     480
+  ],
+  "gallery/students": [
+    480,
+    800,
+    1400
   ],
   "treatments/carbon-peel": [
     520,
@@ -92,16 +101,20 @@
     520,
     891
   ],
-  "team/amy-aliya": [
+  "team/dev-singh": [
     320,
-    321
+    560
   ],
   "team/reena-verma": [
     265
   ],
-  "team/riya-kapoor": [
+  "team/ruby": [
     320,
-    321
+    560
+  ],
+  "founder/amy-aliya": [
+    520,
+    859
   ],
   "posters/diploma": [
     560,

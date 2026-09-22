@@ -57,7 +57,7 @@ src/
   animations.js          every scroll animation, in one place
   App.jsx                composes the sections
   components/            Header, Wordmark, Img, ApplyModal, FloatingWhatsApp, icons
-  sections/              Hero, Stats, About, Courses, Diploma, Tour, Why, Team,
+  sections/              Hero, Stats, Founder, About, Courses, Diploma, Tour, Why, Team,
                          Journey, Steps, Reviews, Posters, CTA, FAQ, Visit, Footer
 ```
 
@@ -92,9 +92,12 @@ indirection matters: the sources are small and uneven (650–1280px), so a 900px
 against a 754px original is written at 754. Without the manifest the component would guess
 filenames that were never written — which is exactly how every photo 404'd the first time.
 
-The hero plates are the one exception to "never upscale": they are enlarged to 1600px because
-they sit behind a dark scrim, where a gentle lanczos enlargement is invisible and a 650px
-photo stretched by the browser is not.
+**High-resolution banner shoot.** The four hero slides (classroom, hands-on practical,
+students, campus frontage) use the academy's own full-resolution photos (6000px originals, stored
+at 2400px in `raw-assets/hero/`), served at 600 / 900 / 1600 / 2400px so phones download the
+small one. The same shots replace their low-resolution prospectus twins elsewhere: the collage's
+"The entrance" and "Practical round", the "hands-on" Why card, and the Journey photo (the five
+students). Each slide's `focus` in `src/data.js` sets where a phone's tall crop centres.
 
 ### Video
 
@@ -126,18 +129,22 @@ phone. Here the photo crops and the words never do — which is the whole point.
 **GitHub Pages** — enable Pages with source *GitHub Actions*; the workflow in
 `.github/workflows/deploy-pages.yml` builds and publishes on every push to `main`.
 
-`dist/` is ~4.8 MB: ~3.3 MB of lazy-loaded webp photography, ~1.4 MB for the two reel cuts
+`dist/` is ~6 MB (most of it responsive image sizes a visitor never downloads all of): ~3.3 MB of lazy-loaded webp photography, ~1.4 MB for the two reel cuts
 (the 1 MB full reel only loads when someone taps to watch it), and the code
 is ~105 KB gzipped, with React and GSAP in separately hashed chunks so a copy change doesn't
 re-send them to returning visitors.
 
 ## Notes on content
 
-- **⚠️ Check the trainer photos.** The prospectus does not caption its portraits in a way that
-  survives extraction, so the mapping of face to name in `src/data.js` (`TEAM[].img`) is my
-  best inference: Amy Aliya → the studio portrait, Reena Verma and Dr. Riya Kapoor → the two
-  white-coat portraits. **Please confirm these before publishing.** Swapping them is a
-  one-line change each.
+- **Trainers (confirmed by the academy):** Cosmetologist → Reena ma'am, Head Trainer → Dev sir
+  (Dev Singh, from the clinic signboard), Doctor → Ruby ma'am. Dev's and Ruby's photos are
+  transparent cut-outs in `raw-assets/team/`. Still to confirm: Ruby ma'am's surname, and each
+  card's years / students-trained figures, which were carried over from the prospectus's team
+  page role-by-role. Reena ma'am's photo is only 265px (the prospectus copy) — a higher-resolution
+  one would look sharper beside the other two.
+- **Co-founder section:** Amy Aliya, Co-Founder, with the letter from the prospectus welcome
+  page (tightened for the web) and that page's own cut-out portrait (`raw-assets/founder/`).
+  On phones the letter collapses behind "Read the full letter"; on desktop it is always open.
 - **Opening hours are a placeholder** — 10 AM–7 PM, closed Sundays, set in `config.js`. The
   prospectus doesn't state them.
 - **Eligibility spelling.** The prospectus prints `MBBS/BDS/BMDS/BAMS/BUMP`; its own FAQ page

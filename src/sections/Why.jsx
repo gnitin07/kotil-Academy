@@ -49,7 +49,7 @@ function Visual({ kind }) {
               <Img name={t.img} alt="" sizes="96px" />
             </span>
           ))}
-          <span className="wv-faces__note">{TEAM.length} senior trainers · 2,300+ students between them</span>
+          <span className="wv-faces__note">Senior trainers who still practise</span>
         </div>
       )
     case 'certificate':

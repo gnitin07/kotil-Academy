@@ -49,8 +49,8 @@ export default function Journey() {
 
         <figure className="journey__photo">
           <Img
-            name="academy/batch"
-            alt="A Kotil Aesthetic Academy batch mid-session"
+            name="gallery/students"
+            alt="Kotil Aesthetic Academy students with their trainer"
             sizes="(min-width: 960px) 42vw, 100vw"
           />
           <figcaption className="journey__stat">

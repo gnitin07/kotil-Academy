@@ -76,6 +76,8 @@ export function useSiteAnimations(root, lenisRef) {
 
     revealBatch('.trustbar__logos li', '.trustbar', { y: 16, duration: 0.6, stagger: 0.06 })
     revealBatch('.stat', '.stats__grid', { y: 20, duration: 0.6 })
+    revealBatch('.founder__figure', '.founder', { y: 40, duration: 0.9 })
+    revealBatch('.founder__letter > *', '.founder', { y: 24, duration: 0.7, stagger: 0.07 })
     revealBatch('.about__pillar', '.about__pillars')
     revealBatch('.course', '.courses__grid', { y: 44 })
     revealBatch('.diploma__copy > *', '.diploma')
@@ -117,7 +119,7 @@ export function useSiteAnimations(root, lenisRef) {
     revealBatch('.journey__milestone', '.journey__list', { x: 26, y: 0, duration: 0.6 })
     revealBatch('.journey__photo', '.journey', { y: 40, duration: 0.9 })
     revealBatch('.step', '.steps__track')
-    revealBatch('.review', '.reviews__track')
+    revealBatch('.review', '.reviews__grid')
     revealBatch('.poster', '.posters__row', { y: 34 })
     revealBatch('.cta__inner > *', '.cta', { y: 28 })
     revealBatch('.faq__item', '.faq__grid', { y: 20, duration: 0.6, stagger: 0.05 })

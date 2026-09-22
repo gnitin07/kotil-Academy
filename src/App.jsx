@@ -7,6 +7,7 @@ import FloatingWhatsApp from './components/FloatingWhatsApp.jsx'
 
 import Hero from './sections/Hero.jsx'
 import Stats from './sections/Stats.jsx'
+import Founder from './sections/Founder.jsx'
 import About from './sections/About.jsx'
 import Courses from './sections/Courses.jsx'
 import Diploma from './sections/Diploma.jsx'
@@ -45,6 +46,7 @@ export default function App() {
       <main>
         <Hero onApply={() => openApply()} />
         <Stats />
+        <Founder />
         <About />
         <Courses onApply={openApply} />
         <Diploma onApply={openApply} />

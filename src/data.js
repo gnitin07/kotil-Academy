@@ -9,41 +9,48 @@
  */
 
 // ---- hero banner slides -----------------------------------------------------
-// Photographs are the academy's own, lifted from the prospectus. Headlines are
-// set in HTML over them rather than baked into the image, so nothing crops on a
-// phone. `img` is a key into public/media/ — see components/Img.jsx.
+// Four photographs from the academy's own full-resolution banner shoot, with
+// short headlines set in HTML over them (never baked in, so nothing crops on
+// a phone). Copy is deliberately brief: a kicker, two lines, one sentence.
+//
+// `focus` is the phone crop point (CSS object-position). On a phone the 16:9
+// photo is shown in a tall 4:5 frame, so each slide says where its subject is.
 export const SLIDES = [
   {
     img: 'hero/classroom',
-    alt: 'A full batch of students in the Kotil Aesthetic Academy lecture room',
-    kicker: 'Admissions open · Preet Vihar, New Delhi',
+    focus: '46% 30%',
+    alt: 'A trainer walking through a full batch of students in the Kotil Aesthetic Academy lecture room',
+    kicker: 'Admissions open',
     title: 'Crafting skincare',
     accent: 'experts of tomorrow',
-    sub: 'Certified aesthetic training with real patient exposure — 500+ professionals trained across India.',
+    sub: 'Certified aesthetic training in Preet Vihar, New Delhi.',
   },
   {
     img: 'hero/handson',
-    alt: 'Students practising a treatment on a client under trainer supervision',
+    focus: '42% 40%',
+    alt: 'Students watching a trainer demonstrate a treatment on a client in the clinic',
     kicker: 'Hands-on training',
-    title: 'You practise on real',
-    accent: 'clients, from week one',
-    sub: 'Theory in the morning, supervised treatment rooms after. You leave with a case log, not a folder of notes.',
+    title: 'Learn on',
+    accent: 'real clients',
+    sub: 'Supervised practice in a working clinic, from week one.',
   },
   {
-    img: 'hero/facial',
-    alt: 'A clinical facial treatment in progress at the Kotil clinic',
-    kicker: 'Clinical protocols',
-    title: 'Learn the treatments',
-    accent: 'clinics actually sell',
-    sub: 'Medicated facials, peels, lasers, HIFU, MNRF and PRP — on the same machines a working clinic runs.',
+    img: 'hero/students',
+    focus: '50% 30%',
+    alt: 'Five Kotil Aesthetic Academy students with their trainer',
+    kicker: 'Our students',
+    title: 'From learners',
+    accent: 'to leaders',
+    sub: '500+ professionals trained across India.',
   },
   {
     img: 'hero/campus',
+    focus: '50% 38%',
     alt: 'The Kotil Skin Science clinic frontage in Shankar Vihar, Preet Vihar',
-    kicker: 'Inside a working clinic',
-    title: 'Train where the',
-    accent: 'patients already come',
-    sub: 'Our academy runs inside Kotil Skin Science — so your training floor is a live, busy treatment centre.',
+    kicker: 'Our campus',
+    title: 'Train inside',
+    accent: 'Kotil Skin Science',
+    sub: 'The rooms you learn in are the rooms patients walk into.',
   },
 ]
 
@@ -196,9 +203,9 @@ export const WHY = [
   },
   {
     icon: 'certificate',
-    title: 'Govt. & international certification',
+    title: 'Govt. / international certification',
     body:
-      'Certification that carries weight with recognised authorities and international bodies — career assets that build credibility, open doors abroad and earn client trust.',
+      'Certification that holds value — recognised by government authorities or international bodies where applicable. Not just paper: a career asset that builds credibility, opens doors to global opportunities and earns client trust.',
   },
   {
     icon: 'hands',
@@ -221,41 +228,51 @@ export const WHY = [
 ]
 
 // ---- trainers --------------------------------------------------------------
+// Photo-to-role mapping confirmed by the academy (Sept 2026):
+//   Cosmetologist -> Reena ma'am · Head Trainer -> Dev sir · Doctor -> Ruby ma'am
+// Order matters: the middle card sits forward in the fanned deck, so the Head
+// Trainer goes in the centre.
+//
+// The qualification / experience / specialisation text for each ROLE is carried
+// over from the prospectus's team page, whose entries were written for the same
+// three roles. The years and student counts in particular should be confirmed
+// against each person before publishing.
 export const TEAM = [
   {
-    name: 'Amy Aliya',
-    img: 'team/amy-aliya',
-    tag: 'Co-Founder',
+    name: 'Reena Verma',
+    img: 'team/reena-verma',
+    tag: 'Cosmetologist',
     tint: 'rose',
-    years: '10+',
+    years: '8+',
     trained: '800+',
-    role: 'Co-Founder — Kotil Skin Science Clinic',
-    qualification: 'Aesthetic Cosmetologist & Counsellor',
-    experience: '10+ years · Trained over 800 students',
+    role: 'Aesthetic Cosmetologist',
+    qualification: 'Aesthetic Cosmetologist',
+    experience: '8+ years · Trained over 800 students',
     specialization: 'Laser, pigmentation & anti-ageing therapies',
     quote: 'I believe hands-on experience is the future of skincare education.',
   },
   {
-    name: 'Reena Verma',
-    img: 'team/reena-verma',
+    // Surname from the Kotil Skin Science signboard: "DEV SINGH (Aesthetic Cosmetologist)"
+    name: 'Dev Singh',
+    img: 'team/dev-singh',
     tag: 'Head Trainer',
     tint: 'gold',
-    years: '8+',
+    years: '10+',
     trained: '1,000+',
     role: 'Head Trainer — Cosmetology & Skin Care',
-    qualification: 'Dermatology · Certified in Cosmetic Dermatology',
-    experience: '8+ years · Trained 1,000+ students',
+    qualification: 'Certified in Cosmetic Dermatology',
+    experience: '10+ years · Trained 1,000+ students',
     specialization: 'Skin rejuvenation, acne treatment, anti-ageing procedures',
     quote: 'Education is the foundation of transforming lives through skincare.',
   },
   {
-    name: 'Dr. Riya Kapoor',
-    img: 'team/riya-kapoor',
-    tag: 'Lead Trainer',
+    name: 'Dr. Ruby',
+    img: 'team/ruby',
+    tag: 'Doctor',
     tint: 'sand',
     years: '6+',
     trained: '500+',
-    role: 'Lead Trainer — Aesthetic Treatments',
+    role: 'Doctor — Aesthetic Treatments',
     qualification: 'Diploma in Aesthetic Medicine',
     experience: '6+ years · Trained 500+ professionals',
     specialization: 'Dermal fillers, Botox, laser hair removal',
@@ -354,3 +371,26 @@ export const FAQS = [
     a: 'No. The Basic course starts from skin anatomy and builds up, so complete beginners are welcome. If you already practise, Advanced and Advanced Plus let you skip ahead to concern-led protocols and machine work.',
   },
 ]
+
+// ---- co-founder's welcome (prospectus page 2) -------------------------------
+// The letter, tightened for the web but kept in her voice. Photo is the
+// cut-out from that same page. `facts` are drawn only from the letter and her
+// prospectus title, so they cannot drift from the printed material.
+export const FOUNDER = {
+  name: 'Amy Aliya',
+  title: 'Co-Founder, Kotil Aesthetic Academy',
+  img: 'founder/amy-aliya',
+  headline: ['Where passion meets profession,', 'and learning meets', 'transformation.'],
+  lead:
+    'With over ten years in skincare and aesthetics, I have seen what the right knowledge and real hands-on training can do. It changes your clients\u2019 lives \u2014 and it changes yours.',
+  body: [
+    'I started this academy to be a place where science meets beauty, and where every student leaves confident, skilled and industry-ready. From Korean glass skin techniques to advanced pigmentation and anti-ageing therapies, our courses meet global standards while staying rooted in client care and ethical practice.',
+    'My team and I don\u2019t just teach treatments \u2014 we build careers. What we offer is not only an education but a journey: one that inspires, educates and elevates you into the next generation of skincare professionals.',
+  ],
+  signoff: ['Welcome to your new beginning.', 'Let\u2019s learn, glow and grow \u2014 together.'],
+  facts: [
+    { k: '10+', v: 'years in skincare & aesthetics' },
+    { k: 'Global', v: 'standards, ethical practice' },
+    { k: 'Hands-on', v: 'first, from day one' },
+  ],
+}

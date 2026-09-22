@@ -52,7 +52,8 @@ export default function Hero({ onApply }) {
   return (
     <section className="hero" id="top">
       <div
-        className="hero__stage"
+        className={`hero__stage${held ? ' is-stopped' : ''}${paused ? ' is-paused' : ''}`}
+        style={{ '--autoplay': `${AUTOPLAY_MS}ms` }}
         onMouseEnter={() => setPaused(true)}
         onMouseLeave={() => setPaused(false)}
         onTouchStart={onTouchStart}
@@ -72,6 +73,7 @@ export default function Hero({ onApply }) {
               alt={s.alt}
               eager={n === 0}
               className="hero__img"
+              style={{ '--focus': s.focus }}
             />
           </figure>
         ))}
@@ -82,7 +84,10 @@ export default function Hero({ onApply }) {
             Keeping it outside the slide loop means only one headline is ever in
             the accessibility tree. */}
         <div className="hero__copy" key={i}>
-          <p className="hero__kicker">{slide.kicker}</p>
+          <p className="hero__kicker">
+            <span className="hero__count">{String(i + 1).padStart(2, '0')} / {String(SLIDES.length).padStart(2, '0')}</span>
+            {slide.kicker}
+          </p>
           <h1 className="hero__title">{slide.title} <em>{slide.accent}</em></h1>
           <p className="hero__sub">{slide.sub}</p>
           <div className="hero__btns">
@@ -101,7 +106,7 @@ export default function Hero({ onApply }) {
         <div className="hero__dots" role="tablist" aria-label="Choose slide">
           {SLIDES.map((s, n) => (
             <button
-              key={s.img}
+              key={n === i ? `on-${i}-${paused}` : s.img}
               role="tab"
               aria-selected={n === i}
               aria-label={s.kicker}

@@ -29,13 +29,19 @@ const MANIFEST = 'src/media-manifest.json'
 
 /** requested widths per group; `upscale` allows enlarging past the source */
 const GROUPS = {
-  hero: { widths: [1600, 900], upscale: true, sharpen: true },
+  // hero plates come from the academy's full-resolution banner shoot, so they
+  // are only ever scaled DOWN; 600 is the phone size, 2400 covers 4K at 1x
+  hero: { widths: [2400, 1600, 900, 600], upscale: false },
   academy: { widths: [900, 520], upscale: false },
   // the recent batch photos and the reel poster — large enough to anchor the
   // campus collage, so they get a wider top size than the prospectus shots
   gallery: { widths: [1400, 800, 480], upscale: false },
   treatments: { widths: [900, 520], upscale: false },
-  team: { widths: [560, 320], upscale: false },
+  // alpha: the trainer portraits are cut-outs, so the card's tinted backdrop
+  // shows through instead of a flattened white box
+  team: { widths: [560, 320], upscale: false, alpha: true },
+  // the co-founder's cut-out from the prospectus welcome page (transparent)
+  founder: { widths: [900, 520], upscale: false, alpha: true },
   posters: { widths: [1000, 560], upscale: false },
   partners: { widths: [null], upscale: false, alpha: true },
 }
@@ -74,7 +80,7 @@ for (const [group, cfg] of Object.entries(GROUPS)) {
 // ---- social share image ----------------------------------------------------
 // Built from the classroom photo rather than shipped by hand, so it can never
 // drift from the rest of the media set.
-const ogSrc = path.join(RAW, 'hero', 'classroom.png')
+const ogSrc = path.join(RAW, 'hero', 'classroom.jpg')
 if (existsSync(ogSrc)) {
   await sharp(ogSrc)
     .resize(1200, 630, { fit: 'cover', position: 'attention', kernel: 'lanczos3' })
