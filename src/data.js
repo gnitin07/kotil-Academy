@@ -13,12 +13,14 @@
 // short headlines set in HTML over them (never baked in, so nothing crops on
 // a phone). Copy is deliberately brief: a kicker, two lines, one sentence.
 //
-// `focus` is the phone crop point (CSS object-position). On a phone the 16:9
-// photo is shown in a tall 4:5 frame, so each slide says where its subject is.
+// Each slide names two files: `img` is the 16:9 banner shot for tablet and
+// desktop, `mob` the same scene shot 9:16, which a <picture> swaps in below
+// 720px. That way a phone gets a portrait photograph rather than a landscape
+// one cropped down the middle.
 export const SLIDES = [
   {
     img: 'hero/classroom',
-    focus: '46% 30%',
+    mob: 'hero-mobile/classroom',
     alt: 'A trainer walking through a full batch of students in the Kotil Aesthetic Academy lecture room',
     kicker: 'Admissions open',
     title: 'Crafting skincare',
@@ -27,7 +29,7 @@ export const SLIDES = [
   },
   {
     img: 'hero/handson',
-    focus: '42% 40%',
+    mob: 'hero-mobile/handson',
     alt: 'Students watching a trainer demonstrate a treatment on a client in the clinic',
     kicker: 'Hands-on training',
     title: 'Learn on',
@@ -36,7 +38,7 @@ export const SLIDES = [
   },
   {
     img: 'hero/students',
-    focus: '50% 30%',
+    mob: 'hero-mobile/students',
     alt: 'Five Kotil Aesthetic Academy students with their trainer',
     kicker: 'Our students',
     title: 'From learners',
@@ -45,7 +47,7 @@ export const SLIDES = [
   },
   {
     img: 'hero/campus',
-    focus: '50% 38%',
+    mob: 'hero-mobile/campus',
     alt: 'The Kotil Skin Science clinic frontage in Shankar Vihar, Preet Vihar',
     kicker: 'Our campus',
     title: 'Train inside',

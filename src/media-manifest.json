@@ -23,6 +23,26 @@
     1600,
     2400
   ],
+  "hero-mobile/campus": [
+    540,
+    720,
+    1080
+  ],
+  "hero-mobile/classroom": [
+    540,
+    720,
+    941
+  ],
+  "hero-mobile/handson": [
+    540,
+    720,
+    1080
+  ],
+  "hero-mobile/students": [
+    540,
+    720,
+    1080
+  ],
   "academy/lecture-room": [
     520,
     754

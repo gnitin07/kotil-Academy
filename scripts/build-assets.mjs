@@ -32,6 +32,9 @@ const GROUPS = {
   // hero plates come from the academy's full-resolution banner shoot, so they
   // are only ever scaled DOWN; 600 is the phone size, 2400 covers 4K at 1x
   hero: { widths: [2400, 1600, 900, 600], upscale: false },
+  // the same four hero scenes shot 9:16, used only below 720px so a phone
+  // gets a portrait frame instead of a cropped landscape one
+  'hero-mobile': { widths: [1080, 720, 540], upscale: false },
   academy: { widths: [900, 520], upscale: false },
   // the recent batch photos and the reel poster — large enough to anchor the
   // campus collage, so they get a wider top size than the prospectus shots

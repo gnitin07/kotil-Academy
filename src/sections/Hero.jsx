@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
-import Img from '../components/Img.jsx'
+import Img, { srcSetFor } from '../components/Img.jsx'
 import { PARTNERS, SLIDES } from '../data.js'
 import { prospectusLink } from '../config.js'
 import { IconArrow, IconDoc } from '../components/icons.jsx'
@@ -67,14 +67,14 @@ export default function Hero({ onApply }) {
             key={s.img}
             aria-hidden={n !== i}
           >
-            <Img
-              name={s.img}
-              sizes="100vw"
-              alt={s.alt}
-              eager={n === 0}
-              className="hero__img"
-              style={{ '--focus': s.focus }}
-            />
+            {/* art direction: the 9:16 cut on phones, the 16:9 banner above
+                720px. One <img>, so the browser downloads exactly one of them. */}
+            <picture>
+              <source media="(max-width: 719px)" srcSet={srcSetFor(s.mob)?.srcSet} sizes="100vw" />
+              {/* every plate is eager: they are all inside the opening screen, and a
+                  lazy one shows as a black slide the first time autoplay reaches it */}
+              <Img name={s.img} sizes="100vw" alt={s.alt} eager className="hero__img" />
+            </picture>
           </figure>
         ))}
 

@@ -205,7 +205,7 @@ section[id] { scroll-margin-top: calc(var(--topbar-h) + 74px); }
   /* Height, not aspect-ratio + min-height: that pair makes the browser turn the
      minimum height into a minimum WIDTH, so the banner came out wider than the
      screen and its right edge was cut off. max() gives the same tall shape. */
-  height: max(580px, min(155vw, 82svh));
+  height: max(600px, min(168vw, 88svh));
   touch-action: pan-y;
 }
 .hero__slide {
@@ -213,10 +213,14 @@ section[id] { scroll-margin-top: calc(var(--topbar-h) + 74px); }
   opacity: 0; transition: opacity 1s var(--ease);
 }
 .hero__slide.is-on { opacity: 1; }
+/* display: contents keeps <picture> out of the layout, so the <img> stays the
+   slide's own child and still fills it. */
+.hero__slide picture { display: contents; }
 .hero__img {
   width: 100%; height: 100%; object-fit: cover;
-  object-position: var(--focus, 50% 35%);
-  transform-origin: var(--focus, 50% 35%);
+  /* the phone source is already composed 9:16, so it only needs centring */
+  object-position: 50% 42%;
+  transform-origin: 50% 42%;
 }
 /* slow push-in on the live slide; restarts each time the slide comes back */
 .hero__slide.is-on .hero__img { animation: hero-zoom 9s ease-out both; }
