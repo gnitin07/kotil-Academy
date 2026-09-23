@@ -51,7 +51,11 @@ body {
   overflow-x: hidden;
 }
 
-img { display: block; max-width: 100%; }
+/* height: auto is what makes the width/height attributes safe. They exist so
+   the browser can reserve a photo's box before it arrives; without this rule a
+   narrow container would clamp the width and keep the attribute's height,
+   squashing the picture. Every rule below that needs a fixed height sets one. */
+img { display: block; max-width: 100%; height: auto; }
 a { color: inherit; text-decoration: none; }
 section { position: relative; }
 svg { flex: 0 0 auto; }
@@ -459,7 +463,7 @@ section[id] { scroll-margin-top: calc(var(--topbar-h) + 74px); }
 @media (min-width: 880px) { .about__pillars { grid-template-columns: repeat(3, 1fr); gap: 18px; } }
 
 /* ---------- COURSES ---------- */
-.courses { background: var(--sand); padding: var(--pad-y) var(--pad-x); }
+.courses { background: var(--sand); padding: var(--pad-y) var(--pad-x); border-top: 1px solid var(--line); }
 .courses__grid { max-width: var(--maxw); margin-inline: auto; display: grid; gap: 12px; }
 .course {
   display: flex; flex-direction: column; overflow: hidden;
@@ -663,7 +667,7 @@ section[id] { scroll-margin-top: calc(var(--topbar-h) + 74px); }
 @media (prefers-reduced-motion: reduce) { .ctile { transform: none; } }
 
 /* ---------- WHY ---------- */
-.why { background: var(--paper); padding: var(--pad-y) var(--pad-x); }
+.why { background: var(--paper); padding: var(--pad-y) var(--pad-x); border-top: 1px solid var(--line); }
 .why__inner { max-width: var(--maxw); margin-inline: auto; }
 .why__grid { display: grid; gap: 12px; }
 /* --vh is the evidence panel height; the badge is positioned from it so the

@@ -1,170 +1,290 @@
 {
-  "hero/campus": [
-    600,
-    900,
-    1600,
-    2400
-  ],
-  "hero/classroom": [
-    600,
-    900,
-    1600,
-    2400
-  ],
-  "hero/handson": [
-    600,
-    900,
-    1600,
-    1672
-  ],
-  "hero/students": [
-    600,
-    900,
-    1600,
-    2400
-  ],
-  "hero-mobile/campus": [
-    540,
-    720,
-    1080
-  ],
-  "hero-mobile/classroom": [
-    540,
-    720,
-    941
-  ],
-  "hero-mobile/handson": [
-    540,
-    720,
-    1080
-  ],
-  "hero-mobile/students": [
-    540,
-    720,
-    1080
-  ],
-  "academy/lecture-room": [
-    520,
-    754
-  ],
-  "academy/machine-room": [
-    520,
-    754
-  ],
-  "academy/practical": [
-    520,
-    900
-  ],
-  "academy/session": [
-    520,
-    754
-  ],
-  "academy/signage": [
-    520,
-    900
-  ],
-  "academy/supervised": [
-    520,
-    655
-  ],
-  "academy/trainer-class": [
-    520,
-    655
-  ],
-  "academy/treatment-room": [
-    520,
-    754
-  ],
-  "gallery/batch-cheer": [
-    480,
-    800,
-    1277
-  ],
-  "gallery/batch-lounge": [
-    480,
-    800,
-    1400
-  ],
-  "gallery/reel-poster": [
-    480
-  ],
-  "gallery/students": [
-    480,
-    800,
-    1400
-  ],
-  "treatments/carbon-peel": [
-    520,
-    779
-  ],
-  "treatments/devices": [
-    520,
-    900
-  ],
-  "treatments/facial": [
-    520,
-    900
-  ],
-  "treatments/laser-body": [
-    520,
-    900
-  ],
-  "treatments/laser": [
-    520,
-    698
-  ],
-  "treatments/lips": [
-    520,
-    825
-  ],
-  "treatments/microneedling": [
-    520,
-    891
-  ],
-  "team/dev-singh": [
-    320,
-    560
-  ],
-  "team/reena-verma": [
-    320,
-    560
-  ],
-  "team/ruby": [
-    320,
-    560
-  ],
-  "founder/amy-aliya": [
-    520,
-    859
-  ],
-  "posters/diploma": [
-    560,
-    754
-  ],
-  "posters/shaping": [
-    560,
-    754
-  ],
-  "posters/trusted": [
-    560,
-    754
-  ],
-  "partners/devriz": [
-    384
-  ],
-  "partners/msme": [
-    372
-  ],
-  "partners/nsdc": [
-    432
-  ],
-  "partners/skill-india": [
-    252
-  ],
-  "partners/startup-india": [
-    600
-  ],
-  "partners/strip": [
-    362
-  ]
+  "hero/campus": {
+    "w": [
+      600,
+      900,
+      1600,
+      2400
+    ],
+    "ar": 1.7778
+  },
+  "hero/classroom": {
+    "w": [
+      600,
+      900,
+      1600,
+      2400
+    ],
+    "ar": 1.7778
+  },
+  "hero/handson": {
+    "w": [
+      600,
+      900,
+      1600,
+      1672
+    ],
+    "ar": 1.7768
+  },
+  "hero/students": {
+    "w": [
+      600,
+      900,
+      1600,
+      2400
+    ],
+    "ar": 1.7778
+  },
+  "hero-mobile/campus": {
+    "w": [
+      540,
+      720,
+      1080
+    ],
+    "ar": 0.5625
+  },
+  "hero-mobile/classroom": {
+    "w": [
+      540,
+      720,
+      941
+    ],
+    "ar": 0.5628
+  },
+  "hero-mobile/handson": {
+    "w": [
+      540,
+      720,
+      1080
+    ],
+    "ar": 0.5625
+  },
+  "hero-mobile/students": {
+    "w": [
+      540,
+      720,
+      1080
+    ],
+    "ar": 0.5625
+  },
+  "academy/lecture-room": {
+    "w": [
+      520,
+      754
+    ],
+    "ar": 1.5579
+  },
+  "academy/machine-room": {
+    "w": [
+      520,
+      754
+    ],
+    "ar": 1.5611
+  },
+  "academy/practical": {
+    "w": [
+      520,
+      900
+    ],
+    "ar": 1.7778
+  },
+  "academy/session": {
+    "w": [
+      520,
+      754
+    ],
+    "ar": 1.5579
+  },
+  "academy/signage": {
+    "w": [
+      520,
+      900
+    ],
+    "ar": 1.7778
+  },
+  "academy/supervised": {
+    "w": [
+      520,
+      655
+    ],
+    "ar": 1
+  },
+  "academy/trainer-class": {
+    "w": [
+      520,
+      655
+    ],
+    "ar": 1.0015
+  },
+  "academy/treatment-room": {
+    "w": [
+      520,
+      754
+    ],
+    "ar": 1.5611
+  },
+  "gallery/batch-cheer": {
+    "w": [
+      480,
+      800,
+      1277
+    ],
+    "ar": 1.0374
+  },
+  "gallery/batch-lounge": {
+    "w": [
+      480,
+      800,
+      1400
+    ],
+    "ar": 1.6087
+  },
+  "gallery/reel-poster": {
+    "w": [
+      480
+    ],
+    "ar": 0.566
+  },
+  "gallery/students": {
+    "w": [
+      480,
+      800,
+      1400
+    ],
+    "ar": 1.7778
+  },
+  "treatments/carbon-peel": {
+    "w": [
+      520,
+      779
+    ],
+    "ar": 1.8116
+  },
+  "treatments/devices": {
+    "w": [
+      520,
+      900
+    ],
+    "ar": 2.2387
+  },
+  "treatments/facial": {
+    "w": [
+      520,
+      900
+    ],
+    "ar": 2.2407
+  },
+  "treatments/laser-body": {
+    "w": [
+      520,
+      900
+    ],
+    "ar": 1.1213
+  },
+  "treatments/laser": {
+    "w": [
+      520,
+      698
+    ],
+    "ar": 1.0805
+  },
+  "treatments/lips": {
+    "w": [
+      520,
+      825
+    ],
+    "ar": 1.1286
+  },
+  "treatments/microneedling": {
+    "w": [
+      520,
+      891
+    ],
+    "ar": 2.0625
+  },
+  "team/dev-singh": {
+    "w": [
+      320,
+      560
+    ],
+    "ar": 0.8
+  },
+  "team/reena-verma": {
+    "w": [
+      320,
+      560
+    ],
+    "ar": 0.799
+  },
+  "team/ruby": {
+    "w": [
+      320,
+      560
+    ],
+    "ar": 0.8
+  },
+  "founder/amy-aliya": {
+    "w": [
+      520,
+      859
+    ],
+    "ar": 0.7158
+  },
+  "posters/diploma": {
+    "w": [
+      560,
+      754
+    ],
+    "ar": 0.996
+  },
+  "posters/shaping": {
+    "w": [
+      560,
+      754
+    ],
+    "ar": 0.996
+  },
+  "posters/trusted": {
+    "w": [
+      560,
+      754
+    ],
+    "ar": 0.996
+  },
+  "partners/devriz": {
+    "w": [
+      384
+    ],
+    "ar": 1.4884
+  },
+  "partners/msme": {
+    "w": [
+      372
+    ],
+    "ar": 1.4419
+  },
+  "partners/nsdc": {
+    "w": [
+      432
+    ],
+    "ar": 1.6744
+  },
+  "partners/skill-india": {
+    "w": [
+      252
+    ],
+    "ar": 0.9767
+  },
+  "partners/startup-india": {
+    "w": [
+      600
+    ],
+    "ar": 2.3256
+  },
+  "partners/strip": {
+    "w": [
+      362
+    ],
+    "ar": 5.4848
+  }
 }

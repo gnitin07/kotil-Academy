@@ -4,7 +4,7 @@ import { PARTNERS, SLIDES } from '../data.js'
 import { prospectusLink } from '../config.js'
 import { IconArrow, IconDoc } from '../components/icons.jsx'
 
-const AUTOPLAY_MS = 6000
+const AUTOPLAY_MS = 4000
 
 /**
  * Sliding banner hero — the same opening move as the clinic and Devriz sites.
@@ -16,22 +16,46 @@ const AUTOPLAY_MS = 6000
  * words never do.
  *
  * Autoplay pauses on hover and while the tab is hidden, and stops for good the
- * moment someone takes control with an arrow, a dot or a swipe.
+ * moment someone takes control with an arrow, a dot or a swipe. It does not
+ * begin at all until the other three plates have been asked for — see `warm`.
  */
 export default function Hero({ onApply }) {
   const [i, setI] = useState(0)
   const [held, setHeld] = useState(false)     // user took over — stop autoplaying
   const [paused, setPaused] = useState(false) // transient: hover / hidden tab
+  // Slides 2-4 are not in the DOM until this flips. All four at once is close
+  // to a megabyte on a phone, and the browser splits the connection between
+  // them, so the one plate actually on screen — the largest contentful paint —
+  // arrived several seconds late while three invisible ones downloaded beside
+  // it. They are fetched instead once the page has finished loading.
+  const [warm, setWarm] = useState(false)
   const touch = useRef(null)
 
   const go = useCallback((n) => setI((n + SLIDES.length) % SLIDES.length), [])
-  const take = useCallback((n) => { setHeld(true); go(n) }, [go])
+  // Taking control also pulls the rest in: whatever the visitor asked for has
+  // to be downloadable now, whether or not the page has finished loading.
+  const take = useCallback((n) => { setHeld(true); setWarm(true); go(n) }, [go])
 
   useEffect(() => {
-    if (held || paused) return
+    const start = () => setWarm(true)
+    if (document.readyState === 'complete') {
+      const t = setTimeout(start, 150)
+      return () => clearTimeout(t)
+    }
+    window.addEventListener('load', start, { once: true })
+    // Safety net: a stalled sub-resource can hold the load event open for a
+    // long time, and the banner should not sit on one photograph until then.
+    const t = setTimeout(start, 5000)
+    return () => { window.removeEventListener('load', start); clearTimeout(t) }
+  }, [])
+
+  useEffect(() => {
+    // Not before the other plates are loading, or autoplay advances onto a
+    // slide with no image in it and the banner goes black.
+    if (held || paused || !warm) return
     const t = setInterval(() => setI((n) => (n + 1) % SLIDES.length), AUTOPLAY_MS)
     return () => clearInterval(t)
-  }, [held, paused])
+  }, [held, paused, warm])
 
   useEffect(() => {
     const onVis = () => setPaused(document.hidden)
@@ -61,22 +85,48 @@ export default function Hero({ onApply }) {
         aria-roledescription="carousel"
         aria-label="Kotil Aesthetic Academy"
       >
-        {SLIDES.map((s, n) => (
-          <figure
-            className={`hero__slide${n === i ? ' is-on' : ''}`}
-            key={s.img}
-            aria-hidden={n !== i}
-          >
-            {/* art direction: the 9:16 cut on phones, the 16:9 banner above
-                720px. One <img>, so the browser downloads exactly one of them. */}
-            <picture>
-              <source media="(max-width: 719px)" srcSet={srcSetFor(s.mob)?.srcSet} sizes="100vw" />
-              {/* every plate is eager: they are all inside the opening screen, and a
-                  lazy one shows as a black slide the first time autoplay reaches it */}
-              <Img name={s.img} sizes="100vw" alt={s.alt} eager className="hero__img" />
-            </picture>
-          </figure>
-        ))}
+        {SLIDES.map((s, n) => {
+          const mob = srcSetFor(s.mob)
+          return (
+            <figure
+              className={`hero__slide${n === i ? ' is-on' : ''}`}
+              key={s.img}
+              aria-hidden={n !== i}
+            >
+              {/* art direction: the 9:16 cut on phones, the 16:9 banner above
+                  720px. One <img>, so the browser downloads exactly one of them.
+
+                  The opening plate is the page's largest contentful paint, so it
+                  is fetched at high priority and matches a preload in the HTML
+                  head — that way it starts downloading while the scripts are
+                  still arriving, rather than after React has mounted. The other
+                  three mount later and are eager once they do: a lazy one shows
+                  as a black slide the first time autoplay reaches it. */}
+              {(n === 0 || warm) && (
+                <picture>
+                  {/* width/height here as well as on the <img>: the attributes on the
+                      tag describe the 16:9 plate, and a phone showing the 9:16 one
+                      would otherwise reserve a box of the wrong shape. */}
+                  <source
+                    media="(max-width: 719px)"
+                    srcSet={mob?.srcSet}
+                    sizes="100vw"
+                    width={mob?.width}
+                    height={mob?.height}
+                  />
+                  <Img
+                    name={s.img}
+                    sizes="100vw"
+                    alt={s.alt}
+                    eager={n !== 0}
+                    priority={n === 0}
+                    className="hero__img"
+                  />
+                </picture>
+              )}
+            </figure>
+          )
+        })}
 
         <div className="hero__scrim" aria-hidden="true" />
 

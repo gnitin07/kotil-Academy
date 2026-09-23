@@ -97,8 +97,24 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <!-- One family, weight + tracking carry the hierarchy. Weights listed here
-         must match what index.css actually sets, or we pay for an unused file. -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+         must match what index.css actually sets, or we pay for an unused file.
+         (300 was listed and never used.)
+
+         Loaded without blocking the first paint: a plain stylesheet link here
+         holds the whole page back for a round trip to Google, which on a phone
+         was most of a second of white screen. media="print" makes it a
+         non-blocking fetch, and onload promotes it once it has landed. The
+         font-face rules carry display=swap, so text draws in the fallback and
+         reflows into Poppins rather than waiting for it. -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+      media="print"
+      onload="this.media='all'; this.onload=null"
+    />
+    <noscript>
+      <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    </noscript>
   </head>
   <body>
     <div id="root"></div>

@@ -48,11 +48,11 @@ export default function App() {
         <Stats />
         <Founder />
         <About />
-        <Courses onApply={openApply} />
-        <Diploma onApply={openApply} />
-        <Tour lenisRef={lenisRef} />
-        <Why />
         <Team />
+        <Courses onApply={openApply} />
+        <Tour lenisRef={lenisRef} />
+        <Diploma onApply={openApply} />
+        <Why />
         <Journey />
         <Steps />
         <Reviews />

@@ -10,10 +10,10 @@ import { IconClock, IconPhone, IconMail, WhatsAppGlyph } from './icons.jsx'
  * page itself — they don't need to compete up here.
  */
 const LINKS = [
-  ['#courses', 'Courses'],
-  ['#diploma', 'Diploma'],
-  ['#tour', 'Campus'],
   ['#team', 'Trainers'],
+  ['#courses', 'Courses'],
+  ['#tour', 'Campus'],
+  ['#diploma', 'Diploma'],
   ['#admissions', 'Admissions'],
   ['#contact', 'Contact'],
 ]

@@ -75,7 +75,10 @@ for (const [group, cfg] of Object.entries(GROUPS)) {
       await pipe.webp({ quality: cfg.alpha ? 90 : 82, effort: 5 }).toFile(path.join(OUT, group, `${name}-${width}.webp`))
     }
 
-    manifest[`${group}/${name}`] = real
+    // Widths plus the source's aspect ratio. <Img> turns the pair into the
+    // width/height attributes that let the browser reserve a photo's box
+    // before the file lands, instead of reflowing the page around it.
+    manifest[`${group}/${name}`] = { w: real, ar: +(meta.width / meta.height).toFixed(4) }
     console.log(`${group}/${name}  ${meta.width}x${meta.height} -> ${real.join(', ')}`)
   }
 }

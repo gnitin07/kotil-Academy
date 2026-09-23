@@ -90,14 +90,27 @@ publishes:
 `src/media-manifest.json`. **The manifest is what `<Img>` reads to build its srcset.** That
 indirection matters: the sources are small and uneven (650–1280px), so a 900px request
 against a 754px original is written at 754. Without the manifest the component would guess
-filenames that were never written — which is exactly how every photo 404'd the first time.
+filenames that were never written — which is exactly how every photo 404'd the first time. Each
+entry also records the source's aspect ratio, which is where the `width`/`height` on every tag
+comes from, so the browser reserves a photo's box before the file lands.
 
 **High-resolution banner shoot.** The four hero slides (classroom, hands-on practical,
 students, campus frontage) use the academy's own full-resolution photos (6000px originals, stored
 at 2400px in `raw-assets/hero/`), served at 600 / 900 / 1600 / 2400px so phones download the
 small one. The same shots replace their low-resolution prospectus twins elsewhere: the collage's
 "The entrance" and "Practical round", the "hands-on" Why card, and the Journey photo (the five
-students). Each slide's `focus` in `src/data.js` sets where a phone's tall crop centres.
+students). Each slide also names a 9:16 cut of the same scene in `raw-assets/hero-mobile/`, which
+a `<picture>` swaps in below 720px so a phone gets a portrait frame rather than a landscape one
+cropped down the middle.
+
+**What the banner costs on a phone.** Only the opening plate loads with the page: it is preloaded
+from the document head (see `heroPreload` in `vite.config.js`, built from the manifest) and
+fetched at high priority, so it is on its way before React has mounted and can discover it. The
+other three mount once the page has finished loading, and autoplay waits for them. Loading all
+four at once was close to a megabyte of images competing for one connection, which by itself cost
+several seconds of largest-contentful-paint — 68 on PageSpeed mobile against 98 on desktop.
+Google's font stylesheet is loaded the same way it always was but without blocking the first
+paint (`media="print"`, promoted on load), since the page is legible in the fallback.
 
 ### Video
 
