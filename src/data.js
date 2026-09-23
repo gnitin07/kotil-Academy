@@ -336,6 +336,16 @@ export const REVIEWS = [
     text:
       'The training was incredibly practical. I was nervous before starting, but the faculty made it so easy to understand and perform each procedure. I loved the constant guidance during hands-on sessions.',
   },
+
+  // Room for more. Paste each real review here and the strip picks it up: the
+  // first four show, the rest appear behind "View more reviews" at the end of
+  // the swipe. Keep them verbatim from the student (Google, WhatsApp, feedback
+  // form) — do not write them in-house.
+  //
+  // { name: 'Full name', place: 'City, State', stars: 5, text: 'Their words.' },
+  // { name: '', place: '', stars: 5, text: '' },
+  // { name: '', place: '', stars: 5, text: '' },
+  // { name: '', place: '', stars: 5, text: '' },
 ]
 
 // ---- FAQ -------------------------------------------------------------------

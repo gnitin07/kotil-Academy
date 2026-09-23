@@ -860,12 +860,24 @@ section[id] { scroll-margin-top: calc(var(--topbar-h) + 74px); }
 @media (min-width: 1040px) { .steps__track { grid-template-columns: repeat(4, 1fr); } }
 
 /* ---------- REVIEWS ---------- */
-/* A grid, not a swipe strip: four cards up front, "View more reviews" reveals
-   the rest in batches. One column on a phone, two on a tablet, four on desktop
-   — so the first four always fill exactly one desktop row. */
-.reviews { background: var(--sand); padding: var(--pad-y) var(--pad-x); }
-.reviews__grid { max-width: var(--maxw); margin-inline: auto; display: grid; gap: 12px; }
+/* One track, two shapes. Phone: a swipeable strip with snap points, the cards
+   sized so the next one peeks in and invites the swipe. From 680px: the same
+   element becomes a grid, and the "View more" item spans every column so it
+   reads as a button beneath the cards. */
+.reviews { background: var(--sand); padding: var(--pad-y) 0; }
+.reviews .shead { padding-inline: var(--pad-x); }
+
+.reviews__track {
+  display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory;
+  padding: 4px var(--pad-x) 14px; scrollbar-width: thin;
+  overscroll-behavior-x: contain;
+}
+.reviews__track::-webkit-scrollbar { height: 5px; }
+.reviews__track::-webkit-scrollbar-thumb { background: var(--line); border-radius: 5px; }
+.reviews__track::-webkit-scrollbar-track { background: transparent; }
+
 .review {
+  flex: 0 0 min(320px, 82vw); scroll-snap-align: center;
   display: flex; flex-direction: column; padding: clamp(20px, 5vw, 26px);
   border-radius: var(--r); background: var(--paper); border: 1px solid var(--line);
   transition: border-color .3s, transform .3s var(--ease), box-shadow .3s;
@@ -881,14 +893,28 @@ section[id] { scroll-margin-top: calc(var(--topbar-h) + 74px); }
 .review__name { font-size: 14.5px; font-weight: 600; }
 .review__place { font-size: 12px; color: var(--muted); }
 
-.reviews__more { margin-top: clamp(16px, 2.6vw, 24px); text-align: center; }
+/* the last item in the strip: swipe to the end and the button is waiting */
+.reviews__end {
+  flex: 0 0 auto; align-self: stretch; scroll-snap-align: center;
+  display: grid; place-items: center; padding-inline: 4px;
+}
+.reviews__end .btn-ghost { white-space: nowrap; }
 .reviews__count {
   display: inline-grid; place-items: center; min-width: 28px; height: 22px; padding: 0 7px;
   border-radius: 100px; font-size: 12px; font-weight: 700; color: #fff; background: var(--gold);
 }
+.reviews__hint { margin-top: 2px; text-align: center; font-size: 12.5px; color: var(--muted); }
 
-@media (min-width: 680px) { .reviews__grid { grid-template-columns: repeat(2, 1fr); gap: 16px; } }
-@media (min-width: 1100px) { .reviews__grid { grid-template-columns: repeat(4, 1fr); } }
+@media (min-width: 680px) {
+  .reviews__track {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;
+    overflow: visible; padding: 0 var(--pad-x); max-width: var(--maxw); margin-inline: auto;
+  }
+  .review { flex: initial; }
+  .reviews__end { grid-column: 1 / -1; margin-top: clamp(6px, 1.4vw, 14px); }
+  .reviews__hint { display: none; }
+}
+@media (min-width: 1100px) { .reviews__track { grid-template-columns: repeat(4, 1fr); } }
 
 /* ---------- POSTERS (campaign strip) ---------- */
 .posters { background: var(--paper); padding: var(--pad-y) 0; }
