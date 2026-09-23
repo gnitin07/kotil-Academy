@@ -24,7 +24,7 @@ export default function Posters() {
       <div className="shead shead--mid">
         <span className="kicker">From our feed</span>
         <h2>What we&apos;re <em>announcing</em> right now</h2>
-        <p>Current intakes, programmes and offers — straight from @kotil.aestheticacademy.</p>
+        <p>Current intakes, programmes and offers, straight from @kotil.aestheticacademy.</p>
       </div>
 
       <div className="posters__row" data-lenis-prevent>

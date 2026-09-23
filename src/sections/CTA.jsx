@@ -15,7 +15,7 @@ export default function CTA({ onApply }) {
         <h2>Your new beginning starts with <em>one call.</em></h2>
         <p className="cta__sub">
           Tell us where you are in your career and we will tell you honestly which level to
-          start at — Basic, Advanced, Advanced Plus or the one-month diploma.
+          start at: Basic, Advanced, Advanced Plus or the one-month diploma.
         </p>
 
         <div className="cta__btns">

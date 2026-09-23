@@ -5,9 +5,9 @@ import { useLockScroll } from '../useLockScroll.js'
 import { WhatsAppGlyph, IconArrow } from './icons.jsx'
 
 const OPTIONS = [
-  ...COURSES.map((c) => `${c.tier} — ${c.title}`),
+  ...COURSES.map((c) => `${c.tier}: ${c.title}`),
   DIPLOMA.title,
-  'Not sure yet — please advise',
+  'Not sure yet, please advise',
 ]
 
 /**
@@ -106,7 +106,7 @@ export default function ApplyModal({ open, course, onClose, lenisRef }) {
             <span>Your background or a question <i>optional</i></span>
             <textarea
               rows={3} value={form.note} onChange={set('note')}
-              placeholder="e.g. BAMS graduate, two years in a salon — which level should I start at?" />
+              placeholder="e.g. BAMS graduate, two years in a salon. Which level should I start at?" />
           </label>
 
           <div className="modal__foot">

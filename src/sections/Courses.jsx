@@ -20,7 +20,7 @@ export default function Courses({ onApply }) {
         <h2>Three levels. One <em>career path.</em></h2>
         <p>
           Start where you stand. Each level is a complete qualification on its own and a
-          clean step up to the next — same treatment rooms, same trainers, more depth.
+          clean step up to the next: same treatment rooms, same trainers, more depth.
         </p>
       </div>
 
@@ -69,7 +69,7 @@ export default function Courses({ onApply }) {
                 </p>
                 <button
                   className={`${c.featured ? 'btn-primary' : 'btn-dark'} course__btn`}
-                  onClick={() => onApply(`${c.tier} — ${c.title}`)}
+                  onClick={() => onApply(`${c.tier}: ${c.title}`)}
                 >
                   Apply for {c.tier} <IconArrow size={16} />
                 </button>

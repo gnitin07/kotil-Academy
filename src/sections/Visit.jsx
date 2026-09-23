@@ -10,7 +10,7 @@ export default function Visit() {
           <span className="kicker">Visit the academy</span>
           <h2>Come and see the <em>training floor.</em></h2>
           <p>
-            We train inside {ACADEMY.clinic.name} — a working skin, hair and body clinic in
+            We train inside {ACADEMY.clinic.name}, a working skin, hair and body clinic in
             East Delhi. Walk in, meet the trainers, see the machines you&apos;ll be using and
             watch a live session before you decide.
           </p>
@@ -20,7 +20,7 @@ export default function Visit() {
               <span className="visit__ico"><IconPin /></span>
               <div>
                 <strong>{ACADEMY.address.line1}, {ACADEMY.address.line2}</strong>
-                <p>Near Nirman Vihar &amp; Laxmi Nagar — a short walk from the Metro.</p>
+                <p>Near Nirman Vihar &amp; Laxmi Nagar, a short walk from the Metro.</p>
               </div>
             </li>
             <li>

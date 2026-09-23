@@ -22,7 +22,7 @@ export default function Footer() {
 
         <nav className="footer__col" aria-label="Courses">
           <h4>Courses</h4>
-          {COURSES.map((c) => <a key={c.id} href="#courses">{c.tier} — {c.duration}</a>)}
+          {COURSES.map((c) => <a key={c.id} href="#courses">{c.tier} · {c.duration}</a>)}
           <a href="#diploma">Advance Diploma in Cosmetology</a>
         </nav>
 

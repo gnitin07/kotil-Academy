@@ -8,7 +8,7 @@ export default function FAQ() {
         <div className="shead shead--mid">
           <span className="kicker">Frequently asked questions</span>
           <h2>Everything students ask <em>before enrolling.</em></h2>
-          <p>Still unsure? Call or WhatsApp us — a counsellor will walk you through it.</p>
+          <p>Still unsure? Call or WhatsApp us, a counsellor will walk you through it.</p>
         </div>
 
         <div className="faq__grid">

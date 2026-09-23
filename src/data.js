@@ -105,7 +105,7 @@ export const COURSES = [
     daily: '4 hours a day',
     award: 'Certificate in Basic Skin Therapy',
     summary:
-      'The foundation year in a month — skin science, analysis and the classic facial protocols every treatment room runs on.',
+      'The foundation year in a month: skin science, analysis and the classic facial protocols every treatment room runs on.',
     eligibility: '10+2 / Any Graduate / MBBS / BDS / BHMS / BAMS / BUMS',
     topics: [
       'Skin anatomy & functions',
@@ -128,12 +128,12 @@ export const COURSES = [
     award: 'Certificate in Advanced Aesthetic Techniques',
     featured: true,
     summary:
-      'Where a therapist becomes a practitioner — concern-led protocols, machine work and consultations you can charge for.',
+      'Where a therapist becomes a practitioner: concern-led protocols, machine work and consultations you can charge for.',
     eligibility: '10+2 / Any Graduate / MBBS / BDS / BHMS / BAMS / BUMS',
     topics: [
       'Advanced skin concerns (acne, pigmentation, ageing)',
       'Extractions, peels, masks, advanced facials',
-      'Devices — ultrasound, galvanic, high frequency, LED',
+      'Devices: ultrasound, galvanic, high frequency, LED',
       'Introduction to cosmetic ingredients',
       'Client consultation & treatment planning',
       'Marketing & business support',
@@ -152,12 +152,12 @@ export const COURSES = [
     daily: '12 hours a day',
     award: 'Diploma in Clinical Aesthetics',
     summary:
-      'The clinic-owner track — lasers, RF and HIFU, anti-ageing theory, plus the business, legal and counselling side of running your own setup.',
+      'The clinic-owner track: lasers, RF and HIFU, anti-ageing theory, plus the business, legal and counselling side of running your own setup.',
     eligibility: '10+2 / Any Graduate / MBBS / BDS / BHMS / BAMS / BUMS',
     topics: [
       'Cosmetic dermatology foundation',
       'Lasers, RF, HIFU & skin rejuvenation',
-      'Anti-ageing treatments — Botox / fillers (theory)',
+      'Anti-ageing treatments: Botox / fillers (theory)',
       'Skin psychology & counselling',
       'Business, clinic setup & legal regulations',
       'Internship, live client project & final evaluation',
@@ -205,7 +205,7 @@ export const WHY = [
     icon: 'certificate',
     title: 'Govt. / international certification',
     body:
-      'Certification that holds value — recognised by government authorities or international bodies where applicable. Not just paper: a career asset that builds credibility, opens doors to global opportunities and earns client trust.',
+      'Certification that holds value, recognised by government authorities or international bodies where applicable. Not just paper: a career asset that builds credibility, opens doors to global opportunities and earns client trust.',
   },
   {
     icon: 'hands',
@@ -223,7 +223,7 @@ export const WHY = [
     icon: 'machine',
     title: 'Modern equipment & clinical setup',
     body:
-      'The academy runs the same machines real clinics do — from laser devices to facial units. Classrooms mirror actual treatment rooms, so training feels like working.',
+      'The academy runs the same machines real clinics do, from laser devices to facial units. Classrooms mirror actual treatment rooms, so training feels like working.',
   },
 ]
 
@@ -242,7 +242,9 @@ export const TEAM = [
     name: 'Reena Verma',
     img: 'team/reena-verma',
     tag: 'Cosmetologist',
-    tint: 'rose',
+    // her portrait is a white-background studio shot rather than a cut-out, so
+    // the card gives it a plain white plate instead of a tinted one
+    tint: 'plain',
     years: '8+',
     trained: '800+',
     role: 'Aesthetic Cosmetologist',
@@ -259,7 +261,7 @@ export const TEAM = [
     tint: 'gold',
     years: '10+',
     trained: '1,000+',
-    role: 'Head Trainer — Cosmetology & Skin Care',
+    role: 'Head Trainer, Cosmetology & Skin Care',
     qualification: 'Certified in Cosmetic Dermatology',
     experience: '10+ years · Trained 1,000+ students',
     specialization: 'Skin rejuvenation, acne treatment, anti-ageing procedures',
@@ -272,7 +274,7 @@ export const TEAM = [
     tint: 'sand',
     years: '6+',
     trained: '500+',
-    role: 'Doctor — Aesthetic Treatments',
+    role: 'Doctor, Aesthetic Treatments',
     qualification: 'Diploma in Aesthetic Medicine',
     experience: '6+ years · Trained 500+ professionals',
     specialization: 'Dermal fillers, Botox, laser hair removal',
@@ -285,7 +287,7 @@ export const STEPS = [
   {
     n: '01',
     title: 'Talk to a counsellor',
-    body: 'Call or WhatsApp us. We map your background and your goal to the right level — Basic, Advanced or Advanced Plus.',
+    body: 'Call or WhatsApp us. We map your background and your goal to the right level: Basic, Advanced or Advanced Plus.',
   },
   {
     n: '02',
@@ -340,7 +342,7 @@ export const REVIEWS = [
 export const FAQS = [
   {
     q: 'What kind of courses does Kotil Aesthetic Academy offer?',
-    a: 'Certified courses in aesthetic treatments including skin rejuvenation, chemical peels, laser treatments, Botox & fillers, microneedling and more — designed for both beginners and working professionals in the beauty and medical fields.',
+    a: 'Certified courses in aesthetic treatments including skin rejuvenation, chemical peels, laser treatments, Botox & fillers, microneedling and more, designed for both beginners and working professionals in the beauty and medical fields.',
   },
   {
     q: 'Are the courses certified and recognised?',
@@ -364,7 +366,7 @@ export const FAQS = [
   },
   {
     q: 'Where is the academy located?',
-    a: 'Plot No. 8, Ground Floor, Shankar Vihar, Preet Vihar, New Delhi 110092 — East Delhi, close to Nirman Vihar and Laxmi Nagar. Training runs inside a working clinic, which is how students get real patient exposure.',
+    a: 'Plot No. 8, Ground Floor, Shankar Vihar, Preet Vihar, New Delhi 110092, in East Delhi, close to Nirman Vihar and Laxmi Nagar. Training runs inside a working clinic, which is how students get real patient exposure.',
   },
   {
     q: 'Do I need prior experience in skincare?',
@@ -382,12 +384,12 @@ export const FOUNDER = {
   img: 'founder/amy-aliya',
   headline: ['Where passion meets profession,', 'and learning meets', 'transformation.'],
   lead:
-    'With over ten years in skincare and aesthetics, I have seen what the right knowledge and real hands-on training can do. It changes your clients\u2019 lives \u2014 and it changes yours.',
+    'With over ten years in skincare and aesthetics, I have seen what the right knowledge and real hands-on training can do. It changes your clients\u2019 lives, and it changes yours.',
   body: [
     'I started this academy to be a place where science meets beauty, and where every student leaves confident, skilled and industry-ready. From Korean glass skin techniques to advanced pigmentation and anti-ageing therapies, our courses meet global standards while staying rooted in client care and ethical practice.',
-    'My team and I don\u2019t just teach treatments \u2014 we build careers. What we offer is not only an education but a journey: one that inspires, educates and elevates you into the next generation of skincare professionals.',
+    'My team and I don\u2019t just teach treatments, we build careers. What we offer is not only an education but a journey: one that inspires, educates and elevates you into the next generation of skincare professionals.',
   ],
-  signoff: ['Welcome to your new beginning.', 'Let\u2019s learn, glow and grow \u2014 together.'],
+  signoff: ['Welcome to your new beginning.', 'Let\u2019s learn, glow and grow, together.'],
   facts: [
     { k: '10+', v: 'years in skincare & aesthetics' },
     { k: 'Global', v: 'standards, ethical practice' },

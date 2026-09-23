@@ -125,7 +125,7 @@ export default function Hero({ onApply }) {
         <ul className="trustbar__logos">
           {PARTNERS.map((p) => (
             <li key={p.name}>
-              <Img name={`partners/${p.logo}`} alt={`${p.name} — ${p.note}`} sizes="110px" />
+              <Img name={`partners/${p.logo}`} alt={`${p.name}, ${p.note}`} sizes="110px" />
             </li>
           ))}
         </ul>

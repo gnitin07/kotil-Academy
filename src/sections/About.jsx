@@ -26,7 +26,7 @@ export default function About() {
           <h2>Beauty is not about appearance. It is about <em>confidence, skill and transformation.</em></h2>
           <p>
             Kotil Aesthetic Academy was established to create industry-ready skincare
-            professionals — offering world-class training in aesthetic sciences, skincare
+            professionals, offering world-class training in aesthetic sciences, skincare
             treatments and advanced cosmetology techniques. We don&apos;t just teach
             treatments. We build careers.
           </p>

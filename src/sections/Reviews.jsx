@@ -26,7 +26,7 @@ export default function Reviews() {
     <section className="reviews" id="reviews">
       <div className="shead shead--mid">
         <span className="kicker">Real practice. Real skills.</span>
-        <h2>Practice makes perfect — and our students <em>prove it daily.</em></h2>
+        <h2>Practice makes perfect, and our students <em>prove it daily.</em></h2>
         <p>What graduates say about training at Kotil Aesthetic Academy.</p>
       </div>
 

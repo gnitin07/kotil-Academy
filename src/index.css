@@ -29,7 +29,7 @@
   --font: 'Poppins', system-ui, -apple-system, sans-serif;
 
   --topbar-h: 38px;
-  --pad-y: clamp(52px, 8.5vw, 104px);
+  --pad-y: clamp(34px, 4.4vw, 68px);
   --pad-x: clamp(18px, 5vw, 72px);
   --maxw: 1240px;
   --r: 18px;   /* card radius */
@@ -76,10 +76,10 @@ section[id] { scroll-margin-top: calc(var(--topbar-h) + 74px); }
   font-size: 11.5px; text-transform: uppercase; line-height: 1.5;
 }
 
-.shead { max-width: 760px; margin-bottom: clamp(26px, 4vw, 44px); }
+.shead { max-width: 760px; margin-bottom: clamp(18px, 2.6vw, 32px); }
 .shead--mid { margin-inline: auto; text-align: center; }
-.shead h2 { font-size: clamp(26px, 6.2vw, 42px); margin-top: 10px; font-weight: 800; }
-.shead p { margin-top: 14px; color: var(--muted); font-size: clamp(14.5px, 3.6vw, 16.5px); }
+.shead h2 { font-size: clamp(24px, 5.8vw, 40px); margin-top: 8px; font-weight: 800; }
+.shead p { margin-top: 10px; color: var(--muted); font-size: clamp(14px, 3.5vw, 16px); }
 
 .btn-primary, .btn-ghost, .btn-onphoto, .btn-dark {
   display: inline-flex; align-items: center; justify-content: center; gap: 9px;
@@ -316,7 +316,7 @@ section[id] { scroll-margin-top: calc(var(--topbar-h) + 74px); }
 
 /* ---------- TRUST BAR (accreditation logos) ---------- */
 .trustbar {
-  padding: clamp(20px, 4vw, 30px) var(--pad-x);
+  padding: clamp(16px, 2.6vw, 26px) var(--pad-x);
   background: var(--paper); border-bottom: 1px solid var(--line);
 }
 .trustbar__label {
@@ -337,7 +337,7 @@ section[id] { scroll-margin-top: calc(var(--topbar-h) + 74px); }
 .trustbar__logos li:hover img { filter: none; opacity: 1; transform: translateY(-2px); }
 
 /* ---------- STATS ---------- */
-.stats { background: var(--sand); padding: clamp(34px, 6vw, 52px) var(--pad-x); border-bottom: 1px solid var(--line); }
+.stats { background: var(--sand); padding: clamp(24px, 3.4vw, 40px) var(--pad-x); border-bottom: 1px solid var(--line); }
 .stats__grid {
   max-width: var(--maxw); margin-inline: auto;
   display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;
@@ -368,7 +368,7 @@ section[id] { scroll-margin-top: calc(var(--topbar-h) + 74px); }
     var(--paper);
   overflow-x: clip;
 }
-.founder__inner { max-width: var(--maxw); margin-inline: auto; display: grid; gap: 22px; }
+.founder__inner { max-width: var(--maxw); margin-inline: auto; display: grid; gap: 18px; }
 
 /* phone: portrait is a small arch in a row with her name */
 .founder__figure { display: grid; grid-template-columns: auto 1fr; align-items: center; gap: 16px; margin: 0; }
@@ -442,7 +442,7 @@ section[id] { scroll-margin-top: calc(var(--topbar-h) + 74px); }
 .about__inner { max-width: var(--maxw); margin-inline: auto; }
 .about .shead h2 { color: #fff; }
 .about .shead p { color: rgba(255, 255, 255, .68); }
-.about__pillars { display: grid; gap: 12px; }
+.about__pillars { display: grid; gap: 10px; }
 .about__pillar {
   padding: clamp(20px, 5vw, 30px); border-radius: var(--r);
   background: rgba(255, 255, 255, .05); border: 1px solid rgba(255, 255, 255, .11);
@@ -456,7 +456,7 @@ section[id] { scroll-margin-top: calc(var(--topbar-h) + 74px); }
 
 /* ---------- COURSES ---------- */
 .courses { background: var(--sand); padding: var(--pad-y) var(--pad-x); }
-.courses__grid { max-width: var(--maxw); margin-inline: auto; display: grid; gap: 18px; }
+.courses__grid { max-width: var(--maxw); margin-inline: auto; display: grid; gap: 12px; }
 .course {
   display: flex; flex-direction: column; overflow: hidden;
   background: var(--paper); border: 1px solid var(--line); border-radius: var(--r-lg);
@@ -504,7 +504,7 @@ section[id] { scroll-margin-top: calc(var(--topbar-h) + 74px); }
 .course__award span { display: block; font-size: 9.5px; letter-spacing: 1.4px; text-transform: uppercase; color: var(--muted); }
 .course__award strong { display: block; margin-top: 4px; font-size: 14.5px; color: var(--gold); line-height: 1.4; }
 .course__btn { width: 100%; margin-top: 14px; }
-.courses__note { max-width: 58ch; margin: clamp(22px, 4vw, 32px) auto 0; text-align: center; font-size: 13.5px; color: var(--muted); }
+.courses__note { max-width: 58ch; margin: clamp(16px, 2.6vw, 24px) auto 0; text-align: center; font-size: 13.5px; color: var(--muted); }
 @media (min-width: 1040px) { .courses__grid { grid-template-columns: repeat(3, 1fr); align-items: stretch; } }
 
 /* ---------- DIPLOMA ---------- */
@@ -514,7 +514,7 @@ section[id] { scroll-margin-top: calc(var(--topbar-h) + 74px); }
 .diploma__dur { display: inline-flex; align-items: center; gap: 9px; font-size: 15px; font-weight: 700; color: var(--gold); margin-bottom: 14px; }
 .diploma__dur span { font-size: 9.5px; letter-spacing: 1.6px; text-transform: uppercase; color: var(--muted); font-weight: 400; }
 .diploma__blurb { color: var(--muted); max-width: 48ch; margin-bottom: 22px; font-size: clamp(14.5px, 3.6vw, 16.5px); }
-.diploma__mods { list-style: none; display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; margin-bottom: 26px; }
+.diploma__mods { list-style: none; display: grid; grid-template-columns: repeat(2, 1fr); gap: 7px; margin-bottom: 20px; }
 .diploma__mod {
   display: flex; align-items: center; gap: 8px; padding: 10px 12px;
   border-radius: 11px; background: var(--sand); border: 1px solid var(--line);
@@ -619,7 +619,7 @@ section[id] { scroll-margin-top: calc(var(--topbar-h) + 74px); }
 .collage__sticker strong { font-size: 16px; font-weight: 800; }
 .collage__sticker span { font-size: 8px; font-weight: 600; letter-spacing: 1.4px; text-transform: uppercase; margin-top: 3px; }
 
-.tour__foot { padding-top: clamp(24px, 4vw, 36px); text-align: center; }
+.tour__foot { padding-top: clamp(16px, 2.6vw, 26px); text-align: center; }
 
 /* tablet: four columns, four short rows */
 @media (min-width: 600px) {
@@ -661,7 +661,7 @@ section[id] { scroll-margin-top: calc(var(--topbar-h) + 74px); }
 /* ---------- WHY ---------- */
 .why { background: var(--paper); padding: var(--pad-y) var(--pad-x); }
 .why__inner { max-width: var(--maxw); margin-inline: auto; }
-.why__grid { display: grid; gap: 16px; }
+.why__grid { display: grid; gap: 12px; }
 /* --vh is the evidence panel height; the badge is positioned from it so the
    two can never drift apart when one card needs a taller panel */
 .why__card { --vh: 150px; }
@@ -772,6 +772,9 @@ section[id] { scroll-margin-top: calc(var(--topbar-h) + 74px); }
 .trainer--rose .trainer__media { background: radial-gradient(85% 75% at 26% 18%, rgba(224, 122, 140, .22), transparent 60%), linear-gradient(165deg, #fffdf0, #f7edc8); }
 .trainer--gold .trainer__media { background: radial-gradient(85% 75% at 26% 18%, rgba(227, 181, 69, .3), transparent 60%), linear-gradient(165deg, #fffdf0, #f7edc8); }
 .trainer--sand .trainer__media { background: radial-gradient(85% 75% at 26% 18%, rgba(191, 143, 28, .22), transparent 60%), linear-gradient(165deg, #fffdf0, #f2e6bf); }
+/* a white-background studio portrait: a plain plate, so the photo's own
+   backdrop blends into the card instead of sitting on a tint */
+.trainer--plain .trainer__media { background: #fff; }
 .trainer__media img {
   /* Cut-out portraits (transparent PNG) sit straight on the tinted backdrop.
      No blend mode: multiply would stain the white coats with the tint. */
@@ -818,7 +821,7 @@ section[id] { scroll-margin-top: calc(var(--topbar-h) + 74px); }
 .journey__copy h2 { font-size: clamp(27px, 7vw, 46px); font-weight: 800; color: #fff; margin: 10px 0 16px; }
 .journey__copy p { color: rgba(255, 255, 255, .68); margin-bottom: 13px; font-size: clamp(14.5px, 3.6vw, 16.5px); }
 .journey__close { padding-top: 16px; border-top: 1px solid rgba(255, 255, 255, .16); color: var(--gold-bright) !important; }
-.journey__list { list-style: none; display: grid; gap: 10px; margin-top: 22px; }
+.journey__list { list-style: none; display: grid; gap: 8px; margin-top: 18px; }
 .journey__milestone {
   display: flex; align-items: center; gap: 12px; padding: 15px 17px; border-radius: 14px;
   background: rgba(255, 255, 255, .05); border: 1px solid rgba(255, 255, 255, .12);
@@ -845,7 +848,7 @@ section[id] { scroll-margin-top: calc(var(--topbar-h) + 74px); }
 /* ---------- STEPS ---------- */
 .steps { background: var(--paper); padding: var(--pad-y) var(--pad-x); }
 .steps__inner { max-width: var(--maxw); margin-inline: auto; }
-.steps__track { list-style: none; display: grid; gap: 12px; counter-reset: step; }
+.steps__track { list-style: none; display: grid; gap: 10px; counter-reset: step; }
 .step { position: relative; padding: clamp(20px, 5vw, 28px); border-radius: var(--r); background: var(--sand); border: 1px solid var(--line); }
 .step__n {
   display: inline-grid; place-items: center; width: 38px; height: 38px; margin-bottom: 13px;
@@ -861,7 +864,7 @@ section[id] { scroll-margin-top: calc(var(--topbar-h) + 74px); }
    the rest in batches. One column on a phone, two on a tablet, four on desktop
    — so the first four always fill exactly one desktop row. */
 .reviews { background: var(--sand); padding: var(--pad-y) var(--pad-x); }
-.reviews__grid { max-width: var(--maxw); margin-inline: auto; display: grid; gap: 14px; }
+.reviews__grid { max-width: var(--maxw); margin-inline: auto; display: grid; gap: 12px; }
 .review {
   display: flex; flex-direction: column; padding: clamp(20px, 5vw, 26px);
   border-radius: var(--r); background: var(--paper); border: 1px solid var(--line);
@@ -878,7 +881,7 @@ section[id] { scroll-margin-top: calc(var(--topbar-h) + 74px); }
 .review__name { font-size: 14.5px; font-weight: 600; }
 .review__place { font-size: 12px; color: var(--muted); }
 
-.reviews__more { margin-top: clamp(22px, 4vw, 32px); text-align: center; }
+.reviews__more { margin-top: clamp(16px, 2.6vw, 24px); text-align: center; }
 .reviews__count {
   display: inline-grid; place-items: center; min-width: 28px; height: 22px; padding: 0 7px;
   border-radius: 100px; font-size: 12px; font-weight: 700; color: #fff; background: var(--gold);
@@ -912,7 +915,7 @@ section[id] { scroll-margin-top: calc(var(--topbar-h) + 74px); }
 
 /* ---------- CTA (gold band) ---------- */
 .cta {
-  padding: clamp(56px, 10vw, 96px) var(--pad-x); text-align: center;
+  padding: clamp(44px, 6vw, 80px) var(--pad-x); text-align: center;
   background: linear-gradient(160deg, var(--gold-pale) 0%, #f6e3b4 55%, var(--gold-pale) 100%);
   border-block: 1px solid var(--line);
 }
@@ -926,7 +929,7 @@ section[id] { scroll-margin-top: calc(var(--topbar-h) + 74px); }
 /* ---------- FAQ ---------- */
 .faq { background: var(--paper); padding: var(--pad-y) var(--pad-x); }
 .faq__inner { max-width: var(--maxw); margin-inline: auto; }
-.faq__grid { display: grid; gap: 10px; align-items: start; }
+.faq__grid { display: grid; gap: 8px; align-items: start; }
 .faq__item { background: var(--sand); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; transition: border-color .3s, background .3s; }
 .faq__item[open] { border-color: var(--gold); background: var(--paper); }
 .faq__item summary {
@@ -1050,6 +1053,58 @@ section[id] { scroll-margin-top: calc(var(--topbar-h) + 74px); }
   .modal__sheet { width: min(660px, 100%); border-radius: 24px; }
   .modal__form { grid-template-columns: 1fr 1fr; }
   .field--wide, .modal__foot { grid-column: 1 / -1; }
+}
+
+/* ---------- PHONE: COMPACT PASS ---------- */
+/* The page is long on a phone because each card carries desktop-sized padding
+   and picture. Below 680px the photos get shorter, the paddings tighten and the
+   type steps down a notch — the content is unchanged, it just stops floating in
+   space. Everything here is phone-only; wider screens keep the roomier layout. */
+@media (max-width: 679px) {
+  /* courses: the tallest section on the page */
+  .course__media { aspect-ratio: 2 / 1; }
+  .course__body { padding: 18px 16px 16px; }
+  .course__summary { margin-top: 7px; font-size: 14px; }
+  .course__facts { gap: 8px; margin: 14px 0 12px; }
+  .course__facts > div { padding: 9px 11px; }
+  .course__elig { padding-bottom: 13px; }
+  .course__topics { padding: 13px 0 15px; }
+  .course__topics ul { gap: 7px; }
+  .course__topics li { font-size: 13.5px; line-height: 1.45; }
+  .course__foot { padding-top: 13px; }
+  .course__btn { margin-top: 12px; padding: 12px 18px; }
+
+  /* why: five cards, each with an evidence panel */
+  .why__card { --vh: 128px; }
+  .why__card--certificate { --vh: 156px; }
+  .why__text { padding: 30px 18px 20px; }
+  .why__card p { margin-top: 7px; font-size: 14px; }
+  .why__badge { width: 46px; height: 46px; border-radius: 14px; }
+
+  /* team deck */
+  .trainer__media { aspect-ratio: 4 / 3.7; }
+  .trainer__body { padding: 15px 16px 16px; }
+  .trainer__facts { margin: 12px 0; gap: 10px; }
+  .trainer__spec { margin-top: 10px; }
+
+  /* reviews, steps, faq, about */
+  .review { padding: 18px 16px; }
+  .review__text { font-size: 14px; line-height: 1.6; }
+  .review__foot { margin-top: 14px; padding-top: 13px; }
+  .step { padding: 18px 16px; }
+  .step__n { width: 34px; height: 34px; margin-bottom: 10px; }
+  .step p { margin-top: 6px; }
+  .about__pillar { padding: 18px 16px; }
+  .about__pillar p { margin-top: 7px; }
+  .faq__item summary { padding: 14px 15px; font-size: 14.5px; }
+  .faq__ans { padding: 0 15px 15px; }
+
+  /* founder + diploma + journey */
+  .founder__facts li { padding: 8px 6px; }
+  .diploma__mod { padding: 9px 10px; }
+  .journey__milestone { padding: 12px 14px; font-size: 14px; }
+  .journey__copy p { margin-bottom: 11px; }
+  .visit__points { margin: 18px 0 20px; gap: 14px; }
 }
 
 /* ---------- MOTION PREFERENCES ---------- */

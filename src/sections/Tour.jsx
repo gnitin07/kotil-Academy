@@ -30,7 +30,7 @@ export default function Tour({ lenisRef }) {
         <span className="kicker">Take a look inside</span>
         <h2>A short tour of the <em>training floor</em></h2>
         <p>
-          We train inside {ACADEMY.clinic.name}, a working clinic in Preet Vihar — so the
+          We train inside {ACADEMY.clinic.name}, a working clinic in Preet Vihar, so the
           rooms you learn in are the rooms patients walk into.
         </p>
       </div>

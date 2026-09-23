@@ -65,7 +65,7 @@ export default function Founder() {
           <footer className="founder__sign">
             <p>{f.signoff[0]}</p>
             <p className="founder__sign-line">{f.signoff[1]}</p>
-            <p className="founder__by">— {f.name}, {f.title}</p>
+            <p className="founder__by">{f.name}, {f.title}</p>
           </footer>
 
           <ul className="founder__facts">

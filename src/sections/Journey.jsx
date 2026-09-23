@@ -22,13 +22,13 @@ export default function Journey() {
           <span className="kicker">Our journey</span>
           <h2>From vision to <em>transformation.</em></h2>
           <p>
-            Our journey began with a single belief — that learning should be practical,
+            Our journey began with a single belief: that learning should be practical,
             precise and purpose-driven. Founded by experienced aesthetic professionals, we
             saw a gap in hands-on training in clinical aesthetics: growing demand, and too
             few genuinely skilled practitioners.
           </p>
           <p>
-            So we took a bold step — to build an academy where learning is real, training is
+            So we took a bold step: to build an academy where learning is real, training is
             guided, and confidence is built through action.
           </p>
 
@@ -42,7 +42,7 @@ export default function Journey() {
           </ul>
 
           <p className="journey__close">
-            What started as a classroom is now a movement. From learners to leaders — this is
+            What started as a classroom is now a movement. From learners to leaders. This is
             the Kotil Aesthetic Academy journey, and you are now part of it.
           </p>
         </div>

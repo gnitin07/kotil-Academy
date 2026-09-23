@@ -41,7 +41,7 @@ export default function Diploma({ onApply }) {
           <span className="diploma__postertag">Now enrolling</span>
           <Img
             name={DIPLOMA.poster}
-            alt={`${DIPLOMA.title} — course poster listing every module`}
+            alt={`${DIPLOMA.title}, course poster listing every module`}
             sizes="(min-width: 960px) 46vw, 100vw"
           />
         </figure>
