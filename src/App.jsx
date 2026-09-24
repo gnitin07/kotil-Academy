@@ -9,7 +9,6 @@ import Hero from './sections/Hero.jsx'
 import Stats from './sections/Stats.jsx'
 import Founder from './sections/Founder.jsx'
 import About from './sections/About.jsx'
-import Courses from './sections/Courses.jsx'
 import Diploma from './sections/Diploma.jsx'
 import Tour from './sections/Tour.jsx'
 import Why from './sections/Why.jsx'
@@ -47,9 +46,8 @@ export default function App() {
         <Hero onApply={() => openApply()} />
         <Stats />
         <Founder />
-        <About />
+        <About onApply={openApply} />
         <Team />
-        <Courses onApply={openApply} />
         <Tour lenisRef={lenisRef} />
         <Diploma onApply={openApply} />
         <Why />

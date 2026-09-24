@@ -10,7 +10,7 @@ gsap.registerPlugin(ScrollTrigger, useGSAP)
  * solidify, and the section reveals.
  *
  * Animations are kept OUT of the markup on purpose: GSAP targets global class
- * selectors (.course, .why__card, …), so the section components stay pure JSX
+ * selectors (.plan, .why__card, …), so the section components stay pure JSX
  * and all timing lives in one auditable place. Same arrangement as the sibling
  * clinic site.
  *
@@ -78,8 +78,7 @@ export function useSiteAnimations(root, lenisRef) {
     revealBatch('.stat', '.stats__grid', { y: 20, duration: 0.6 })
     revealBatch('.founder__figure', '.founder', { y: 40, duration: 0.9 })
     revealBatch('.founder__letter > *', '.founder', { y: 24, duration: 0.7, stagger: 0.07 })
-    revealBatch('.about__pillar', '.about__pillars')
-    revealBatch('.course', '.courses__grid', { y: 44 })
+    revealBatch('.plan', '.plans', { y: 30 })
     revealBatch('.diploma__copy > *', '.diploma')
     revealBatch('.diploma__poster', '.diploma', { y: 44, duration: 0.9 })
     // collage prints drop onto the board one after another

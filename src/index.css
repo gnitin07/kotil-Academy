@@ -368,7 +368,7 @@ section[id] { scroll-margin-top: calc(var(--topbar-h) + 74px); }
   .stat p { font-size: 12.5px; }
 }
 
-/* ---------- FOUNDER (co-founder's welcome) ---------- */
+/* ---------- FOUNDER (the founder's welcome) ---------- */
 .founder {
   padding: var(--pad-y) var(--pad-x);
   background:
@@ -445,75 +445,108 @@ section[id] { scroll-margin-top: calc(var(--topbar-h) + 74px); }
   .founder__facts span { font-size: 11.5px; }
 }
 
-/* ---------- ABOUT (dark band) ---------- */
+/* ---------- ABOUT (dark band) + the three plans ---------- */
 .about { background: var(--ink); color: #fff; padding: var(--pad-y) var(--pad-x); }
 .about__inner { max-width: var(--maxw); margin-inline: auto; }
 .about .shead h2 { color: #fff; }
 .about .shead p { color: rgba(255, 255, 255, .68); }
-.about__pillars { display: grid; gap: 10px; }
-.about__pillar {
-  padding: clamp(20px, 5vw, 30px); border-radius: var(--r);
+
+/* The three levels, stacked. Folded, a plan is the photo of the treatment that
+   level unlocks, its length and one sentence; the syllabus waits behind the
+   toggle. Only the display switches, so the module lists are always in the
+   document and are indexed whether or not anyone opens them. */
+/* The rule is what stops this reading as a second run at the introduction:
+   the band's own heading has finished, and the plans start here. */
+.plans__head {
+  max-width: 48ch; margin: clamp(26px, 5vw, 40px) auto 0; text-align: center;
+  padding-top: clamp(20px, 4vw, 30px); border-top: 1px solid rgba(255, 255, 255, .13);
+  font-size: 14.5px; color: rgba(255, 255, 255, .66); line-height: 1.6;
+}
+.plans__head .kicker { display: block; margin-bottom: 8px; }
+.plans { display: grid; gap: 12px; margin-top: clamp(16px, 3vw, 22px); }
+.plan {
+  overflow: hidden; border-radius: var(--r);
   background: rgba(255, 255, 255, .05); border: 1px solid rgba(255, 255, 255, .11);
-  transition: transform .3s var(--ease), border-color .3s, background .3s;
+  transition: border-color .3s, background .3s;
 }
-.about__pillar:hover { transform: translateY(-4px); border-color: var(--gold); background: rgba(255, 255, 255, .08); }
-.about__num { display: block; font-size: 12.5px; font-weight: 700; letter-spacing: 2px; color: var(--gold-bright); margin-bottom: 10px; }
-.about__pillar h3 { font-size: clamp(17px, 4.4vw, 20px); }
-.about__pillar p { margin-top: 9px; font-size: 14.5px; color: rgba(255, 255, 255, .66); }
-@media (min-width: 880px) { .about__pillars { grid-template-columns: repeat(3, 1fr); gap: 18px; } }
+.plan:hover { border-color: rgba(227, 181, 69, .5); background: rgba(255, 255, 255, .08); }
+.plan--featured { border-color: rgba(227, 181, 69, .45); }
+.plan.is-open { border-color: var(--gold-bright); background: rgba(255, 255, 255, .09); }
 
-/* ---------- COURSES ---------- */
-.courses { background: var(--sand); padding: var(--pad-y) var(--pad-x); border-top: 1px solid var(--line); }
-.courses__grid { max-width: var(--maxw); margin-inline: auto; display: grid; gap: 12px; }
-.course {
-  display: flex; flex-direction: column; overflow: hidden;
-  background: var(--paper); border: 1px solid var(--line); border-radius: var(--r-lg);
-  transition: transform .35s var(--ease), border-color .35s, box-shadow .35s;
-}
-.course:hover { transform: translateY(-5px); border-color: var(--gold); box-shadow: 0 34px 60px -40px rgba(22, 21, 15, .7); }
-.course--featured { border-color: var(--gold); box-shadow: 0 30px 60px -44px rgba(191, 143, 28, .95); }
-
-.course__media { position: relative; aspect-ratio: 16 / 9; overflow: hidden; background: var(--stone); }
-.course__media img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s var(--ease); }
-.course:hover .course__media img { transform: scale(1.05); }
-.course__media::after {
+.plan__media { position: relative; aspect-ratio: 16 / 9; overflow: hidden; background: rgba(255, 255, 255, .06); }
+.plan__media img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s var(--ease); }
+.plan:hover .plan__media img { transform: scale(1.04); }
+.plan__media::after {
   content: ""; position: absolute; inset: 0;
-  background: linear-gradient(to top, rgba(10, 9, 6, .76), rgba(10, 9, 6, .1) 55%, transparent);
+  background: linear-gradient(to top, rgba(10, 9, 6, .66), transparent 62%);
 }
-.course__tier {
-  position: absolute; left: 16px; bottom: 14px; z-index: 2; color: #fff;
-  font-size: 11px; font-weight: 700; letter-spacing: 2.4px; text-transform: uppercase;
+.plan__flag {
+  position: absolute; top: 12px; right: 12px; z-index: 2;
+  background: var(--gold); color: #fff; font-size: 10px; font-weight: 700;
+  letter-spacing: 1.3px; text-transform: uppercase; padding: 5px 11px; border-radius: 100px;
 }
-.course__flag {
-  position: absolute; top: 14px; right: 14px; z-index: 2;
-  background: var(--gold); color: #fff; font-size: 10.5px; font-weight: 700;
-  letter-spacing: 1.4px; text-transform: uppercase; padding: 6px 12px; border-radius: 100px;
+
+.plan__body { padding: clamp(18px, 4.6vw, 28px); }
+.plan__num { display: block; font-size: 12px; font-weight: 700; letter-spacing: 2px; color: var(--gold-bright); }
+.plan__body h3 { margin-top: 8px; font-size: clamp(18px, 4.6vw, 22px); line-height: 1.25; }
+.plan__meta { margin-top: 7px; font-size: 11.5px; font-weight: 700; letter-spacing: .5px; text-transform: uppercase; color: var(--gold-bright); }
+.plan__summary { margin-top: 10px; font-size: 14px; color: rgba(255, 255, 255, .66); line-height: 1.6; }
+
+.plan__toggle {
+  display: inline-flex; align-items: center; gap: 9px; margin-top: 16px;
+  padding: 9px 16px; border-radius: 100px; border: 1.5px solid rgba(255, 255, 255, .2);
+  font-size: 13px; font-weight: 600; color: #fff; background: transparent; cursor: pointer;
+  transition: border-color .2s, color .2s;
 }
-.course__body { display: flex; flex-direction: column; flex: 1; padding: clamp(20px, 5vw, 28px); }
-.course__body h3 { font-size: clamp(19px, 5vw, 23px); }
-.course__summary { margin-top: 9px; font-size: 14.5px; color: var(--muted); }
+.plan__toggle span { font-size: 17px; line-height: 1; color: var(--gold-bright); }
+.plan__toggle:hover { border-color: var(--gold-bright); color: var(--gold-bright); }
 
-.course__facts { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; margin: 18px 0 14px; }
-.course__facts > div { padding: 11px 13px; border-radius: 13px; background: var(--sand); border: 1px solid var(--line); }
-.course__facts dt { display: flex; align-items: center; gap: 6px; font-size: 9.5px; letter-spacing: 1.4px; text-transform: uppercase; color: var(--muted); }
-.course__facts dt svg { color: var(--gold); }
-.course__facts dd { margin-top: 4px; font-size: 14.5px; font-weight: 700; }
+.plan__more { display: none; }
+.plan.is-open .plan__more {
+  display: block; animation: hero-in .4s var(--ease) both;
+  margin-top: 20px; padding-top: 18px; border-top: 1px solid rgba(255, 255, 255, .12);
+}
+.plan__more h4 { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold-bright); }
+.plan__list { list-style: none; display: grid; gap: 9px; margin-top: 12px; }
+.plan__list li { display: flex; gap: 9px; font-size: 13.5px; color: rgba(255, 255, 255, .72); line-height: 1.5; }
+.plan__tick {
+  flex: 0 0 auto; display: grid; place-items: center; width: 18px; height: 18px; margin-top: 1px;
+  border-radius: 50%; color: var(--gold-bright); background: rgba(227, 181, 69, .16);
+}
 
-.course__elig { font-size: 12.5px; color: var(--muted); padding-bottom: 16px; border-bottom: 1px solid var(--line); }
-.course__elig span { display: block; font-size: 9.5px; letter-spacing: 1.4px; text-transform: uppercase; color: var(--gold); margin-bottom: 4px; }
+.plan__elig, .plan__award {
+  margin-top: 16px; padding-top: 14px; border-top: 1px solid rgba(255, 255, 255, .1);
+  font-size: 12.5px; color: rgba(255, 255, 255, .6); line-height: 1.5;
+}
+.plan__elig span, .plan__award span {
+  display: block; font-size: 9.5px; letter-spacing: 1.4px; text-transform: uppercase;
+  color: rgba(255, 255, 255, .45); margin-bottom: 4px;
+}
+.plan__award strong { display: block; font-size: 14.5px; color: var(--gold-bright); line-height: 1.4; }
 
-.course__topics { padding: 16px 0 20px; flex: 1; }
-.course__topics h4 { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
-.course__topics ul { list-style: none; display: grid; gap: 9px; }
-.course__topics li { display: flex; gap: 9px; font-size: 14px; color: var(--ink-2); line-height: 1.5; }
-.course__tick { flex: 0 0 auto; display: grid; place-items: center; width: 18px; height: 18px; margin-top: 2px; border-radius: 50%; color: var(--gold); background: var(--gold-pale); }
+.plan__cta { margin-top: 18px; display: grid; gap: 10px; }
+.plan__btn { width: 100%; }
+.plan__doc {
+  display: inline-flex; align-items: center; justify-content: center; gap: 7px;
+  font-size: 12.5px; font-weight: 600; color: rgba(255, 255, 255, .6); transition: color .25s;
+}
+.plan__doc:hover { color: var(--gold-bright); }
 
-.course__foot { margin-top: auto; padding-top: 16px; border-top: 1px solid var(--line); }
-.course__award span { display: block; font-size: 9.5px; letter-spacing: 1.4px; text-transform: uppercase; color: var(--muted); }
-.course__award strong { display: block; margin-top: 4px; font-size: 14.5px; color: var(--gold); line-height: 1.4; }
-.course__btn { width: 100%; margin-top: 14px; }
-.courses__note { max-width: 58ch; margin: clamp(16px, 2.6vw, 24px) auto 0; text-align: center; font-size: 13.5px; color: var(--muted); }
-@media (min-width: 1040px) { .courses__grid { grid-template-columns: repeat(3, 1fr); align-items: stretch; } }
+.plans__note { max-width: 58ch; margin: clamp(16px, 2.6vw, 24px) auto 0; text-align: center; font-size: 13.5px; color: rgba(255, 255, 255, .55); }
+
+@media (min-width: 880px) {
+  .plans { gap: 16px; }
+  .plan { display: grid; grid-template-columns: 340px 1fr; }
+  /* Fills the card while a plan is folded; once it is open the photo stops at
+     its cap and sits at the top, rather than being stretched into a ribbon
+     beside 600px of syllabus. */
+  .plan__media { aspect-ratio: auto; height: 100%; max-height: 380px; align-self: start; }
+  /* two columns of modules, so an open plan does not stretch its photo into a
+     ribbon beside 600px of list */
+  .plan__list { grid-template-columns: 1fr 1fr; column-gap: 26px; }
+  .plan__cta { grid-template-columns: auto auto; justify-content: start; align-items: center; gap: 18px; }
+  .plan__btn { width: auto; }
+}
 
 /* ---------- DIPLOMA ---------- */
 .diploma { background: var(--paper); padding: var(--pad-y) var(--pad-x); }

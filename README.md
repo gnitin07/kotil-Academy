@@ -57,8 +57,8 @@ src/
   animations.js          every scroll animation, in one place
   App.jsx                composes the sections
   components/            Header, Wordmark, Img, ApplyModal, FloatingWhatsApp, icons
-  sections/              Hero, Stats, Founder, About, Courses, Diploma, Tour, Why, Team,
-                         Journey, Steps, Reviews, Posters, CTA, FAQ, Visit, Footer
+  sections/              Hero, Stats, Founder, About, Team, Tour, Diploma, Why, Journey,
+                         Steps, Reviews, Posters, CTA, FAQ, Visit, Footer
 ```
 
 ### The two files you will actually edit
@@ -150,14 +150,25 @@ re-send them to returning visitors.
 ## Notes on content
 
 - **Trainers (confirmed by the academy):** Cosmetologist → Reena ma'am, Head Trainer → Dev sir
-  (Dev Singh, from the clinic signboard), Doctor → Ruby ma'am. Dev's and Ruby's photos are
-  transparent cut-outs in `raw-assets/team/`. Still to confirm: Ruby ma'am's surname, and each
-  card's years / students-trained figures, which were carried over from the prospectus's team
-  page role-by-role. Reena ma'am's photo is only 265px (the prospectus copy) — a higher-resolution
-  one would look sharper beside the other two.
-- **Co-founder section:** Amy Aliya, Co-Founder, with the letter from the prospectus welcome
-  page (tightened for the web) and that page's own cut-out portrait (`raw-assets/founder/`).
-  On phones the letter collapses behind "Read the full letter"; on desktop it is always open.
+  (Dev Singh, from the clinic signboard), Doctor → Dr. Amy Aliya. That card was captioned
+  "Dr. Ruby" until the academy corrected the name; the photograph and every figure on it are
+  unchanged, which is why the file is still `team/ruby.png`. Dev's and the doctor's photos are
+  transparent cut-outs in `raw-assets/team/`. Reena ma'am's photo is only 265px (the prospectus
+  copy); a higher-resolution one would look sharper beside the other two. The suit portrait that
+  used to head the founder section is parked in `raw-assets/_unused/`.
+- **Founder section:** Dev Singh, Founder & Head Trainer, with a letter in his own voice about
+  what a student does with him in the room. Its figures are the ones already recorded against him
+  in `TEAM`, so the two cannot disagree. The portrait (`raw-assets/founder/dev-singh.png`) is a
+  photograph rather than a cut-out, so it fills the arch instead of standing on the gold; at
+  382x412 it is the smallest source on the site and a full-resolution copy would sharpen the
+  desktop spread. On phones the letter collapses behind "Read the full letter"; on desktop it is
+  always open.
+- **The About band is where the courses live.** There is no separate courses section: the three
+  levels stack inside the dark band, each folded down to its photo, its length and one sentence,
+  with the module list behind "Read the full plan". That keeps the section short enough to scroll
+  past while leaving the full syllabus one tap away, which is what the earlier three-column wall
+  of bullet points could not do. The band carries `id="courses"`, so the nav and the footer
+  links still land on it.
 - **Opening hours are a placeholder** — 10 AM–7 PM, closed Sundays, set in `config.js`. The
   prospectus doesn't state them.
 - **Eligibility spelling.** The prospectus prints `MBBS/BDS/BMDS/BAMS/BUMP`; its own FAQ page

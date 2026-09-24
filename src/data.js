@@ -95,7 +95,12 @@ export const STATS = [
 ]
 
 // ---- courses ---------------------------------------------------------------
-// `tier` drives the card styling; `featured` lifts one card out of the row.
+// `tier` drives the card styling; `featured` lifts one card out of the stack.
+//
+// `summary` is what a visitor reads while choosing a level; `topics` is the
+// module list behind "Read more", which stays folded away until asked for. The
+// last entries of each list are deliberately the ones that close the sale:
+// practice days, placement assistance, lifetime support.
 export const COURSES = [
   {
     id: 'basic',
@@ -231,7 +236,7 @@ export const WHY = [
 
 // ---- trainers --------------------------------------------------------------
 // Photo-to-role mapping confirmed by the academy (Sept 2026):
-//   Cosmetologist -> Reena ma'am · Head Trainer -> Dev sir · Doctor -> Ruby ma'am
+//   Cosmetologist -> Reena ma'am · Head Trainer -> Dev sir · Doctor -> Amy ma'am
 // Order matters: the middle card sits forward in the fanned deck, so the Head
 // Trainer goes in the centre.
 //
@@ -270,7 +275,9 @@ export const TEAM = [
     quote: 'Education is the foundation of transforming lives through skincare.',
   },
   {
-    name: 'Dr. Ruby',
+    // The name is the correction the academy asked for; the photograph and
+    // every figure on this card are the ones that were always here.
+    name: 'Dr. Amy Aliya',
     img: 'team/ruby',
     tag: 'Doctor',
     tint: 'sand',
@@ -386,25 +393,27 @@ export const FAQS = [
   },
 ]
 
-// ---- co-founder's welcome (prospectus page 2) -------------------------------
-// The letter, tightened for the web but kept in her voice. Photo is the
-// cut-out from that same page. `facts` are drawn only from the letter and her
-// prospectus title, so they cannot drift from the printed material.
+// ---- founder's welcome ------------------------------------------------------
+// Dev sir's own letter, in his voice: what a student will actually do with him
+// in the room, rather than a founder's mission statement. Every figure in it is
+// one already recorded against him in TEAM above (ten years, a thousand
+// students, certified in cosmetic dermatology, the treatments he specialises
+// in), so the two cannot drift apart.
 export const FOUNDER = {
-  name: 'Amy Aliya',
-  title: 'Co-Founder, Kotil Aesthetic Academy',
-  img: 'founder/amy-aliya',
-  headline: ['Where passion meets profession,', 'and learning meets', 'transformation.'],
+  name: 'Dev Singh',
+  title: 'Founder & Head Trainer, Kotil Aesthetic Academy',
+  img: 'founder/dev-singh',
+  headline: ['Ten years on the floor,', 'and I am still in the room for', 'every batch.'],
   lead:
-    'With over ten years in skincare and aesthetics, I have seen what the right knowledge and real hands-on training can do. It changes your clients\u2019 lives, and it changes yours.',
+    'I did not build this academy to hand out certificates. I built it so that you leave able to do the work, and the only way there is with someone standing beside you while you learn it.',
   body: [
-    'I started this academy to be a place where science meets beauty, and where every student leaves confident, skilled and industry-ready. From Korean glass skin techniques to advanced pigmentation and anti-ageing therapies, our courses meet global standards while staying rooted in client care and ethical practice.',
-    'My team and I don\u2019t just teach treatments, we build careers. What we offer is not only an education but a journey: one that inspires, educates and elevates you into the next generation of skincare professionals.',
+    'My own ten years have gone into skin rejuvenation, acne work and anti-ageing procedures, and I am certified in cosmetic dermatology. Everything I teach is a protocol I am running on clients that same week, inside Kotil Skin Science, the working clinic this academy sits in. Nothing here is theory that has outlived its use.',
+    'I take you through each treatment myself: the consultation, the settings on the machine, the aftercare, the client who is difficult to read. You repeat it under supervision until your hands are steady, on real equipment and real clients. And when the course ends you can still call me, because the guidance does not stop at the certificate.',
   ],
-  signoff: ['Welcome to your new beginning.', 'Let\u2019s learn, glow and grow, together.'],
+  signoff: ['Come and learn where the work actually happens.', 'I will see you on the training floor.'],
   facts: [
-    { k: '10+', v: 'years in skincare & aesthetics' },
-    { k: 'Global', v: 'standards, ethical practice' },
-    { k: 'Hands-on', v: 'first, from day one' },
+    { k: '10+', v: 'years in cosmetology & skin care' },
+    { k: '1,000+', v: 'students trained, hands-on' },
+    { k: 'Certified', v: 'in cosmetic dermatology' },
   ],
 }

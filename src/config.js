@@ -12,8 +12,8 @@ export const ACADEMY = {
   short: 'Kotil Academy',
   tagline: 'Crafting Skincare Experts of Tomorrow',
   // Digits only, with country code — used to build tel: and wa.me links.
-  phone: '919910805532',
-  phoneDisplay: '+91 99108 05532',
+  phone: '919871054183',
+  phoneDisplay: '+91 98710 54183',
   email: 'kotilaestheticacademy@gmail.com',
   site: 'https://www.kotilaestheticacademy.com',
   // The training floor is the clinic itself — students practise on real
