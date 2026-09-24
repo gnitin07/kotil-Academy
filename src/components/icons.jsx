@@ -72,6 +72,9 @@ export const IconCalendar = ({ size = 18 }) => (
 export const IconDoc = ({ size = 18 }) => (
   <Svg size={size}><path d="M6 3.5h7l5 5V20a1.5 1.5 0 0 1-1.5 1.5h-10A1.5 1.5 0 0 1 5 20V5A1.5 1.5 0 0 1 6.5 3.5Z" /><path d="M13 3.5v5h5" /><path d="M8.5 13.5h7M8.5 17h5" /></Svg>
 )
+export const IconZoom = ({ size = 16 }) => (
+  <Svg size={size}><circle cx="10.5" cy="10.5" r="6" /><path d="m15 15 4.5 4.5" /><path d="M8 10.5h5M10.5 8v5" /></Svg>
+)
 export const IconQuote = ({ size = 22 }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
     <path d="M9.4 5.2 7.9 7.6a4.6 4.6 0 0 0-2.3 4h3.2v7.2H2V12c0-3.2 1.5-5.7 4.3-7.6zm11.6 0-1.5 2.4a4.6 4.6 0 0 0-2.3 4h3.2v7.2h-6.8V12c0-3.2 1.5-5.7 4.3-7.6z" />

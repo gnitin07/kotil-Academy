@@ -229,26 +229,29 @@
     ],
     "ar": 0.9272
   },
-  "posters/diploma": {
+  "posters/pg-diploma-batch": {
     "w": [
       560,
-      754
+      900,
+      1600
     ],
-    "ar": 0.996
+    "ar": 0.8
   },
-  "posters/shaping": {
+  "posters/pg-diploma-dates": {
     "w": [
       560,
-      754
+      900,
+      1280
     ],
-    "ar": 0.996
+    "ar": 0.8
   },
-  "posters/trusted": {
+  "posters/why-kotil": {
     "w": [
       560,
-      754
+      900,
+      1600
     ],
-    "ar": 0.996
+    "ar": 0.8
   },
   "partners/devriz": {
     "w": [

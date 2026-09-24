@@ -967,14 +967,33 @@ section[id] { scroll-margin-top: calc(var(--topbar-h) + 74px); }
 .posters__row::-webkit-scrollbar { height: 5px; }
 .posters__row::-webkit-scrollbar-thumb { background: var(--line); border-radius: 5px; }
 .poster {
-  flex: 0 0 min(340px, 82vw); scroll-snap-align: center;
+  flex: 0 0 min(340px, 82vw); scroll-snap-align: center; background: var(--paper);
   border-radius: var(--r); overflow: hidden; border: 1px solid var(--line);
   box-shadow: 0 24px 46px -34px rgba(22, 21, 15, .7);
   transition: transform .35s var(--ease), box-shadow .35s;
 }
 .poster:hover { transform: translateY(-4px); box-shadow: 0 34px 56px -34px rgba(22, 21, 15, .8); }
-.poster { aspect-ratio: 754 / 757; }
-.poster img { width: 100%; height: 100%; object-fit: cover; }
+/* the posters' own proportions, so nothing is cropped off a layout that was
+   set as a whole */
+.poster__open { position: relative; display: block; aspect-ratio: 4 / 5; }
+.poster__open img { width: 100%; height: 100%; object-fit: cover; }
+.poster__zoom {
+  position: absolute; right: 10px; bottom: 10px;
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 7px 12px; border-radius: 100px;
+  font-size: 11.5px; font-weight: 600; letter-spacing: .3px;
+  color: var(--ink); background: rgba(255, 255, 255, .92); backdrop-filter: blur(6px);
+  box-shadow: 0 8px 18px -10px rgba(22, 21, 15, .7);
+  opacity: 0; transform: translateY(6px); transition: opacity .3s, transform .3s var(--ease);
+}
+/* on a phone there is no hover to reveal it, and the whole point is that the
+   small print is elsewhere, so it simply stays visible */
+@media (hover: none) { .poster__zoom { opacity: 1; transform: none; } }
+.poster:hover .poster__zoom, .poster__open:focus-visible .poster__zoom { opacity: 1; transform: none; }
+.poster__cap {
+  padding: 11px 14px 13px; font-size: 12.5px; font-weight: 600;
+  color: var(--ink-2); background: var(--paper); border-top: 1px solid var(--line);
+}
 @media (min-width: 900px) {
   .posters__row { display: grid; grid-template-columns: repeat(3, 1fr); max-width: var(--maxw); margin-inline: auto; overflow: visible; padding-bottom: 0; }
   .poster { flex: initial; }

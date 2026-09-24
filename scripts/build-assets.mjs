@@ -45,7 +45,9 @@ const GROUPS = {
   team: { widths: [560, 320], upscale: false, alpha: true },
   // the co-founder's cut-out from the prospectus welcome page (transparent)
   founder: { widths: [900, 520], upscale: false, alpha: true },
-  posters: { widths: [1000, 560], upscale: false },
+  // Posters are wall-to-wall type. They are opened full size from the strip,
+  // so the top width is the poster's own resolution rather than a thumbnail's.
+  posters: { widths: [1600, 900, 560], upscale: false },
   partners: { widths: [null], upscale: false, alpha: true },
 }
 

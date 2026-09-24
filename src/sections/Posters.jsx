@@ -1,19 +1,35 @@
-import Img from '../components/Img.jsx'
+import Img, { srcSetFor } from '../components/Img.jsx'
 import { SOCIALS } from '../config.js'
-import { IconArrow } from '../components/icons.jsx'
+import { IconArrow, IconZoom } from '../components/icons.jsx'
 
 /**
- * The academy's own campaign artwork, shown at its native square crop.
+ * The academy's own campaign artwork, shown at its native 4:5 crop.
  *
  * These posters are already doing the selling on Instagram, and they carry
  * details the page states in its own words elsewhere — the accreditation
- * lockup, the treatment list, the phone number. Reproducing them as-is rather
- * than re-typesetting them keeps the site and the feed saying the same thing.
+ * lockup, the treatment list, the dates. Reproducing them as-is rather than
+ * re-typesetting them keeps the site and the feed saying the same thing.
+ *
+ * Each one opens at full size in a new tab, because a poster is wall-to-wall
+ * type: the headline reads in the strip, the twelve course highlights under it
+ * do not, and cropping or shrinking that list would be the same as deleting it.
  */
 const POSTERS = [
-  { img: 'posters/trusted', alt: "Campaign poster: India's Trusted Aesthetic Training Academy" },
-  { img: 'posters/shaping', alt: 'Campaign poster: Shaping Skill, Creating Experts' },
-  { img: 'posters/diploma', alt: 'Campaign poster: Advance Diploma in Cosmetology' },
+  {
+    img: 'posters/pg-diploma-batch',
+    label: 'PG Diploma in Clinical Cosmetology',
+    alt: 'Campaign poster: PG Diploma in Clinical Cosmetology, five days hands-on with six months of online learning, admissions open for the new Delhi batch',
+  },
+  {
+    img: 'posters/pg-diploma-dates',
+    label: 'Next batch: 1 to 5 October',
+    alt: 'Campaign poster: PG Diploma in Clinical Cosmetology in Delhi, 1st to 5th October 2026, limited seats, with the twelve course highlights listed',
+  },
+  {
+    img: 'posters/why-kotil',
+    label: 'Why students choose Kotil',
+    alt: 'Campaign poster: why choose Kotil Aesthetic Academy for clinical cosmetology, listing hands-on practical training, advanced techniques, industry-focused learning and career support',
+  },
 ]
 
 export default function Posters() {
@@ -30,7 +46,17 @@ export default function Posters() {
       <div className="posters__row" data-lenis-prevent>
         {POSTERS.map((p) => (
           <figure className="poster" key={p.img}>
-            <Img name={p.img} alt={p.alt} sizes="(min-width: 900px) 33vw, 82vw" />
+            <a
+              className="poster__open"
+              href={srcSetFor(p.img)?.src}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Open the full poster: ${p.label}`}
+            >
+              <Img name={p.img} alt={p.alt} sizes="(min-width: 900px) 33vw, 82vw" />
+              <span className="poster__zoom" aria-hidden="true"><IconZoom size={15} /> Full size</span>
+            </a>
+            <figcaption className="poster__cap">{p.label}</figcaption>
           </figure>
         ))}
       </div>
