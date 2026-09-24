@@ -174,6 +174,42 @@ export const COURSES = [
       'Placement assistance · Lifetime support',
     ],
   },
+  {
+    // Not a rung on the 30/60/90 ladder. This one is a five-day intensive for
+    // people already practising, with the theory running online for six months
+    // behind it, so it carries `starts` and a `flag` of its own instead of the
+    // "most enrolled" badge. Everything here is off the academy's own campaign
+    // posters, which are in the strip further down the page. The two posters
+    // print slightly different highlight lists; `topics` is the union of them.
+    // Eligibility is deliberately absent: neither poster states it.
+    id: 'pgd',
+    img: 'treatments/devices',
+    imgAlt: 'A clinical face treatment being applied under supervision',
+    tier: 'PG Diploma',
+    title: 'Clinical Cosmetology',
+    duration: '5 Days',
+    daily: '6 months online learning',
+    starts: '1 to 5 October 2026, Delhi',
+    flag: 'Limited seats',
+    award: 'PG Diploma in Clinical Cosmetology',
+    summary:
+      'A five-day intensive on the floor for people already in practice, with six months of online learning behind it: the clinical procedures clients ask for by name.',
+    topics: [
+      'Dermal fillers',
+      'Botox',
+      'Thread lift',
+      'Chemical peel',
+      'Medicated facials',
+      'Facial contouring',
+      'Face lifting',
+      'Skin tightening',
+      'Laser treatments',
+      'Microblading',
+      'Lip pigmentation',
+      'Glutathione IV',
+      'Hair treatments',
+    ],
+  },
 ]
 
 // ---- the one-month diploma promoted on Instagram ---------------------------

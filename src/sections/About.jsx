@@ -43,7 +43,8 @@ export default function About({ onApply }) {
             levels are is the cards' job to say, not this line's. */}
         <p className="plans__head">
           <span className="kicker">Our plans</span>
-          Three levels, one career path. Start where you stand.
+          Three levels on one career path, plus a five-day PG diploma for
+          professionals already in practice.
         </p>
 
         <div className="plans">
@@ -53,13 +54,18 @@ export default function About({ onApply }) {
               <article className={`plan${isOpen ? ' is-open' : ''}${c.featured ? ' plan--featured' : ''}`} key={c.id}>
                 <div className="plan__media">
                   <Img name={c.img} alt={c.imgAlt} sizes="(min-width: 880px) 360px, 100vw" />
-                  {c.featured && <span className="plan__flag">Most enrolled</span>}
+                  {(c.flag || c.featured) && (
+                    <span className="plan__flag">{c.flag || 'Most enrolled'}</span>
+                  )}
                 </div>
 
                 <div className="plan__body">
                   <span className="plan__num">{String(n + 1).padStart(2, '0')}</span>
                   <h3>{c.tier}: {c.title}</h3>
                   <p className="plan__meta">{c.duration} &middot; {c.daily}</p>
+                  {/* folded as well as open: a dated intake is the one thing on
+                      the card that stops being true */}
+                  {c.starts && <p className="plan__starts">Next batch {c.starts}</p>}
                   <p className="plan__summary">{c.summary}</p>
 
                   <button
@@ -73,14 +79,16 @@ export default function About({ onApply }) {
                   </button>
 
                   <div className="plan__more" id={`plan-${c.id}`}>
-                    <h4>What the {c.duration.toLowerCase()} cover</h4>
+                    <h4>What it covers</h4>
                     <ul className="plan__list">
                       {c.topics.map((t) => (
                         <li key={t}><span className="plan__tick"><IconCheck size={12} /></span>{t}</li>
                       ))}
                     </ul>
 
-                    <p className="plan__elig"><span>Open to</span>{c.eligibility}</p>
+                    {c.eligibility && (
+                      <p className="plan__elig"><span>Open to</span>{c.eligibility}</p>
+                    )}
                     <p className="plan__award"><span>You graduate with</span><strong>{c.award}</strong></p>
 
                     <div className="plan__cta">
