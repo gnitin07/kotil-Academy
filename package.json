@@ -9,7 +9,8 @@
     "build": "vite build",
     "preview": "vite preview",
     "assets": "node scripts/build-assets.mjs",
-    "assets:logo": "node scripts/build-logo.mjs"
+    "assets:logo": "node scripts/build-logo.mjs",
+    "assets:favicon": "node scripts/build-favicon.mjs"
   },
   "engines": {
     "node": ">=18"
