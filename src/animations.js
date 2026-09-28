@@ -78,7 +78,8 @@ export function useSiteAnimations(root, lenisRef) {
     revealBatch('.stat', '.stats__grid', { y: 20, duration: 0.6 })
     revealBatch('.founder__figure', '.founder', { y: 40, duration: 0.9 })
     revealBatch('.founder__letter > *', '.founder', { y: 24, duration: 0.7, stagger: 0.07 })
-    revealBatch('.plan', '.plans', { y: 30 })
+    revealBatch('.batch', '.batches__row', { y: 30 })
+    revealBatch('.pcard', '.pcards', { y: 30 })
     revealBatch('.diploma__copy > *', '.diploma')
     revealBatch('.diploma__poster', '.diploma', { y: 44, duration: 0.9 })
     // collage prints drop onto the board one after another

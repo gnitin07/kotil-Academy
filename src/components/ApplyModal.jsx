@@ -4,11 +4,11 @@ import { COURSES, DIPLOMA } from '../data.js'
 import { useLockScroll } from '../useLockScroll.js'
 import { WhatsAppGlyph, IconArrow } from './icons.jsx'
 
-const OPTIONS = [
+const OPTIONS = [...new Set([
   ...COURSES.map((c) => `${c.tier}: ${c.title}`),
   DIPLOMA.title,
   'Not sure yet, please advise',
-]
+])]
 
 /**
  * Enrolment form.

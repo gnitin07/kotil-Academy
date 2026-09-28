@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import Img from '../components/Img.jsx'
 import { TOUR } from '../data.js'
-import { ACADEMY, enquireLink } from '../config.js'
+import { ACADEMY, SOCIALS, enquireLink } from '../config.js'
 import { useLockScroll } from '../useLockScroll.js'
 import { IconArrow } from '../components/icons.jsx'
 
@@ -61,6 +61,10 @@ export default function Tour({ lenisRef }) {
       <div className="tour__foot">
         <a className="btn-ghost" href={enquireLink} target="_blank" rel="noopener noreferrer">
           Book a campus visit <IconArrow size={16} />
+        </a>
+        {/* the feed is more of the same rooms and batches, so it belongs under them */}
+        <a className="btn-ghost" href={SOCIALS.find((s) => s.id === 'ig').url} target="_blank" rel="noopener noreferrer">
+          Follow on Instagram <IconArrow size={16} />
         </a>
       </div>
 

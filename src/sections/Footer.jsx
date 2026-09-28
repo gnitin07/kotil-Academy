@@ -28,7 +28,6 @@ export default function Footer() {
 
         <nav className="footer__col" aria-label="Quick links">
           <h4>Academy</h4>
-          <a href="#founder">Our founder</a>
           <a href="#courses">About us</a>
           <a href="#why">Why choose us</a>
           <a href="#tour">Campus tour</a>

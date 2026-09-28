@@ -36,6 +36,20 @@ export const SOCIALS = [
   { id: 'yt', label: 'YouTube', url: 'https://www.youtube.com/@kotil.aestheticacademy' },
 ]
 
+/**
+ * Where the "Request a callback" popup sends each request.
+ *
+ * `sheetUrl` is the web-app URL of the Google Apps Script in
+ * scripts/callback-sheet.gs (it ends in /exec). While it is empty, each request
+ * is handed to WhatsApp instead, prefilled and addressed to `whatsapp`, so the
+ * popup works before the sheet exists. Set the URL and every request lands as a
+ * row in the sheet with nothing for the visitor to send.
+ */
+export const CALLBACK = {
+  sheetUrl: 'https://script.google.com/macros/s/AKfycbxK3CfnM1d4X3BMU4VMddeortPpmTC0MvGmkMDqspHH5DyfoesK2gEpQ0BozjawwbsmAw/exec',
+  whatsapp: ACADEMY.phone, // digits with country code, like ACADEMY.phone
+}
+
 // ---- derived links -------------------------------------------------------
 
 export const telLink = `tel:+${ACADEMY.phone}`

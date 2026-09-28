@@ -153,6 +153,13 @@
     ],
     "ar": 1.7778
   },
+  "treatments/ageing-signs": {
+    "w": [
+      520,
+      696
+    ],
+    "ar": 0.8198
+  },
   "treatments/carbon-peel": {
     "w": [
       520,
