@@ -768,8 +768,11 @@ section[id] { scroll-margin-top: calc(var(--topbar-h) + 74px); }
 .diploma__dur span { font-size: 9.5px; letter-spacing: 1.6px; text-transform: uppercase; color: var(--muted); font-weight: 400; }
 .diploma__blurb { color: var(--muted); max-width: 48ch; margin-bottom: 22px; font-size: clamp(14.5px, 3.6vw, 16.5px); }
 .diploma__mods { list-style: none; display: grid; grid-template-columns: repeat(2, 1fr); gap: 7px; margin-bottom: 20px; }
-.diploma__mods { align-items: start; }
+/* every pill in a row matches the tallest, so a name that wraps to two lines
+   ("Lip pigmentation") does not leave its neighbour short and the rows ragged */
+.diploma__mods { align-items: stretch; }
 .diploma__mod {
+  display: flex; flex-direction: column;
   border-radius: 11px; background: var(--sand); border: 1px solid var(--line);
   font-size: 13px; font-weight: 500; transition: border-color .25s, background .25s;
 }
@@ -777,11 +780,11 @@ section[id] { scroll-margin-top: calc(var(--topbar-h) + 74px); }
 /* an open module takes the whole row, so its text has room to read */
 .diploma__mod.is-open { grid-column: 1 / -1; }
 .diploma__modbtn {
-  display: flex; align-items: center; gap: 8px; width: 100%; padding: 10px 12px;
+  display: flex; align-items: center; gap: 8px; width: 100%; flex: 1; padding: 10px 12px;
   border: 0; background: none; color: inherit; font: inherit; text-align: left; cursor: pointer;
 }
-.diploma__modname { flex: 1; }
-.diploma__modsign { font-size: 16px; line-height: 1; color: var(--gold); }
+.diploma__modname { flex: 1; line-height: 1.3; }
+.diploma__modsign { flex: 0 0 auto; font-size: 16px; line-height: 1; color: var(--gold); }
 .diploma__modinfo {
   padding: 0 12px 12px 30px; font-size: 13.5px; font-weight: 400; line-height: 1.55; color: var(--ink-2);
   animation: hero-in .3s var(--ease) both;
@@ -1482,24 +1485,31 @@ body { padding-bottom: calc(var(--cbar-h) + env(safe-area-inset-bottom)); }
 /* The callback popup. Three fields, so it is sized for three fields: a compact
    sheet with tighter type and spacing than the application form, short enough
    to sit on a laptop screen without a scrollbar. */
-.modal--callback .modal__sheet { padding: 24px 22px 20px; overflow-x: hidden; }
+/* Four fields, sized to fit a laptop screen whole: on anything wider than a
+   phone they pair up (name with mobile, state with course), so the sheet is
+   two rows of fields tall rather than four and never needs a scrollbar. */
+.modal--callback .modal__sheet { padding: 20px 20px 18px; overflow-x: hidden; }
 .modal--callback .modal__sheet:focus { outline: none; }
-.modal--callback .modal__close { top: 10px; right: 10px; width: 34px; height: 34px; font-size: 22px; }
-.modal--callback .modal__head { margin-bottom: 16px; padding-right: 36px; }
-.modal--callback .modal__head .kicker { font-size: 10.5px; }
-.modal--callback .modal__head h3 { margin: 6px 0 6px; font-size: 23px; line-height: 1.2; }
-.modal--callback .modal__head p { font-size: 13.5px; line-height: 1.55; }
+.modal--callback .modal__close { top: 10px; right: 10px; width: 32px; height: 32px; font-size: 21px; }
+.modal--callback .modal__head { margin-bottom: 12px; padding-right: 36px; }
+.modal--callback .modal__head .kicker { font-size: 10px; }
+.modal--callback .modal__head h3 { margin: 4px 0; font-size: 21px; line-height: 1.2; }
+.modal--callback .modal__head p { font-size: 13px; line-height: 1.5; }
 /* minmax(0, …), not 1fr: a plain 1fr column grows to its widest content, and the
    longest state name in the dropdown was pushing the form past the sheet */
-.modal--callback .modal__form { grid-template-columns: minmax(0, 1fr); gap: 11px; }
+.modal--callback .modal__form { grid-template-columns: minmax(0, 1fr); gap: 10px; }
 .modal--callback .field select { width: 100%; min-width: 0; text-overflow: ellipsis; }
 .modal--callback .field { gap: 5px; }
 .modal--callback .field > span { font-size: 10px; }
 /* 16px stays: iOS zooms the page in on any input set smaller than that */
-.modal--callback .field input, .modal--callback .field select { padding: 10px 13px; border-radius: 10px; }
-.modal--callback .modal__foot { margin-top: 6px; }
-.modal--callback .modal__submit { padding-block: 13px; }
-.modal--callback .modal__note { margin-top: 10px; font-size: 11px; }
+.modal--callback .field input, .modal--callback .field select { padding: 9px 12px; border-radius: 10px; }
+.modal--callback .modal__foot { margin-top: 4px; }
+.modal--callback .modal__submit { padding-block: 12px; }
+.modal--callback .modal__note { margin-top: 8px; font-size: 11px; }
+@media (min-width: 480px) {
+  .modal--callback .modal__form { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: 12px; }
+  .modal--callback .modal__foot { grid-column: 1 / -1; }
+}
 .modal__submit { display: inline-flex; align-items: center; justify-content: center; gap: 9px; }
 .modal__submit:disabled { opacity: .7; cursor: progress; }
 .modal__fail { margin-top: 10px; text-align: center; }
@@ -1521,7 +1531,7 @@ body { padding-bottom: calc(var(--cbar-h) + env(safe-area-inset-bottom)); }
   .modal__sheet { width: min(660px, 100%); border-radius: 24px; }
   .modal__form { grid-template-columns: 1fr 1fr; }
   .field--wide, .modal__foot { grid-column: 1 / -1; }
-  .modal--callback .modal__sheet { width: min(400px, 100%); padding: 28px 28px 22px; }
+  .modal--callback .modal__sheet { width: min(480px, 100%); padding: 24px 26px 20px; }
 }
 
 /* ---------- PHONE: COMPACT PASS ---------- */

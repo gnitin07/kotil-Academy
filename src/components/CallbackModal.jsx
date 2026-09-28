@@ -192,8 +192,8 @@ export default function CallbackModal({ open, course, onOpen, onClose, lenisRef,
               <h3 id="callback-title">{course || 'Request a callback'}</h3>
               <p>
                 {course
-                  ? 'Leave your details and a counsellor will call you with the batch dates, fees and eligibility.'
-                  : 'Leave your details and a counsellor will call you back to talk through the right course.'}
+                  ? 'We\u2019ll call you with the batch dates, fees and eligibility.'
+                  : 'Leave your details and a counsellor will call you back.'}
               </p>
             </header>
 

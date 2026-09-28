@@ -48,11 +48,11 @@ export default function App() {
   const openApply = useCallback((course = '') => setApply({ open: true, course }), [])
   const closeApply = useCallback(() => setApply((a) => ({ ...a, open: false })), [])
 
-  useSiteAnimations(root, lenisRef)
-
   // ?course=<slug> shows that course's page in place of the home page
   const slug = useCourseSlug()
   const course = slug ? COURSES.find((c) => c.slug === slug && c.fee) : null
+
+  useSiteAnimations(root, lenisRef, course ? course.slug : 'home')
 
   // A new page starts at the top. Not on first load, where the browser may be
   // honouring a #section in the address.

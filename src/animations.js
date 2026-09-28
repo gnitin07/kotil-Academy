@@ -20,8 +20,14 @@ gsap.registerPlugin(ScrollTrigger, useGSAP)
  *
  * @param {React.RefObject} root      scope element (everything renders inside it)
  * @param {React.RefObject} lenisRef  filled with the Lenis instance so modals can stop()/start() it
+ * @param {string} page               which page is showing. When it changes, everything
+ *                                    here is torn down and set up again on the new page's
+ *                                    elements; without that, arriving on the home page from
+ *                                    a course page left it with no reveals and the trainer
+ *                                    cards untilted, because they were set up once, on load,
+ *                                    for a page that was not there yet.
  */
-export function useSiteAnimations(root, lenisRef) {
+export function useSiteAnimations(root, lenisRef, page) {
   useGSAP(() => {
     // ---- smooth scroll ----
     // Desktop-only enhancement. On touch devices Lenis fights the OS's own
@@ -180,5 +186,5 @@ export function useSiteAnimations(root, lenisRef) {
       if (raf) gsap.ticker.remove(raf)
       lenis?.destroy()
     }
-  }, { scope: root })
+  }, { scope: root, dependencies: [page], revertOnUpdate: true })
 }
