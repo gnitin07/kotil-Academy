@@ -39,7 +39,7 @@
     "w": [
       540,
       720,
-      1080
+      900
     ],
     "ar": 0.5625
   },
@@ -236,6 +236,22 @@
     ],
     "ar": 0.9272
   },
+  "posters/aesthetic-surgery": {
+    "w": [
+      560,
+      900,
+      1600
+    ],
+    "ar": 0.7996
+  },
+  "posters/diploma-cosmetology": {
+    "w": [
+      560,
+      900,
+      1600
+    ],
+    "ar": 0.7996
+  },
   "posters/diploma": {
     "w": [
       560,
@@ -243,29 +259,13 @@
     ],
     "ar": 0.996
   },
-  "posters/pg-diploma-batch": {
+  "posters/pg-diploma": {
     "w": [
       560,
       900,
       1600
     ],
-    "ar": 0.8
-  },
-  "posters/pg-diploma-dates": {
-    "w": [
-      560,
-      900,
-      1280
-    ],
-    "ar": 0.8
-  },
-  "posters/why-kotil": {
-    "w": [
-      560,
-      900,
-      1600
-    ],
-    "ar": 0.8
+    "ar": 0.7996
   },
   "partners/devriz": {
     "w": [

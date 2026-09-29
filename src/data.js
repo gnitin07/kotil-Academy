@@ -277,7 +277,7 @@ export const COURSES = [
     title: 'Clinical Cosmetology',
     duration: '5 Days',
     daily: '6 months online learning',
-    starts: '25 to 29 October 2026, Delhi',
+    starts: '10 to 14 October 2026, Delhi',
     flag: 'Limited seats',
     award: 'PG Diploma in Clinical Cosmetology',
     summary:
@@ -536,13 +536,21 @@ export const TOPIC_DETAILS = {
 }
 
 export const UPCOMING = [
-  { course: 'Diploma in Clinical Cosmetology', img: null },
+  {
+    course: 'Diploma in Cosmetology',
+    img: 'posters/diploma-cosmetology',
+    alt: 'Campaign poster: Diploma in Cosmetology in Delhi, 20 to 24 October 2026, five days hands-on with six months of online learning, listing medicated facials, microblading, BB glow facial, HIFU and MNRF, PRP therapy and more',
+  },
   {
     course: 'PG Diploma in Clinical Cosmetology',
-    img: 'posters/pg-diploma-batch',
-    alt: 'Campaign poster: PG Diploma in Clinical Cosmetology, five days hands-on with six months of online learning, admissions open for the new Delhi batch',
+    img: 'posters/pg-diploma',
+    alt: 'Campaign poster: PG Diploma in Clinical Cosmetology in Delhi, 10 to 14 October 2026, five days hands-on with six months of online learning, listing dermal fillers, Botox, thread lift, laser treatments and more',
   },
-  { course: 'Fellowship in Aesthetic Surgery', img: null },
+  {
+    course: 'Fellowship in Aesthetic Surgery',
+    img: 'posters/aesthetic-surgery',
+    alt: 'Campaign poster: Aesthetic Surgery, a one-year programme with twelve days of onsite training in Delhi, 25 to 29 October 2026, open to MBBS, BDS, BAMS and BUMS graduates',
+  },
 ]
 
 // ---- past batches ------------------------------------------------------------
