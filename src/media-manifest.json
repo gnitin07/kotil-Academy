@@ -255,9 +255,10 @@
   "posters/diploma": {
     "w": [
       560,
-      754
+      900,
+      1600
     ],
-    "ar": 0.996
+    "ar": 0.7996
   },
   "posters/pg-diploma": {
     "w": [

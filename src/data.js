@@ -581,8 +581,9 @@ export const DIPLOMA = {
     'Microdermabrasion',
     'Hair analyser',
     'Chemical peels',
-    'Hair fall treatments',
+    'GFC hair treatment',
     'PRP therapy',
+    'Anti-dandruff treatment',
   ],
   // What each module is, in a line or two: the text that drops down when a
   // module is tapped. Keyed by the names above, so a module without an entry
@@ -597,7 +598,8 @@ export const DIPLOMA = {
     'Microdermabrasion': 'Mechanical exfoliation that lifts away dead skin to smooth texture and brighten dull skin.',
     'Hair analyser': 'Reading the scalp and hair with a digital analyser, so a hair treatment is planned around what is actually causing the problem.',
     'Chemical peels': 'Controlled acid peels for pigmentation, acne, fine lines and uneven tone, chosen and timed to the skin in front of you.',
-    'Hair fall treatments': 'Clinical treatments for hair fall and thinning, planned around the cause the analysis finds.',
+    'GFC hair treatment': 'Growth factor concentrate prepared from the client’s own blood and used on the scalp to support hair growth and slow hair fall.',
+    'Anti-dandruff treatment': 'Scalp treatments that clear dandruff and calm a flaky, itchy scalp, planned around what the analysis shows is causing it.',
     'PRP therapy': "Platelet-rich plasma from the client's own blood, used on the scalp or skin to support hair growth and repair.",
   },
 }

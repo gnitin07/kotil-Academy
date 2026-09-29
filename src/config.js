@@ -19,7 +19,7 @@ export const ACADEMY = {
   // The training floor is the clinic itself — students practise on real
   // clients there, which is the whole pitch. Same address as Kotil Skin Science.
   clinic: { name: 'Kotil Skin Science', url: 'https://kotilskinscience.com/' },
-  hours: { open: '10 AM', close: '7 PM', closedDay: 'Sunday' },
+  hours: { open: '10 AM', close: '7 PM', closedDay: 'Tuesday' },
   address: {
     line1: 'Plot No. 8, Ground Floor, Shankar Vihar',
     line2: 'Preet Vihar, New Delhi 110092',
@@ -76,7 +76,7 @@ export const prospectusLink = waLink(
   `Hi ${ACADEMY.name}, please send me the course prospectus.`
 )
 
-/** "Open 10 AM – 7 PM · Closed Sundays" — one string, so hours never drift
+/** "Open 10 AM – 7 PM · Closed Tuesdays" — one string, so hours never drift
  *  between the places that show them. */
 export const hoursLine =
   `Open ${ACADEMY.hours.open} – ${ACADEMY.hours.close} · Closed ${ACADEMY.hours.closedDay}s`

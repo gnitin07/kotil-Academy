@@ -1,7 +1,7 @@
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { ACADEMY, CALLBACK } from '../config.js'
-import { UPCOMING } from '../data.js'
 import { useLockScroll } from '../useLockScroll.js'
+import SlotPicker, { ANY_TIME, callSlots } from './SlotPicker.jsx'
 import { IconArrow, IconCheck, IconPhone, WhatsAppGlyph } from './icons.jsx'
 
 /**
@@ -18,16 +18,6 @@ const STATES = [
   'Sikkim', 'Tamil Nadu', 'Telangana', 'Tripura', 'Uttar Pradesh', 'Uttarakhand', 'West Bengal',
   'Andaman and Nicobar Islands', 'Chandigarh', 'Dadra and Nagar Haveli and Daman and Diu',
   'Delhi', 'Jammu and Kashmir', 'Ladakh', 'Lakshadweep', 'Puducherry',
-]
-
-// What an enquiry can be about: the programmes in the "Upcoming batches" strip
-// first, then the skin-therapy ladder as one choice, then a way out for anyone
-// who has not decided. Preselected when the popup is opened from a programme.
-const NOT_SURE = 'Not sure yet'
-const COURSE_OPTIONS = [
-  ...UPCOMING.map((b) => b.course),
-  'Skin Therapy & Aesthetics (Basic / Advanced / Advanced Plus)',
-  NOT_SURE,
 ]
 
 /**
@@ -48,14 +38,15 @@ const waHref = (lead) => {
     `Name: ${lead.name}`,
     `Mobile: ${lead.phone}`,
     `State: ${lead.state}`,
-    `Course: ${lead.course}`,
-  ].join('\n')
+    lead.course && `Course: ${lead.course}`,
+    `Best time to call: ${lead.slot}`,
+  ].filter(Boolean).join('\n')
   return `https://wa.me/${CALLBACK.whatsapp}?text=${encodeURIComponent(text)}`
 }
 
 /**
- * "Request a callback": name, mobile, state and course, offered once a visitor
- * has been reading for a few seconds.
+ * "Request a callback": name, mobile, state and the time the visitor is free
+ * to take the call, offered once they have been reading for a few seconds.
  *
  * Every request goes to CALLBACK in config.js. With a sheet URL set, it is
  * posted to the Google Apps Script in scripts/callback-sheet.gs and lands as a
@@ -71,10 +62,12 @@ const waHref = (lead) => {
  * The name field is not focused when it appears: on a phone that would throw
  * the keyboard up over a dialog the visitor did not ask for.
  *
- * Opened from a programme in the "Upcoming batches" strip, it arrives with that
- * course already chosen, names it in its heading and does not ask again; opened
- * any other way, the visitor picks one, and "Not sure yet" is there so nobody
- * is forced to guess.
+ * Opened from a programme in the "Upcoming batches" strip, it names that course
+ * in its heading and sends it with the request. There is no course question
+ * otherwise: the counsellor works that out on the call. What the form asks
+ * instead is when to make the call, on a day reel and a time reel (see
+ * SlotPicker), so the call lands when the visitor is free to take it. The
+ * sheet always gets a real date, "Wed 1 Oct, 3 PM", never "Tomorrow".
  *
  * @param {boolean} open                whether the dialog is showing
  * @param {string}  course              the programme it was opened from, if any
@@ -87,7 +80,11 @@ export default function CallbackModal({ open, course, onOpen, onClose, lenisRef,
   const [status, setStatus] = useState('idle') // idle | sending | done | failed
   const [error, setError] = useState('')
   const [lead, setLead] = useState(null)
-  const [form, setForm] = useState({ name: '', phone: '', state: '', course: NOT_SURE, website: '' })
+  const [form, setForm] = useState({ name: '', phone: '', state: '', website: '' })
+  // which day and time on the reels; the slots are worked out afresh each time
+  // it opens, so a popup left open past an hour does not offer a slot gone by
+  const [slot, setSlot] = useState({ day: 0, time: 0 })
+  const days = useMemo(() => (open ? callSlots() : []), [open])
   const sheetRef = useRef(null)
   // read inside the timer, which is set once and must see current values
   const suppressedRef = useRef(suppressed)
@@ -116,9 +113,7 @@ export default function CallbackModal({ open, course, onOpen, onClose, lenisRef,
     openedRef.current = true
     // opened again after a request went in: show the form, not the thank-you
     setStatus((s) => (s === 'done' || s === 'failed' ? 'idle' : s))
-    // Opened from a programme: that is the course. Opened any other way: start
-    // from "Not sure yet", not from whichever card was tapped last time.
-    setForm((f) => ({ ...f, course: course || NOT_SURE }))
+    setSlot({ day: 0, time: 0 })
     sheetRef.current?.focus()
   }, [open, course])
 
@@ -139,11 +134,14 @@ export default function CallbackModal({ open, course, onOpen, onClose, lenisRef,
       setError('Please enter a 10-digit mobile number.')
       return
     }
+    const d = days[slot.day]
+    const t = d?.times[slot.time] ?? ANY_TIME
     const next = {
       name: form.name.trim(),
       phone: `+91 ${digits.slice(0, 5)} ${digits.slice(5)}`,
       state: form.state,
-      course: form.course,
+      course: course || '',
+      slot: d ? (t === ANY_TIME ? `${d.date}, any time` : `${d.date}, ${t}`) : ANY_TIME,
       page: window.location.href,
     }
     setLead(next)
@@ -180,7 +178,7 @@ export default function CallbackModal({ open, course, onOpen, onClose, lenisRef,
             <h3 id="callback-title">Thank you{firstName ? `, ${firstName}` : ''}</h3>
             <p>
               {CALLBACK.sheetUrl
-                ? <>A counsellor will call you on <strong>{lead?.phone}</strong> shortly.</>
+                ? <>A counsellor will call you on <strong>{lead?.phone}</strong>, <strong>{lead?.slot}</strong>.</>
                 : <>Send the WhatsApp message that just opened, and a counsellor will call you on <strong>{lead?.phone}</strong>.</>}
             </p>
             <button className="btn-dark modal__submit" onClick={close}>Back to the site</button>
@@ -200,7 +198,7 @@ export default function CallbackModal({ open, course, onOpen, onClose, lenisRef,
             <form className="modal__form" onSubmit={submit}>
               <label className="field">
                 <span>Full name</span>
-                <input required autoComplete="name" value={form.name} onChange={set('name')} placeholder="e.g. Priya Sharma" />
+                <input required autoComplete="name" value={form.name} onChange={set('name')} placeholder="Your name" />
               </label>
 
               <label className="field">
@@ -212,7 +210,7 @@ export default function CallbackModal({ open, course, onOpen, onClose, lenisRef,
                 {error && <em className="field__error" id="callback-phone-error">{error}</em>}
               </label>
 
-              <label className="field">
+              <label className="field field--wideonphone">
                 <span>State</span>
                 <select required value={form.state} onChange={set('state')}>
                   <option value="" disabled>Select your state</option>
@@ -220,17 +218,17 @@ export default function CallbackModal({ open, course, onOpen, onClose, lenisRef,
                 </select>
               </label>
 
-              {/* Only asked when it is not already known. Opened from a
-                  programme, the heading names it, and a fourth field would push
-                  the dialog past the height of a laptop screen. */}
-              {!course && (
-                <label className="field">
-                  <span>Course</span>
-                  <select value={form.course} onChange={set('course')}>
-                    {COURSE_OPTIONS.map((c) => <option key={c} value={c}>{c}</option>)}
-                  </select>
-                </label>
-              )}
+              <div className="field field--wideonphone">
+                <span>Best time to call</span>
+                {days.length > 0 && (
+                  <SlotPicker
+                    days={days}
+                    day={slot.day}
+                    time={slot.time}
+                    onChange={(day, time) => setSlot({ day, time })}
+                  />
+                )}
+              </div>
 
               {/* honeypot: off-screen and out of the tab order, so only a bot fills it */}
               <label className="modal__hp" aria-hidden="true">

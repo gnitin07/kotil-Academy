@@ -169,8 +169,10 @@ re-send them to returning visitors.
   past while leaving the full syllabus one tap away, which is what the earlier three-column wall
   of bullet points could not do. The band carries `id="courses"`, so the nav and the footer
   links still land on it.
-- **Opening hours are a placeholder** — 10 AM–7 PM, closed Sundays, set in `config.js`. The
-  prospectus doesn't state them.
+- **Opening hours** — 10 AM–7 PM, closed Tuesdays, set in `config.js`. The closed day is
+  confirmed by the academy; the 10–7 hours are still the original placeholder, since the
+  prospectus doesn't state them. The callback popup's day and time reels are built from
+  these same values, so they never offer a slot when nobody is there to call.
 - **Eligibility spelling.** The prospectus prints `MBBS/BDS/BMDS/BAMS/BUMP`; its own FAQ page
   spells the same list as `MBBS, BDS, BHMS, BAMS`. The site uses the corrected spelling
   (`MBBS / BDS / BHMS / BAMS / BUMS`) — worth confirming with the academy.

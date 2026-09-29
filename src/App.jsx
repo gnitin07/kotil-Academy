@@ -94,7 +94,7 @@ export default function App() {
         <About />
         <Team />
         <Tour lenisRef={lenisRef} />
-        <Diploma onApply={openApply} />
+        <Diploma onApply={openApply} onEnquire={openCallback} lenisRef={lenisRef} />
         <Why />
         <Journey />
         <Steps />

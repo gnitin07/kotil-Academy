@@ -1,7 +1,8 @@
-import { useState } from 'react'
-import Img from '../components/Img.jsx'
+import { useCallback, useEffect, useRef, useState } from 'react'
+import Img, { srcSetFor } from '../components/Img.jsx'
+import { useLockScroll } from '../useLockScroll.js'
 import { DIPLOMA } from '../data.js'
-import { IconArrow } from '../components/icons.jsx'
+import { IconArrow, IconZoom } from '../components/icons.jsx'
 
 /**
  * The one-month cosmetology diploma — the programme the academy runs its
@@ -16,10 +17,22 @@ import { IconArrow } from '../components/icons.jsx'
  * at a time, and an open one takes the full row, so the text is never squeezed
  * into half a phone's width.
  *
- * @param {(course: string) => void} onApply  opens the enrolment dialog, prefilled
+ * The poster behaves like the ones in the Upcoming batches strip: tapping it
+ * opens the enquiry popup with this diploma chosen, and its "Full size" chip
+ * opens it in the same viewer, with a close button.
+ *
+ * @param {(course: string) => void} onApply    opens the enrolment dialog, prefilled
+ * @param {(course: string) => void} onEnquire  opens the enquiry popup, prefilled
+ * @param {React.RefObject} lenisRef            stopped while the viewer is open
  */
-export default function Diploma({ onApply }) {
+export default function Diploma({ onApply, onEnquire, lenisRef }) {
   const [open, setOpen] = useState(null)
+  const [viewing, setViewing] = useState(false)
+  const closeRef = useRef(null)
+  const closeViewer = useCallback(() => setViewing(false), [])
+  useLockScroll(viewing, lenisRef, closeViewer)
+  useEffect(() => { if (viewing) closeRef.current?.focus() }, [viewing])
+  const full = srcSetFor(DIPLOMA.poster)
 
   return (
     <section className="diploma" id="diploma">
@@ -61,13 +74,40 @@ export default function Diploma({ onApply }) {
 
         <figure className="diploma__poster">
           <span className="diploma__postertag">Now enrolling</span>
-          <Img
-            name={DIPLOMA.poster}
-            alt={`${DIPLOMA.title}, course poster listing every module`}
-            sizes="(min-width: 960px) 46vw, 100vw"
-          />
+          <button
+            className="diploma__open"
+            onClick={() => onEnquire(DIPLOMA.title)}
+            aria-label={`Enquire about the ${DIPLOMA.title}`}
+          >
+            <Img
+              name={DIPLOMA.poster}
+              alt={`${DIPLOMA.title}, course poster listing every module`}
+              sizes="(min-width: 960px) 46vw, 100vw"
+            />
+          </button>
+          <button
+            className="poster__zoom"
+            onClick={() => setViewing(true)}
+            aria-label={`View the ${DIPLOMA.title} poster full size`}
+          >
+            <IconZoom size={15} /> Full size
+          </button>
         </figure>
       </div>
+
+      {viewing && full && (
+        <div className="lightbox" role="dialog" aria-modal="true" aria-label={DIPLOMA.title} onClick={closeViewer} data-lenis-prevent>
+          <button ref={closeRef} className="lightbox__close" aria-label="Close" onClick={closeViewer}>×</button>
+          <img
+            className="lightbox__img"
+            src={full.src}
+            srcSet={full.srcSet}
+            sizes="(min-width: 760px) 720px, 100vw"
+            alt={`${DIPLOMA.title}, course poster listing every module`}
+            onClick={(e) => e.stopPropagation()}
+          />
+        </div>
+      )}
     </section>
   )
 }
