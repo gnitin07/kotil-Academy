@@ -26,7 +26,7 @@ export default function About() {
           <a className="pcard" key={c.id} href={courseHref(c.slug)} onClick={follow}>
             <div className="pcard__media">
               <Img name={c.img} alt={c.imgAlt} sizes="(min-width: 980px) 33vw, (min-width: 640px) 50vw, 100vw" />
-              <span className="pcard__cat">{c.category}</span>
+              <span className="pcard__cat">{c.tier}</span>
               <span className="pcard__fee">{formatFee(c.fee)}</span>
             </div>
             <div className="pcard__body">

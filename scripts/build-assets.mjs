@@ -18,7 +18,8 @@
  * Output and manifest are committed, so a plain `npm install && npm run build`
  * never needs sharp or the raw files.
  */
-import { mkdir, readdir, writeFile } from 'node:fs/promises'
+import { mkdir, readdir, readFile, writeFile } from 'node:fs/promises'
+import { createHash } from 'node:crypto'
 import { existsSync } from 'node:fs'
 import path from 'node:path'
 import sharp from 'sharp'
@@ -80,7 +81,11 @@ for (const [group, cfg] of Object.entries(GROUPS)) {
     // Widths plus the source's aspect ratio. <Img> turns the pair into the
     // width/height attributes that let the browser reserve a photo's box
     // before the file lands, instead of reflowing the page around it.
-    manifest[`${group}/${name}`] = { w: real, ar: +(meta.width / meta.height).toFixed(4) }
+    // `v` is a fingerprint of the source file. /media/ is cached for a month
+    // under the same filenames, so <Img> adds it to every URL: a replaced photo
+    // or poster gets a new URL and reaches returning visitors straight away.
+    const v = createHash('sha1').update(await readFile(src)).digest('hex').slice(0, 8)
+    manifest[`${group}/${name}`] = { w: real, ar: +(meta.width / meta.height).toFixed(4), v }
     console.log(`${group}/${name}  ${meta.width}x${meta.height} -> ${real.join(', ')}`)
   }
 }

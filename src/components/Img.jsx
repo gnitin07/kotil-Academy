@@ -21,9 +21,11 @@ export function srcSetFor(name) {
   }
   const base = `${BASE}media/${name}`
   const top = entry.w[entry.w.length - 1]
+  // the source fingerprint, so a replaced photo is not served from cache
+  const q = entry.v ? `?v=${entry.v}` : ''
   return {
-    src: `${base}-${top}.webp`,
-    srcSet: entry.w.map((w) => `${base}-${w}.webp ${w}w`).join(', '),
+    src: `${base}-${top}.webp${q}`,
+    srcSet: entry.w.map((w) => `${base}-${w}.webp${q} ${w}w`).join(', '),
     // The numbers are the largest rendition's, but only their ratio matters:
     // the browser scales the reserved box to whatever width the CSS gives it.
     width: top,

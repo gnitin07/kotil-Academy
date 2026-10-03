@@ -322,6 +322,68 @@ section[id] { scroll-margin-top: calc(var(--topbar-h) + 74px); }
   .hero__dot.is-on::after { animation: none; transform: none; }
 }
 
+/* ---------- HERO: the course comparison slide ---------- */
+/* The stage is a size container, so the table can be sized from the banner's
+   own height and width (cqh / cqw) and fill the frame on any screen without
+   running into the arrows and dots. Portrait on a phone: heading on top, the
+   table under it. Landscape from 1024px: heading and buttons on the left, the
+   table beside them. */
+.hero__stage { container-type: size; }
+.hero__slide--compare {
+  display: flex; color: #fff;
+  background:
+    radial-gradient(120% 90% at 100% 0%, rgba(227, 181, 69, .24), transparent 55%),
+    radial-gradient(90% 70% at 0% 100%, rgba(227, 181, 69, .12), transparent 60%),
+    var(--ink);
+}
+.hero__cmp {
+  width: 100%; height: 100%; display: flex; flex-direction: column; gap: 2cqh;
+  padding: 3.5cqh clamp(14px, 4cqw, 72px) 42px; /* the bottom clears the dots */
+  animation: hero-in .6s var(--ease) both;
+}
+.hero__slide--compare:not(.is-on) .hero__cmp { animation: none; }
+.hero__cmp .hero__title { margin-top: 8px; font-size: clamp(22px, 7cqw, 34px); }
+.hero__cmp .hero__title em { display: inline; }
+/* a phone has room for the heading and the table, and nothing else */
+.hero__cmp .hero__sub, .hero__cmp .hero__btns { display: none; }
+.hero__cmp-table {
+  flex: 0 1 auto; min-height: 0; overflow: auto; overscroll-behavior: contain;
+  border-radius: 12px; background: var(--paper); color: var(--ink);
+  box-shadow: 0 30px 60px -30px rgba(0, 0, 0, .7);
+}
+.compare.compare--hero { min-width: 0; table-layout: fixed; font-size: clamp(9.5px, min(2.85cqw, 1.7cqh), 14px); line-height: 1.3; }
+.compare.compare--hero th, .compare.compare--hero td { padding: .4em .5em; }
+.compare.compare--hero thead th { font-size: 1.1em; }
+.compare.compare--hero thead th:first-child { width: 25%; }
+.compare.compare--hero tr.is-key th { font-size: .85em; letter-spacing: 1px; }
+
+@media (min-width: 720px) {
+  .hero__cmp { padding: 5cqh var(--pad-x) calc(clamp(56px, 8vh, 88px) + 62px); gap: 3cqh; }
+  .hero__cmp .hero__title { font-size: clamp(26px, 5.4cqh, 40px); }
+  .compare.compare--hero { font-size: clamp(10.5px, 1.95cqh, 14px); }
+  .compare.compare--hero th, .compare.compare--hero td { padding: .55em .8em; }
+  .compare.compare--hero thead th:first-child { width: 25%; }
+}
+/* a tablet gets the wide stage at its shortest (580px), so the heading goes on
+   one line and the table rows sit a little tighter */
+@media (min-width: 720px) and (max-width: 1023px) {
+  .hero__cmp-copy { display: flex; flex-wrap: wrap; align-items: baseline; column-gap: 20px; }
+  .hero__cmp .hero__title { margin-top: 0; }
+  .compare.compare--hero th, .compare.compare--hero td { padding: .45em .65em; }
+}
+@media (min-width: 1024px) {
+  .hero__cmp { flex-direction: row; align-items: center; gap: clamp(32px, 4cqw, 64px); }
+  .hero__cmp-copy { flex: 0 0 clamp(260px, 27cqw, 380px); }
+  .hero__cmp .hero__title { font-size: clamp(32px, 3.8cqw, 56px); }
+  .hero__cmp .hero__title em { display: block; }
+  .hero__cmp .hero__sub { display: block; }
+  .hero__cmp .hero__btns { display: flex; }
+  .hero__cmp-table { flex: 1 1 auto; max-height: 100%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero__cmp { animation: none; }
+}
+
 /* ---------- TRUST BAR (accreditation logos) ---------- */
 .trustbar {
   padding: clamp(16px, 2.6vw, 26px) var(--pad-x);
@@ -471,12 +533,28 @@ section[id] { scroll-margin-top: calc(var(--topbar-h) + 74px); }
 .batch__city { color: var(--ink); background: var(--paper); letter-spacing: 1.8px; text-transform: uppercase; }
 .batch__year { color: #fff; background: var(--gold); }
 
+/* the arrows only show where there is a mouse to click them; a phone swipes */
+.batches__wrap { position: relative; }
+.batches__arrow {
+  position: absolute; top: calc(50% - 30px); z-index: 3; display: none; place-items: center;
+  width: 46px; height: 46px; border-radius: 50%; font-size: 26px; line-height: 1;
+  color: var(--ink); background: var(--paper); border: 1px solid var(--line);
+  box-shadow: 0 12px 26px -14px rgba(22, 21, 15, .55); transition: background .2s, color .2s;
+}
+.batches__arrow:hover { background: var(--gold); color: #fff; border-color: var(--gold); }
+
 @media (min-width: 980px) {
+  /* three cards in view, the rest a slide away; the strip lines up with the
+     page's content column and runs out to the edges */
   .batches__row {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
-    max-width: var(--maxw); margin-inline: auto; overflow: visible; padding-bottom: 0;
+    gap: 20px; scroll-snap-type: x mandatory;
+    padding-inline: max(var(--pad-x), calc((100vw - var(--maxw)) / 2));
+    scroll-padding-inline: max(var(--pad-x), calc((100vw - var(--maxw)) / 2));
   }
-  .batch { flex: initial; }
+  .batch { flex: 0 0 calc((min(var(--maxw), 100vw - 2 * var(--pad-x)) - 40px) / 3); scroll-snap-align: start; }
+  .batches__arrow { display: grid; }
+  .batches__arrow--prev { left: max(10px, calc((100vw - var(--maxw)) / 2 - 64px)); }
+  .batches__arrow--next { right: max(10px, calc((100vw - var(--maxw)) / 2 - 64px)); }
 }
 
 /* ---------- OUR PLANS (course cards) ---------- */
@@ -750,14 +828,20 @@ section[id] { scroll-margin-top: calc(var(--topbar-h) + 74px); }
 .cpage__modpractice span { display: block; margin-bottom: 2px; font-size: 10.5px; font-weight: 700; letter-spacing: 1.4px; text-transform: uppercase; color: var(--gold); }
 
 .cpage__tablewrap { margin-top: 14px; overflow-x: auto; border-radius: 14px; border: 1px solid var(--line); }
-.cpage__compare { width: 100%; min-width: 520px; border-collapse: collapse; font-size: 13.5px; }
-.cpage__compare th, .cpage__compare td { padding: 11px 12px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--line); }
-.cpage__compare tbody tr:last-child th, .cpage__compare tbody tr:last-child td { border-bottom: 0; }
-.cpage__compare thead th { font-size: 15px; font-weight: 800; background: var(--gold-bright); color: var(--ink); }
-.cpage__compare thead th a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
-.cpage__compare tbody th { width: 30%; font-weight: 600; color: var(--muted); background: var(--sand); }
-.cpage__compare td.is-current { background: var(--gold-pale); font-weight: 600; }
-.cpage__compare thead th.is-current { background: var(--gold); color: #fff; }
+.compare { width: 100%; min-width: 520px; border-collapse: collapse; font-size: 13.5px; }
+.compare th, .compare td { padding: 11px 12px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--line); }
+.compare tbody tr:last-child th, .compare tbody tr:last-child td { border-bottom: 0; }
+.compare thead th { font-size: 15px; font-weight: 800; background: var(--gold-bright); color: var(--ink); }
+.compare thead th a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
+.compare tbody th { width: 30%; font-weight: 600; color: var(--muted); background: var(--sand); }
+.compare td.is-current { background: var(--gold-pale); font-weight: 600; }
+.compare thead th.is-current { background: var(--gold); color: #fff; }
+/* the Treatments row: dark under the gold header, so it reads as the headline */
+.compare tr.is-key th, .compare tr.is-key td {
+  background: var(--ink); color: #fff; font-weight: 700; letter-spacing: .3px; border-bottom-color: var(--ink);
+}
+.compare tr.is-key th { color: var(--gold-bright); text-transform: uppercase; font-size: 12px; letter-spacing: 1.4px; }
+.compare tr.is-key td.is-current { background: #2c2a20; color: var(--gold-bright); }
 .sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 
 /* ---------- DIPLOMA ---------- */
@@ -1453,69 +1537,53 @@ body { padding-bottom: calc(var(--cbar-h) + env(safe-area-inset-bottom)); }
 }
 @keyframes modal-fade { from { opacity: 0; } }
 .modal__sheet {
-  position: relative; width: 100%; max-height: 92svh; overflow-y: auto;
-  padding: clamp(22px, 6vw, 38px); border-radius: 24px 24px 0 0;
+  position: relative; width: 100%; max-height: 92svh; overflow-y: auto; overflow-x: hidden;
+  padding: 20px 20px 18px; border-radius: 22px 22px 0 0;
   background: var(--paper); box-shadow: 0 -20px 60px -20px rgba(22, 21, 15, .5);
   animation: modal-rise .3s var(--ease);
 }
+.modal__sheet:focus { outline: none; }
 @keyframes modal-rise { from { opacity: 0; transform: translateY(26px); } }
 .modal__close {
-  position: absolute; top: 12px; right: 14px; width: 38px; height: 38px; border-radius: 50%;
-  display: grid; place-items: center; font-size: 26px; line-height: 1; background: var(--stone);
+  position: absolute; top: 10px; right: 10px; width: 32px; height: 32px; border-radius: 50%;
+  display: grid; place-items: center; font-size: 21px; line-height: 1; background: var(--stone);
   transition: background .2s, color .2s;
 }
 .modal__close:hover { background: var(--gold); color: #fff; }
-.modal__head { padding-right: 44px; margin-bottom: 22px; }
-.modal__head h3 { margin: 8px 0; font-size: clamp(22px, 6vw, 29px); font-weight: 800; }
-.modal__head p { font-size: 14px; color: var(--muted); max-width: 46ch; }
-.modal__form { display: grid; gap: 13px; }
-.field { display: flex; flex-direction: column; gap: 6px; }
-.field > span { font-size: 10.5px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold); font-weight: 600; }
+/* Both popups share one compact scale: tight type and spacing, so a form of
+   four or five fields sits on a laptop screen whole, without a scrollbar. */
+.modal__head { padding-right: 36px; margin-bottom: 14px; }
+.modal__head .kicker { font-size: 10px; }
+.modal__head h3 { margin: 4px 0; font-size: 22px; line-height: 1.2; font-weight: 800; }
+.modal__head p { font-size: 13px; line-height: 1.5; color: var(--muted); max-width: 46ch; }
+/* minmax(0, …), not 1fr: a plain 1fr column grows to its widest content, and a
+   long course or state name in a dropdown pushes the form past the sheet.
+   Name and mobile share a row even on a phone; anything marked wideonphone
+   takes the full width there. */
+.modal__form { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 10px; }
+.field--wide, .field--wideonphone, .modal__foot { grid-column: 1 / -1; }
+.field { display: flex; flex-direction: column; gap: 5px; min-width: 0; }
+.field > span { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold); font-weight: 600; }
 .field > span i { font-style: normal; color: var(--muted); letter-spacing: .4px; text-transform: none; font-weight: 400; }
 .field input, .field select, .field textarea {
-  padding: 13px 14px; border-radius: 12px; font-size: 16px; /* 16px: iOS zooms in on anything smaller */
+  width: 100%; min-width: 0; padding: 9px 12px; border-radius: 10px;
+  font-size: 16px; /* 16px: iOS zooms in on anything smaller */
   background: var(--sand); border: 1.5px solid var(--line); color: var(--ink);
   transition: border-color .25s, background .25s;
 }
-.field textarea { resize: vertical; line-height: 1.5; }
+.field select { text-overflow: ellipsis; }
+.field textarea { resize: vertical; line-height: 1.45; min-height: 64px; }
 .field input::placeholder, .field textarea::placeholder { color: #a8a396; }
 .field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: var(--gold); background: var(--paper); }
 .modal__foot { margin-top: 4px; }
 .field__error { font-size: 12.5px; font-style: normal; color: #b3261e; }
 .field input[aria-invalid="true"] { border-color: #d9534f; }
 .field select:invalid { color: #a8a396; } /* the placeholder option, until a state is picked */
-.modal__submit { width: 100%; }
-.modal__note { margin-top: 12px; text-align: center; font-size: 11.5px; color: var(--muted); }
-/* The callback popup. Three fields, so it is sized for three fields: a compact
-   sheet with tighter type and spacing than the application form, short enough
-   to sit on a laptop screen without a scrollbar. */
-/* Four fields, sized to fit a laptop screen whole: on anything wider than a
-   phone they pair up (name with mobile, state with course), so the sheet is
-   two rows of fields tall rather than four and never needs a scrollbar. */
-.modal--callback .modal__sheet { padding: 20px 20px 18px; overflow-x: hidden; }
-.modal--callback .modal__sheet:focus { outline: none; }
-.modal--callback .modal__close { top: 10px; right: 10px; width: 32px; height: 32px; font-size: 21px; }
-.modal--callback .modal__head { margin-bottom: 12px; padding-right: 36px; }
-.modal--callback .modal__head .kicker { font-size: 10px; }
-.modal--callback .modal__head h3 { margin: 4px 0; font-size: 21px; line-height: 1.2; }
-.modal--callback .modal__head p { font-size: 13px; line-height: 1.5; }
-/* minmax(0, …), not 1fr: a plain 1fr column grows to its widest content, and the
-   longest state name in the dropdown was pushing the form past the sheet */
-/* name and mobile share a row even on a phone; state and the time picker
-   need the full width there, and get it */
-.modal--callback .modal__form { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 10px; }
-.modal--callback .field--wideonphone, .modal--callback .modal__foot { grid-column: 1 / -1; }
-.modal--callback .field select { width: 100%; min-width: 0; text-overflow: ellipsis; }
-.modal--callback .field { gap: 5px; }
-.modal--callback .field > span { font-size: 10px; }
-/* 16px stays: iOS zooms the page in on any input set smaller than that */
-.modal--callback .field input, .modal--callback .field select { padding: 9px 12px; border-radius: 10px; }
-.modal--callback .modal__foot { margin-top: 4px; }
-.modal--callback .modal__submit { padding-block: 12px; }
-.modal--callback .modal__note { margin-top: 8px; font-size: 11px; }
+.modal__submit { width: 100%; padding-block: 12px; }
+.modal__note { margin-top: 8px; text-align: center; font-size: 11px; color: var(--muted); }
 @media (min-width: 480px) {
-  .modal--callback .modal__form { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: 12px; }
-  .modal--callback .field--wideonphone { grid-column: auto; }
+  .modal__form { column-gap: 12px; }
+  .field--wideonphone { grid-column: auto; }
 }
 .modal__submit { display: inline-flex; align-items: center; justify-content: center; gap: 9px; }
 .modal__submit:disabled { opacity: .7; cursor: progress; }
@@ -1570,10 +1638,13 @@ body { padding-bottom: calc(var(--cbar-h) + env(safe-area-inset-bottom)); }
 
 @media (min-width: 620px) {
   .modal { place-items: center; padding: 20px; }
-  .modal__sheet { width: min(660px, 100%); border-radius: 24px; }
-  .modal__form { grid-template-columns: 1fr 1fr; }
-  .field--wide, .modal__foot { grid-column: 1 / -1; }
-  .modal--callback .modal__sheet { width: min(480px, 100%); padding: 24px 26px 20px; }
+  .modal__sheet { width: min(540px, 100%); padding: 24px 26px 20px; border-radius: 22px; }
+  .modal--callback .modal__sheet { width: min(480px, 100%); }
+  /* the application form: name, phone and city share a row, so the course gets
+     a row to itself and its full name never truncates */
+  .modal--apply .modal__sheet { width: min(580px, 100%); }
+  .modal--apply .modal__form { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .modal--apply .field--city { grid-column: auto; }
 }
 
 /* ---------- PHONE: COMPACT PASS ---------- */

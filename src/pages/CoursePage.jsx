@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import Img from '../components/Img.jsx'
+import CompareTable from '../components/CompareTable.jsx'
 import { COURSES, FAQS, PARTNERS, STEPS, TEAM, TOPIC_DETAILS, TOPIC_NOTES } from '../data.js'
 import { ACADEMY, directionsLink, hoursLine, prospectusLink, telLink, waLink } from '../config.js'
 import { courseHref, follow, formatFee, homeHref } from '../courseRoute.js'
@@ -13,21 +14,6 @@ const LADDER = 'Skin Therapy & Aesthetics (Basic / Advanced / Advanced Plus)'
 const SHARED_FAQS = ['certified', 'hands-on', 'placement', 'prior experience']
   .map((word) => FAQS.find((f) => f.q.toLowerCase().includes(word)))
   .filter(Boolean)
-
-// The comparison table: the three levels side by side, as in the prospectus.
-// Each row reads the course data, so a change there shows here too.
-const has = (c, topic) => (c.topics.some((t) => t.startsWith(topic)) ? 'Yes' : '—')
-const COMPARE = [
-  ['Duration', (c) => c.duration],
-  ['Hours a day', (c) => c.daily.replace(' a day', '')],
-  ['Fee', (c) => formatFee(c.fee)],
-  ['Hands-on practice', (c) => c.handsOn],
-  ['Internship & live project', (c) => has(c, 'Internship')],
-  ['Marketing & business support', (c) => has(c, 'Marketing')],
-  ['Machinery setup guidance', (c) => has(c, 'Low-cost machinery')],
-  ['Placement & lifetime support', (c) => has(c, 'Placement')],
-  ['You graduate with', (c) => c.award],
-]
 
 /**
  * One course, in full, on a light page.
@@ -109,7 +95,7 @@ export default function CoursePage({ course: c, onApply, onCallback }) {
           <ul className="cpage__glance">
             <li><strong>{hours.toLocaleString('en-IN')} hours</strong><span>of training</span></li>
             {c.handsOn && <li><strong>{c.handsOn}</strong><span>supervised hands-on</span></li>}
-            <li><strong>{c.award}</strong><span>on completion</span></li>
+            <li><strong>{c.awardShort || c.award}</strong><span>{c.awardNote || 'on completion'}</span></li>
             <li><strong>Small batches</strong><span>time on the bed for everyone</span></li>
           </ul>
 
@@ -161,28 +147,7 @@ export default function CoursePage({ course: c, onApply, onCallback }) {
           <section className="cpage__block">
             <h2>Compare the levels</h2>
             <div className="cpage__tablewrap" data-lenis-prevent>
-              <table className="cpage__compare">
-                <thead>
-                  <tr>
-                    <th scope="col"><span className="sr-only">Detail</span></th>
-                    {COURSES.filter((o) => o.fee && o.slug).map((o) => (
-                      <th scope="col" key={o.id} className={o.slug === c.slug ? 'is-current' : undefined}>
-                        {o.slug === c.slug ? o.tier : <a href={courseHref(o.slug)} onClick={follow}>{o.tier}</a>}
-                      </th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {COMPARE.map(([label, get]) => (
-                    <tr key={label}>
-                      <th scope="row">{label}</th>
-                      {COURSES.filter((o) => o.fee && o.slug).map((o) => (
-                        <td key={o.id} className={o.slug === c.slug ? 'is-current' : undefined}>{get(o)}</td>
-                      ))}
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+              <CompareTable current={c.slug} />
             </div>
           </section>
 

@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import Img, { srcSetFor } from '../components/Img.jsx'
+import CompareTable from '../components/CompareTable.jsx'
 import { PARTNERS, SLIDES } from '../data.js'
 import { prospectusLink } from '../config.js'
 import { IconArrow, IconDoc } from '../components/icons.jsx'
@@ -14,6 +15,10 @@ const AUTOPLAY_MS = 4000
  * banner has to be redrawn for every screen size and its text crops on a phone,
  * which is exactly the failure this replaces. Here the photo crops and the
  * words never do.
+ *
+ * One slide is not a photograph: the course comparison table, set in HTML for
+ * the same reason (see SLIDES in data.js). It carries its own heading, so the
+ * shared copy block and scrim stand aside while it is up.
  *
  * Autoplay pauses on hover and while the tab is hidden, and stops for good the
  * moment someone takes control with an arrow, a dot or a swipe. It does not
@@ -49,13 +54,16 @@ export default function Hero({ onApply }) {
     return () => { window.removeEventListener('load', start); clearTimeout(t) }
   }, [])
 
+  // How long the current slide stays up: the table slide asks for longer.
+  const hold = SLIDES[i].hold || AUTOPLAY_MS
+
   useEffect(() => {
     // Not before the other plates are loading, or autoplay advances onto a
     // slide with no image in it and the banner goes black.
     if (held || paused || !warm) return
-    const t = setInterval(() => setI((n) => (n + 1) % SLIDES.length), AUTOPLAY_MS)
-    return () => clearInterval(t)
-  }, [held, paused, warm])
+    const t = setTimeout(() => setI((n) => (n + 1) % SLIDES.length), hold)
+    return () => clearTimeout(t)
+  }, [held, paused, warm, i, hold])
 
   useEffect(() => {
     const onVis = () => setPaused(document.hidden)
@@ -72,12 +80,13 @@ export default function Hero({ onApply }) {
   }
 
   const slide = SLIDES[i]
+  const count = (n) => `${String(n + 1).padStart(2, '0')} / ${String(SLIDES.length).padStart(2, '0')}`
 
   return (
     <section className="hero" id="top">
       <div
         className={`hero__stage${held ? ' is-stopped' : ''}${paused ? ' is-paused' : ''}`}
-        style={{ '--autoplay': `${AUTOPLAY_MS}ms` }}
+        style={{ '--autoplay': `${hold}ms` }}
         onMouseEnter={() => setPaused(true)}
         onMouseLeave={() => setPaused(false)}
         onTouchStart={onTouchStart}
@@ -86,6 +95,36 @@ export default function Hero({ onApply }) {
         aria-label="Kotil Aesthetic Academy"
       >
         {SLIDES.map((s, n) => {
+          if (s.kind === 'compare') {
+            return (
+              <div
+                className={`hero__slide hero__slide--compare${n === i ? ' is-on' : ''}`}
+                key={s.kind}
+                aria-hidden={n !== i}
+                // its course links must not take focus while the slide is hidden
+                inert={n !== i ? '' : undefined}
+              >
+                <div className="hero__cmp">
+                  <div className="hero__cmp-copy">
+                    <p className="hero__kicker"><span className="hero__count">{count(n)}</span>{s.kicker}</p>
+                    <h2 className="hero__title">{s.title} <em>{s.accent}</em></h2>
+                    <p className="hero__sub">{s.sub}</p>
+                    <div className="hero__btns">
+                      <button className="btn-primary" onClick={onApply}>
+                        Apply for a seat <IconArrow size={16} />
+                      </button>
+                      <a className="btn-onphoto" href={prospectusLink} target="_blank" rel="noopener noreferrer">
+                        <IconDoc size={16} /> Prospectus
+                      </a>
+                    </div>
+                  </div>
+                  <div className="hero__cmp-table" data-lenis-prevent>
+                    <CompareTable className="compare--hero" />
+                  </div>
+                </div>
+              </div>
+            )
+          }
           const mob = srcSetFor(s.mob)
           return (
             <figure
@@ -128,14 +167,14 @@ export default function Hero({ onApply }) {
           )
         })}
 
-        <div className="hero__scrim" aria-hidden="true" />
+        {slide.kind !== 'compare' && <div className="hero__scrim" aria-hidden="true" />}
 
         {/* One copy block, re-keyed per slide so the text re-animates on change.
             Keeping it outside the slide loop means only one headline is ever in
             the accessibility tree. */}
-        <div className="hero__copy" key={i}>
+        {slide.kind !== 'compare' && <div className="hero__copy" key={i}>
           <p className="hero__kicker">
-            <span className="hero__count">{String(i + 1).padStart(2, '0')} / {String(SLIDES.length).padStart(2, '0')}</span>
+            <span className="hero__count">{count(i)}</span>
             {slide.kicker}
           </p>
           <h1 className="hero__title">{slide.title} <em>{slide.accent}</em></h1>
@@ -148,7 +187,7 @@ export default function Hero({ onApply }) {
               <IconDoc size={16} /> Prospectus
             </a>
           </div>
-        </div>
+        </div>}
 
         <button className="hero__arrow hero__arrow--prev" aria-label="Previous slide" onClick={() => take(i - 1)}>‹</button>
         <button className="hero__arrow hero__arrow--next" aria-label="Next slide" onClick={() => take(i + 1)}>›</button>
@@ -156,7 +195,7 @@ export default function Hero({ onApply }) {
         <div className="hero__dots" role="tablist" aria-label="Choose slide">
           {SLIDES.map((s, n) => (
             <button
-              key={n === i ? `on-${i}-${paused}` : s.img}
+              key={n === i ? `on-${i}-${paused}` : s.img || s.kind}
               role="tab"
               aria-selected={n === i}
               aria-label={s.kicker}

@@ -63,7 +63,7 @@ function Visual({ kind }) {
     case 'hands':
       return <Img className="wv-photo" name="academy/practical" alt="Students practising on a client under supervision" sizes="(min-width: 1040px) 30vw, 100vw" />
     case 'machine':
-      return <Img className="wv-photo" name="academy/machine-room" alt="A treatment room fitted with clinical equipment" sizes="(min-width: 1040px) 45vw, 100vw" />
+      return <Img className="wv-photo" name="academy/equipment" alt="Three clinical aesthetic machines in a treatment room" sizes="(min-width: 1040px) 45vw, 100vw" />
     case 'placement':
       return (
         <ul className="wv-paths">

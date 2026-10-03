@@ -28,6 +28,19 @@ export const SLIDES = [
     sub: 'Certified aesthetic training in Preet Vihar, New Delhi.',
   },
   {
+    // Not a photograph: the Basic / Advanced / Advanced Plus comparison table,
+    // built live from COURSES (components/CompareTable.jsx), so it always
+    // matches the course pages. Landscape beside its heading on a desktop,
+    // portrait under it on a phone. It stays up longer than a photo slide,
+    // since it takes a moment to read.
+    kind: 'compare',
+    hold: 9000,
+    kicker: 'Compare the levels',
+    title: 'Choose your',
+    accent: 'level',
+    sub: 'Every level is hands-on, certified and taught inside a working clinic.',
+  },
+  {
     img: 'hero/handson',
     mob: 'hero-mobile/handson',
     alt: 'Students watching a trainer demonstrate a treatment on a client in the clinic',
@@ -124,12 +137,18 @@ export const COURSES = [
       'Anyone planning to go on to the Advanced course',
     ],
     included: [
-      'Certificate in Basic Skin Therapy',
+      'Certificate in Skin Expert Therapist',
       '3 days of supervised hands-on practice',
+      'Marketing and business support for 6 months',
+      'Low-cost machinery setup guidance',
+      'Placement assistance and lifetime support',
       'Training inside a working clinic',
-      'Small batches, so everyone gets time on the bed',
       'A direct path on to Advanced',
     ],
+    // the first row of the comparison table, and how long marketing and
+    // business support runs at this level
+    treatments: 'Non-Surgical',
+    support: '6 months',
     next: 'advanced',
     category: 'Skin Therapy',
     fee: 70000,
@@ -141,7 +160,7 @@ export const COURSES = [
     title: 'Skin Therapy & Aesthetics',
     duration: '30 Days',
     daily: '4 hours a day',
-    award: 'Certificate in Basic Skin Therapy',
+    award: 'Certificate in Skin Expert Therapist',
     summary:
       'The foundation year in a month: skin science, analysis and the classic facial protocols every treatment room runs on.',
     eligibility: '10+2 / Any Graduate / MBBS / BDS / BHMS / BAMS / BUMS',
@@ -152,7 +171,10 @@ export const COURSES = [
       'Classic facials',
       'Sanitation, hygiene & client prep',
       'Communication basics for client handling',
+      'Marketing & business support',
       '3 days hands-on practice',
+      'Low-cost machinery setup guidance',
+      'Placement assistance · Lifetime support',
     ],
   },
   {
@@ -174,13 +196,15 @@ export const COURSES = [
       'Medical graduates adding aesthetics to their practice',
     ],
     included: [
-      'Certificate in Advanced Aesthetic Techniques',
+      'Diploma in Clinical Aesthetics',
       '10 extra days of supervised hands-on practice',
-      'Marketing and business support',
+      'Marketing and business support for 1 year',
       'Low-cost machinery setup guidance',
       'Placement assistance',
       'Lifetime support from the academy',
     ],
+    treatments: 'Surgical',
+    support: '1 year',
     next: 'advanced-plus',
     category: 'Aesthetics',
     fee: 120000,
@@ -192,7 +216,7 @@ export const COURSES = [
     title: 'Skin Therapy & Aesthetics',
     duration: '60 Days',
     daily: '8 hours a day',
-    award: 'Certificate in Advanced Aesthetic Techniques',
+    award: 'Diploma in Clinical Aesthetics',
     featured: true,
     summary:
       'Where a therapist becomes a practitioner: concern-led protocols, machine work and consultations you can charge for.',
@@ -217,7 +241,7 @@ export const COURSES = [
     slug: 'advanced-plus',
     overview: [
       'Over 90 days you add energy-based treatments, anti-ageing theory, skin counselling and the business of running a clinic to everything in Advanced: the full picture for someone who wants to own the practice, not only work in it.',
-      'The course ends with an internship and a live client project, assessed at a final evaluation before you receive the Diploma in Clinical Aesthetics.',
+      'The course ends with an internship and a live client project, assessed at a final evaluation before you receive the PG Diploma in Clinical Aesthetics, with international certification from Ukraine and the UAE.',
     ],
     handsOn: 'Internship + 10 extra days',
     diagram: 'treatments/ageing-signs',
@@ -228,7 +252,9 @@ export const COURSES = [
       'Doctors and medical graduates (MBBS, BDS, BHMS, BAMS, BUMS) moving into aesthetics',
     ],
     included: [
-      'Diploma in Clinical Aesthetics',
+      'PG Diploma in Clinical Aesthetics',
+      'International certification (Ukraine, UAE)',
+      'Marketing and business support for life',
       'Internship and a live client project',
       '10 extra days of supervised hands-on practice',
       'Clinic setup and legal regulations guidance',
@@ -245,7 +271,12 @@ export const COURSES = [
     title: 'Skin Therapy & Aesthetics',
     duration: '90 Days',
     daily: '12 hours a day',
-    award: 'Diploma in Clinical Aesthetics',
+    award: 'PG Diploma in Clinical Aesthetics + International Certification (Ukraine, UAE)',
+    // the award is too long for its box in the course page's at-a-glance strip
+    awardShort: 'PG Diploma in Clinical Aesthetics',
+    awardNote: 'plus international certification',
+    treatments: 'Advance AI Surgical',
+    support: 'lifetime',
     summary:
       'The clinic-owner track: lasers, RF and HIFU, anti-ageing theory, plus the business, legal and counselling side of running your own setup.',
     eligibility: '10+2 / Any Graduate / MBBS / BDS / BHMS / BAMS / BUMS',
@@ -561,6 +592,13 @@ export const BATCH_PHOTOS = [
   { img: 'gallery/batch-lounge', city: 'Delhi', year: null, alt: 'A Kotil batch in white coats with their trainer under the Kotil Skin Science sign' },
   { img: 'gallery/batch-cheer', city: 'Delhi', year: null, alt: 'A Kotil batch celebrating together in the clinic lounge' },
   { img: 'gallery/students', city: 'Noida', year: null, alt: 'Students standing with their trainer at the academy' },
+  // Batches at work: students training on the floor and the machines. Real
+  // academy photographs (the same shoot as the campus tour), cropped to 4:3.
+  { img: 'gallery/training-practical', city: 'Delhi', year: null, cap: 'Practical round', alt: 'A batch gathered round a treatment bed as the trainer demonstrates a procedure' },
+  { img: 'gallery/training-machine', city: 'Delhi', year: null, cap: 'On the machines', alt: 'A trainer working a facial device on a client while a student takes notes' },
+  { img: 'gallery/training-session', city: 'Delhi', year: null, cap: 'Supervised session', alt: 'A trainer performing a facial treatment in the academy treatment room' },
+  { img: 'gallery/training-classroom', city: 'Delhi', year: null, cap: 'Theory class', alt: 'A trainer walking the aisle of a full classroom as students take notes' },
+  { img: 'gallery/training-theory', city: 'Delhi', year: null, cap: 'Case study', alt: 'A trainer holding up a case sheet in front of the class' },
 ]
 
 export const DIPLOMA = {
@@ -666,7 +704,7 @@ export const TEAM = [
   },
   {
     // Surname from the Kotil Skin Science signboard: "DEV SINGH (Aesthetic Cosmetologist)"
-    name: 'Dev Singh',
+    name: 'Dr. Dev Singh',
     img: 'team/dev-singh',
     tag: 'Head Trainer',
     tint: 'gold',
@@ -781,7 +819,7 @@ export const FAQS = [
   },
   {
     q: 'Is there placement or career support after the course?',
-    a: 'Yes. We provide career guidance, clinic setup support and access to a growing network of aesthetic professionals and clinics. Advanced and Advanced Plus students also receive lifetime support and low-cost machinery setup guidance.',
+    a: 'Yes. We provide career guidance, clinic setup support and access to a growing network of aesthetic professionals and clinics. Every level also includes low-cost machinery setup guidance and lifetime support, with marketing and business support for 6 months on Basic, 1 year on Advanced and for life on Advanced Plus.',
   },
   {
     q: 'How long does each course run?',

@@ -64,7 +64,7 @@ export default function ApplyModal({ open, course, onClose, lenisRef }) {
   }
 
   return (
-    <div className="modal" role="dialog" aria-modal="true" aria-labelledby="apply-title" onClick={onClose}>
+    <div className="modal modal--apply" role="dialog" aria-modal="true" aria-labelledby="apply-title" onClick={onClose}>
       <div className="modal__sheet" onClick={(e) => e.stopPropagation()} data-lenis-prevent>
         <button className="modal__close" aria-label="Close" onClick={onClose}>×</button>
 
@@ -90,12 +90,12 @@ export default function ApplyModal({ open, course, onClose, lenisRef }) {
               value={form.phone} onChange={set('phone')} placeholder="e.g. 98765 43210" />
           </label>
 
-          <label className="field">
+          <label className="field field--wide field--city">
             <span>City <i>optional</i></span>
             <input value={form.city} onChange={set('city')} placeholder="e.g. Jaipur" />
           </label>
 
-          <label className="field">
+          <label className="field field--wide">
             <span>Course you&apos;re interested in</span>
             <select value={form.course} onChange={set('course')}>
               {OPTIONS.map((o) => <option key={o} value={o}>{o}</option>)}
@@ -105,7 +105,7 @@ export default function ApplyModal({ open, course, onClose, lenisRef }) {
           <label className="field field--wide">
             <span>Your background or a question <i>optional</i></span>
             <textarea
-              rows={3} value={form.note} onChange={set('note')}
+              rows={2} value={form.note} onChange={set('note')}
               placeholder="e.g. BAMS graduate, two years in a salon. Which level should I start at?" />
           </label>
 

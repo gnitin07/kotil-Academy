@@ -23,7 +23,9 @@ function heroPreload() {
   const srcSet = (name) => {
     const entry = JSON.parse(readFileSync('src/media-manifest.json', 'utf8'))[name]
     if (!entry) throw new Error(`heroPreload: "${name}" is not in media-manifest.json`)
-    return entry.w.map((w) => `./media/${name}-${w}.webp ${w}w`).join(', ')
+    // same URLs as <Img>, fingerprint included, or the preload is wasted
+    const q = entry.v ? `?v=${entry.v}` : ''
+    return entry.w.map((w) => `./media/${name}-${w}.webp${q} ${w}w`).join(', ')
   }
   return {
     name: 'hero-preload',

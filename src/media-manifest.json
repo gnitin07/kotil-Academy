@@ -6,7 +6,8 @@
       1600,
       2400
     ],
-    "ar": 1.7778
+    "ar": 1.7778,
+    "v": "91cc5c71"
   },
   "hero/classroom": {
     "w": [
@@ -15,7 +16,8 @@
       1600,
       2400
     ],
-    "ar": 1.7778
+    "ar": 1.7778,
+    "v": "d315d313"
   },
   "hero/handson": {
     "w": [
@@ -24,7 +26,8 @@
       1600,
       1672
     ],
-    "ar": 1.7768
+    "ar": 1.7768,
+    "v": "f501a7b6"
   },
   "hero/students": {
     "w": [
@@ -33,7 +36,8 @@
       1600,
       2400
     ],
-    "ar": 1.7778
+    "ar": 1.7778,
+    "v": "45ac7048"
   },
   "hero-mobile/campus": {
     "w": [
@@ -41,7 +45,8 @@
       720,
       900
     ],
-    "ar": 0.5625
+    "ar": 0.5625,
+    "v": "26d1f6d9"
   },
   "hero-mobile/classroom": {
     "w": [
@@ -49,7 +54,8 @@
       720,
       941
     ],
-    "ar": 0.5628
+    "ar": 0.5628,
+    "v": "34889605"
   },
   "hero-mobile/handson": {
     "w": [
@@ -57,7 +63,8 @@
       720,
       1080
     ],
-    "ar": 0.5625
+    "ar": 0.5625,
+    "v": "c05e6b91"
   },
   "hero-mobile/students": {
     "w": [
@@ -65,63 +72,80 @@
       720,
       1080
     ],
-    "ar": 0.5625
+    "ar": 0.5625,
+    "v": "89001874"
+  },
+  "academy/equipment": {
+    "w": [
+      520,
+      900
+    ],
+    "ar": 1.7768,
+    "v": "3f9333bb"
   },
   "academy/lecture-room": {
     "w": [
       520,
       754
     ],
-    "ar": 1.5579
+    "ar": 1.5579,
+    "v": "c114e977"
   },
   "academy/machine-room": {
     "w": [
       520,
       754
     ],
-    "ar": 1.5611
+    "ar": 1.5611,
+    "v": "eebfd7b4"
   },
   "academy/practical": {
     "w": [
       520,
       900
     ],
-    "ar": 1.7778
+    "ar": 1.7778,
+    "v": "602c1366"
   },
   "academy/session": {
     "w": [
       520,
       754
     ],
-    "ar": 1.5579
+    "ar": 1.5579,
+    "v": "a9ec37f2"
   },
   "academy/signage": {
     "w": [
       520,
       900
     ],
-    "ar": 1.7778
+    "ar": 1.7778,
+    "v": "ba8702c1"
   },
   "academy/supervised": {
     "w": [
       520,
       655
     ],
-    "ar": 1
+    "ar": 1,
+    "v": "7deffaea"
   },
   "academy/trainer-class": {
     "w": [
       520,
       655
     ],
-    "ar": 1.0015
+    "ar": 1.0015,
+    "v": "74654fd2"
   },
   "academy/treatment-room": {
     "w": [
       520,
       754
     ],
-    "ar": 1.5611
+    "ar": 1.5611,
+    "v": "aab734ba"
   },
   "gallery/batch-cheer": {
     "w": [
@@ -129,7 +153,8 @@
       800,
       1277
     ],
-    "ar": 1.0374
+    "ar": 1.0374,
+    "v": "b6b67f7c"
   },
   "gallery/batch-lounge": {
     "w": [
@@ -137,13 +162,15 @@
       800,
       1400
     ],
-    "ar": 1.6087
+    "ar": 1.6087,
+    "v": "ed7c59d7"
   },
   "gallery/reel-poster": {
     "w": [
       480
     ],
-    "ar": 0.566
+    "ar": 0.566,
+    "v": "bc3ea45a"
   },
   "gallery/students": {
     "w": [
@@ -151,90 +178,145 @@
       800,
       1400
     ],
-    "ar": 1.7778
+    "ar": 1.7778,
+    "v": "296f4190"
+  },
+  "gallery/training-classroom": {
+    "w": [
+      480,
+      800,
+      1400
+    ],
+    "ar": 1.3333,
+    "v": "a1f87071"
+  },
+  "gallery/training-machine": {
+    "w": [
+      480,
+      655
+    ],
+    "ar": 1.334,
+    "v": "87fe630b"
+  },
+  "gallery/training-practical": {
+    "w": [
+      480,
+      800,
+      1200
+    ],
+    "ar": 1.3333,
+    "v": "9ad84e4e"
+  },
+  "gallery/training-session": {
+    "w": [
+      480,
+      645
+    ],
+    "ar": 1.3326,
+    "v": "2e46903b"
+  },
+  "gallery/training-theory": {
+    "w": [
+      480,
+      655
+    ],
+    "ar": 1.334,
+    "v": "49b81eae"
   },
   "treatments/ageing-signs": {
     "w": [
       520,
       696
     ],
-    "ar": 0.8198
+    "ar": 0.8198,
+    "v": "379dbd92"
   },
   "treatments/carbon-peel": {
     "w": [
       520,
       779
     ],
-    "ar": 1.8116
+    "ar": 1.8116,
+    "v": "91f28479"
   },
   "treatments/devices": {
     "w": [
       520,
       900
     ],
-    "ar": 2.2387
+    "ar": 2.2387,
+    "v": "f489c77b"
   },
   "treatments/facial": {
     "w": [
       520,
       900
     ],
-    "ar": 2.2407
+    "ar": 2.2407,
+    "v": "6fd69888"
   },
   "treatments/laser-body": {
     "w": [
       520,
       900
     ],
-    "ar": 1.1213
+    "ar": 1.1213,
+    "v": "ea0ba959"
   },
   "treatments/laser": {
     "w": [
       520,
       698
     ],
-    "ar": 1.0805
+    "ar": 1.0805,
+    "v": "1b7ad691"
   },
   "treatments/lips": {
     "w": [
       520,
       825
     ],
-    "ar": 1.1286
+    "ar": 1.1286,
+    "v": "19b3089b"
   },
   "treatments/microneedling": {
     "w": [
       520,
       891
     ],
-    "ar": 2.0625
+    "ar": 2.0625,
+    "v": "faa6a04a"
   },
   "team/dev-singh": {
     "w": [
       320,
       560
     ],
-    "ar": 0.8
+    "ar": 0.8,
+    "v": "adc31d5b"
   },
   "team/reena-verma": {
     "w": [
       320,
       560
     ],
-    "ar": 0.799
+    "ar": 0.799,
+    "v": "9140b84a"
   },
   "team/ruby": {
     "w": [
       320,
       560
     ],
-    "ar": 0.8
+    "ar": 0.8,
+    "v": "7c460de8"
   },
   "founder/dev-singh": {
     "w": [
       382
     ],
-    "ar": 0.9272
+    "ar": 0.9272,
+    "v": "6f15deba"
   },
   "posters/aesthetic-surgery": {
     "w": [
@@ -242,7 +324,8 @@
       900,
       1600
     ],
-    "ar": 0.7996
+    "ar": 0.7996,
+    "v": "31d141bc"
   },
   "posters/diploma-cosmetology": {
     "w": [
@@ -250,7 +333,8 @@
       900,
       1600
     ],
-    "ar": 0.7996
+    "ar": 0.7996,
+    "v": "ea2f256d"
   },
   "posters/diploma": {
     "w": [
@@ -258,7 +342,8 @@
       900,
       1600
     ],
-    "ar": 0.7996
+    "ar": 0.7996,
+    "v": "36930190"
   },
   "posters/pg-diploma": {
     "w": [
@@ -266,42 +351,49 @@
       900,
       1600
     ],
-    "ar": 0.7996
+    "ar": 0.7996,
+    "v": "662d6965"
   },
   "partners/devriz": {
     "w": [
       384
     ],
-    "ar": 1.4884
+    "ar": 1.4884,
+    "v": "5070215d"
   },
   "partners/msme": {
     "w": [
       372
     ],
-    "ar": 1.4419
+    "ar": 1.4419,
+    "v": "616b3abf"
   },
   "partners/nsdc": {
     "w": [
       432
     ],
-    "ar": 1.6744
+    "ar": 1.6744,
+    "v": "7316b711"
   },
   "partners/skill-india": {
     "w": [
       252
     ],
-    "ar": 0.9767
+    "ar": 0.9767,
+    "v": "dbbc19f5"
   },
   "partners/startup-india": {
     "w": [
       600
     ],
-    "ar": 2.3256
+    "ar": 2.3256,
+    "v": "249d661b"
   },
   "partners/strip": {
     "w": [
       362
     ],
-    "ar": 5.4848
+    "ar": 5.4848,
+    "v": "c4cef8a9"
   }
 }
